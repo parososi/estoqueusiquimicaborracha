@@ -370,7 +370,115 @@
             border-collapse: collapse;
             font-size: 13px;
         }
-        
+
+        .tooltip-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: help;
+        }
+
+        .tooltip-container:focus {
+            outline: 2px solid rgba(31, 68, 140, 0.4);
+            outline-offset: 2px;
+        }
+
+        .tooltip-bubble {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1F448C;
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            line-height: 1.4;
+            white-space: normal;
+            width: max-content;
+            max-width: 260px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .tooltip-bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: #1F448C transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip-bubble,
+        .tooltip-container:focus .tooltip-bubble,
+        .tooltip-container:focus-within .tooltip-bubble {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .info-tooltip {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #1F448C;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            align-items: center;
+            justify-content: center;
+            display: inline-flex;
+        }
+
+        .info-tooltip .tooltip-bubble {
+            bottom: calc(100% + 12px);
+        }
+
+        .info-tooltip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tooltip-chip {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+            gap: 4px;
+        }
+
+        .tooltip-chip .tooltip-bubble {
+            left: 0;
+            transform: translateX(-20%);
+        }
+
+        .tooltip-chip .tooltip-bubble::after {
+            left: 20%;
+        }
+
+        .tooltip-hint {
+            font-size: 11px;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         th {
             background-color: #f8f9fa;
             font-weight: bold;
@@ -380,6 +488,12 @@
             position: sticky;
             top: 0;
             border-bottom: 2px solid #ddd;
+        }
+
+        th .th-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         
         td {
@@ -424,7 +538,81 @@
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
         }
-        
+
+        .pareto-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .pareto-section h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .pareto-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pareto-table th,
+        .pareto-table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+        }
+
+        .pareto-table th {
+            background: #e3f2fd;
+            color: #1F448C;
+        }
+
+        .pareto-empty {
+            margin: 0;
+            color: #666;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .abc-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .abc-chip.abc-a {
+            background-color: #f44336;
+        }
+
+        .abc-chip.abc-b {
+            background-color: #ff9800;
+        }
+
+        .abc-chip.abc-c {
+            background-color: #4caf50;
+        }
+
+        tr.abc-row-a {
+            box-shadow: inset 4px 0 0 #f44336;
+        }
+
+        tr.abc-row-b {
+            box-shadow: inset 4px 0 0 #ff9800;
+        }
+
+        tr.abc-row-c {
+            box-shadow: inset 4px 0 0 #4caf50;
+        }
+
         .stat-item {
             text-align: center;
             padding: 15px;
@@ -829,7 +1017,16 @@
                     <option value="90-15">90-15 (GARUVA)</option>
                 </select>
             </div>
-            
+
+            <div class="control-group">
+                <label>Filtro avançado:</label>
+                <select id="advancedStockFilter" onchange="filterByAdvancedStock()">
+                    <option value="">Todos os produtos</option>
+                    <option value="no-stock">Sem estoque</option>
+                    <option value="over50">Estoque &gt; 50 meses</option>
+                </select>
+            </div>
+
             <div class="control-group">
                 <button onclick="showExportModal()">📤 Exportar</button>
                 <button onclick="updateData()">🔄 Atualizar</button>
@@ -842,23 +1039,28 @@
                 <h4>⚠️ Alertas Preditivos</h4>
                 <div id="predictionAlerts">
                     <div class="prediction-item clickable" onclick="filterZeroIn30()" title="Clique para filtrar produtos">
-                        <span class="prediction-label">Produtos zerando em 30 dias:</span>
+                        <span class="prediction-label">Produtos zerando em <span id="urgentDaysLabel">30</span> dias:</span>
                         <span class="prediction-value prediction-critical" id="zeroIn30">0</span>
                     </div>
                     <div class="prediction-item clickable" onclick="filterZeroIn60()" title="Clique para filtrar produtos">
-                        <span class="prediction-label">Produtos zerando em 60 dias:</span>
+                        <span class="prediction-label">Produtos zerando em <span id="warningDaysLabel">60</span> dias:</span>
                         <span class="prediction-value prediction-warning" id="zeroIn60">0</span>
                     </div>
                     <div class="prediction-item">
                         <span class="prediction-label">Ponto de reposição ideal:</span>
-                        <span class="prediction-value prediction-good" id="reorderPoint">3-4 meses</span>
+                        <span class="prediction-value prediction-good" id="reorderPoint">--</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="summary-card">
-            <h3>Resumo Geral</h3>
+            <h3>Resumo Geral
+                <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Explicação sobre o resumo geral">
+                    <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                    <span class="tooltip-bubble">Indicadores de cobertura que mostram quantidade de produtos, estoque médio e medidas de dispersão (mediana, quartis e desvio-padrão) para detectar concentrações e outliers, além do total de famílias e itens críticos.</span>
+                </span>
+            </h3>
             <div class="summary-stats">
                 <div class="stat-item">
                     <div class="stat-value" id="totalProducts">0</div>
@@ -867,6 +1069,22 @@
                 <div class="stat-item">
                     <div class="stat-value" id="avgStockMonths">0.0</div>
                     <div class="stat-label">Média de Estoque (meses)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="medianStock">--</div>
+                    <div class="stat-label">Mediana de Estoque (meses)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="q1Stock">--</div>
+                    <div class="stat-label">1º Quartil (25%)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="q3Stock">--</div>
+                    <div class="stat-label">3º Quartil (75%)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="stdDevStock">--</div>
+                    <div class="stat-label">Desvio-Padrão (meses)</div>
                 </div>
                 <div class="stat-item clickable" onclick="filterCriticalStock()" title="Clique para ver produtos críticos (<2 meses)">
                     <div class="stat-value critical" id="criticalCount">0</div>
@@ -879,6 +1097,15 @@
             </div>
         </div>
         
+        <div class="pareto-section">
+            <h3>📊 Análise ABC por Vendas
+                <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Como funciona a análise ABC">
+                    <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                    <span class="tooltip-bubble">Classificação dos itens conforme a participação nas vendas acumuladas: Classe A concentra ~80% do faturamento (itens estratégicos), Classe B cobre a faixa intermediária (até ~95%) e Classe C agrupa os itens de menor giro.</span>
+                </span>
+            </h3>
+            <div id="paretoContent"></div>
+        </div>
         <div class="gauges-container" id="gaugesContainer">
         </div>
         
@@ -891,19 +1118,118 @@
                 <table id="productsTable">
                     <thead>
                         <tr>
-                            <th>Código</th>
-                            <th>Fornecedor</th>
-                            <th>Família</th>
-                            <th>Item</th>
-                            <th>Est. 1-4</th>
-                            <th>Est. 90-13</th>
-                            <th>Est. 90-15</th>
-                            <th>Total</th>
-                            <th>Vendas 3M</th>
-                            <th>Média 3M</th>
-                            <th>Meses</th>
-                            <th>Previsão</th>
-                            <th>Status</th>
+                            <th>
+                                <span class="th-content">Código
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="O que é o código do produto?">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Identificador interno único de cada item no cadastro.</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Fornecedor
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Quem é o fornecedor?">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Parceiro responsável pelo fornecimento do produto.</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Família
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="O que significa família?">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Categoria ou agrupamento ao qual o item pertence.</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Item
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Descrição do item">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Nome completo ou descrição comercial do produto.</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Est. 1-4
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Estoque na unidade 1-4">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Saldo disponível no estabelecimento 1-4 (Guarulhos).</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Est. 90-13
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Estoque na unidade 90-13">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Saldo disponível no estabelecimento 90-13 (Itajaí).</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Est. 90-15
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Estoque na unidade 90-15">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Saldo disponível no estabelecimento 90-15 (Garuva).</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Total
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Total de estoque">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Somatório dos estoques considerados para o produto.</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Vendas 4M
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Vendas acumuladas">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Quantidade vendida nos últimos quatro meses.</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Média 3M
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Média de vendas">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Média mensal de vendas calculada para os últimos três meses.</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Meses
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Cobertura em meses">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Cobertura aproximada de estoque com base na demanda recente.</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Previsão
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Como ler a previsão?">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Resumo da projeção de ruptura considerando consumo médio e estoque disponível.</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Status
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="O que indica o status?">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Classificação de risco baseada na cobertura (Crítico, Atenção ou Bom).</span>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span class="th-content">Classe ABC
+                                    <span class="tooltip-container info-tooltip" tabindex="0" aria-label="O que é a classe ABC?">
+                                        <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                        <span class="tooltip-bubble">Faixa de prioridade definida pela participação do item nas vendas.</span>
+                                    </span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody id="productsTableBody">
@@ -940,6 +1266,7 @@
 
     <!-- Inclusão das bibliotecas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="config.js"></script>
     
     <script>
         // Variáveis globais
@@ -957,6 +1284,8 @@
         let debugMode = false;
         let mappingDebugMode = false;
         let lastMappingInfo = null;
+        let advancedStockFilter = '';
+        let abcClassificationMap = new Map();
 
         // Função de log para debug
         function debugLog(message, type) {
@@ -1001,28 +1330,161 @@
         function showMappingInfo(mappingInfo) {
             const mappingDiv = document.getElementById('mappingDebug');
             if (!mappingDiv || !mappingDebugMode) return;
-            
+
             let html = '<strong>📋 INFORMAÇÕES DE MAPEAMENTO DE COLUNAS</strong><br><br>';
             html += `<strong>Colunas encontradas na planilha:</strong><br>`;
             mappingInfo.headers.forEach((header, index) => {
                 html += `[${index}] "${header}"<br>`;
             });
-            
+
             html += '<br><strong>Mapeamento aplicado:</strong><br>';
             for (const [field, index] of Object.entries(mappingInfo.mapping)) {
                 const header = mappingInfo.headers[index] || 'ÍNDICE INVÁLIDO';
                 const status = mappingInfo.headers[index] ? '✅' : '❌';
                 html += `${field} → [${index}] "${header}" ${status}<br>`;
             }
-            
+
             if (mappingInfo.warnings.length > 0) {
                 html += '<br><strong>⚠️ Avisos:</strong><br>';
                 mappingInfo.warnings.forEach(warning => {
                     html += `${warning}<br>`;
                 });
             }
-            
+
             mappingDiv.innerHTML = html;
+        }
+
+        function getConfigValue(path, fallback) {
+            if (typeof getConfig === 'function') {
+                const value = getConfig(path);
+                if (typeof value !== 'undefined') {
+                    return value;
+                }
+            } else if (window.dashboardConfig) {
+                const keys = path.split('.');
+                let current = window.dashboardConfig;
+                for (const key of keys) {
+                    if (current && typeof current === 'object' && key in current) {
+                        current = current[key];
+                    } else {
+                        current = undefined;
+                        break;
+                    }
+                }
+                if (typeof current !== 'undefined') {
+                    return current;
+                }
+            }
+
+            return fallback;
+        }
+
+        function getPredictionSettings() {
+            const defaults = { urgentDays: 30, warningDays: 60 };
+            const configValues = getConfigValue('predictions', {}) || {};
+            return Object.assign({}, defaults, {
+                urgentDays: typeof configValues.urgentDays === 'number' ? configValues.urgentDays : defaults.urgentDays,
+                warningDays: typeof configValues.warningDays === 'number' ? configValues.warningDays : defaults.warningDays
+            });
+        }
+
+        function getReorderPointValue() {
+            const reorder = getConfigValue('stockLevels.reorderPoint', null);
+            return typeof reorder === 'number' ? reorder : null;
+        }
+
+        function calculateDailyDemand(product) {
+            const monthlyAverage = product.media3M && product.media3M > 0
+                ? product.media3M
+                : (product.vendas4M && product.vendas4M > 0 ? product.vendas4M / 4 : 0);
+
+            if (monthlyAverage > 0) {
+                return monthlyAverage / 30;
+            }
+
+            if (product.stockMonths && product.stockMonths > 0) {
+                const totalStock = (product.stock14 || 0) + (product.stock9013 || 0) + (product.stock9015 || 0);
+                const inferredDaily = totalStock / (product.stockMonths * 30);
+                return isFinite(inferredDaily) && inferredDaily > 0 ? inferredDaily : 0;
+            }
+
+            return 0;
+        }
+
+        function getCoverageInfo(product) {
+            const stockAvailable = getProductStock(product);
+            const dailyDemand = calculateDailyDemand(product);
+
+            if (stockAvailable <= 0) {
+                return {
+                    stockAvailable,
+                    dailyDemand,
+                    daysToDepletion: 0,
+                    hasDemand: dailyDemand > 0,
+                    outOfStock: true
+                };
+            }
+
+            if (dailyDemand <= 0) {
+                return {
+                    stockAvailable,
+                    dailyDemand,
+                    daysToDepletion: null,
+                    hasDemand: false,
+                    outOfStock: false
+                };
+            }
+
+            return {
+                stockAvailable,
+                dailyDemand,
+                daysToDepletion: stockAvailable / dailyDemand,
+                hasDemand: true,
+                outOfStock: false
+            };
+        }
+
+        function formatStatValue(value, digits = 1) {
+            if (value === null || typeof value === 'undefined' || Number.isNaN(value)) {
+                return '--';
+            }
+
+            return value.toFixed(digits);
+        }
+
+        function escapeHtml(value) {
+            if (value === null || typeof value === 'undefined') {
+                return '';
+            }
+
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function applyPredictionLabels() {
+            const { urgentDays, warningDays } = getPredictionSettings();
+            const urgentLabel = document.getElementById('urgentDaysLabel');
+            const warningLabel = document.getElementById('warningDaysLabel');
+            const reorderElement = document.getElementById('reorderPoint');
+            const reorderPointValue = getReorderPointValue();
+
+            if (urgentLabel) {
+                urgentLabel.textContent = urgentDays;
+            }
+
+            if (warningLabel) {
+                warningLabel.textContent = warningDays;
+            }
+
+            if (reorderElement) {
+                reorderElement.textContent = typeof reorderPointValue === 'number'
+                    ? `${reorderPointValue} meses`
+                    : '--';
+            }
         }
 
         // Detectar suporte ao File System Access API
@@ -2091,6 +2553,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             document.getElementById('familyFilter').value = '';
             document.getElementById('supplierFilter').value = '';
             document.getElementById('establishmentFilter').value = '';
+            document.getElementById('advancedStockFilter').value = '';
+            advancedStockFilter = '';
             updateActiveButton('all');
             applyAllFilters();
         }
@@ -2158,6 +2622,13 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             applyAllFilters();
         }
 
+        function filterByAdvancedStock() {
+            const advancedDropdown = document.getElementById('advancedStockFilter');
+            advancedStockFilter = advancedDropdown ? advancedDropdown.value : '';
+            criticalFilterActive = false;
+            applyAllFilters();
+        }
+
         function filterByGauge(family) {
             if (selectedFamily === family) {
                 selectedFamily = null;
@@ -2218,14 +2689,29 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
 
         function applyAllFilters() {
             let baseData = allProductsData.slice();
+            const { urgentDays, warningDays } = getPredictionSettings();
 
             if (predictionFilter === 'zero30') {
                 baseData = baseData.filter(function(p) {
-                    return p.stockMonths > 0 && p.stockMonths < 1;
+                    const coverage = getCoverageInfo(p);
+                    if (coverage.outOfStock) {
+                        return true;
+                    }
+                    if (coverage.daysToDepletion === null) {
+                        return false;
+                    }
+                    return coverage.daysToDepletion <= urgentDays;
                 });
             } else if (predictionFilter === 'zero60') {
                 baseData = baseData.filter(function(p) {
-                    return p.stockMonths >= 1 && p.stockMonths < 2;
+                    const coverage = getCoverageInfo(p);
+                    if (coverage.outOfStock) {
+                        return false;
+                    }
+                    if (coverage.daysToDepletion === null) {
+                        return false;
+                    }
+                    return coverage.daysToDepletion > urgentDays && coverage.daysToDepletion <= warningDays;
                 });
             }
 
@@ -2272,11 +2758,30 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
 
             if (currentEstablishment) {
                 baseData = baseData.filter(function(product) {
-                    return getProductStock(product) > 0;
+                    const stock = getProductStock(product);
+                    if (advancedStockFilter === 'no-stock') {
+                        return stock <= 0;
+                    }
+                    return stock > 0;
+                });
+            }
+
+            if (advancedStockFilter === 'no-stock') {
+                baseData = baseData.filter(function(product) {
+                    return getProductStock(product) <= 0;
+                });
+            } else if (advancedStockFilter === 'over50') {
+                baseData = baseData.filter(function(product) {
+                    const coverage = getCoverageInfo(product);
+                    if (coverage.daysToDepletion !== null) {
+                        return (coverage.daysToDepletion / 30) > 50;
+                    }
+                    return product.stockMonths > 50;
                 });
             }
 
             filteredData = baseData;
+            updateParetoAnalysis();
             updateTable();
             updateSummary();
             updateGauges();
@@ -2295,32 +2800,60 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
 
         // === FUNÇÕES DE ANÁLISE ===
         function updatePredictiveAnalysis() {
-            const thirtyDayZero = filteredData.filter(function(p) {
-                return p.stockMonths > 0 && p.stockMonths < 1;
-            }).length;
-            const sixtyDayZero = filteredData.filter(function(p) {
-                return p.stockMonths >= 1 && p.stockMonths < 2;
-            }).length;
+            applyPredictionLabels();
 
-            document.getElementById('zeroIn30').textContent = thirtyDayZero;
-            document.getElementById('zeroIn60').textContent = sixtyDayZero;
+            const { urgentDays, warningDays } = getPredictionSettings();
+            let urgentCount = 0;
+            let warningCount = 0;
+
+            filteredData.forEach(function(product) {
+                const coverage = getCoverageInfo(product);
+
+                if (coverage.outOfStock) {
+                    urgentCount++;
+                    return;
+                }
+
+                if (coverage.daysToDepletion === null) {
+                    return;
+                }
+
+                if (coverage.daysToDepletion <= urgentDays) {
+                    urgentCount++;
+                } else if (coverage.daysToDepletion <= warningDays) {
+                    warningCount++;
+                }
+            });
 
             const zeroIn30Element = document.getElementById('zeroIn30');
             const zeroIn60Element = document.getElementById('zeroIn60');
-            
-            zeroIn30Element.className = thirtyDayZero > 10 ? 'prediction-value prediction-critical' : 
-                                      thirtyDayZero > 5 ? 'prediction-value prediction-warning' : 
-                                      'prediction-value prediction-good';
-            
-            zeroIn60Element.className = sixtyDayZero > 15 ? 'prediction-value prediction-warning' : 
-                                       'prediction-value prediction-good';
-        }
 
+            if (zeroIn30Element) {
+                zeroIn30Element.textContent = urgentCount;
+                zeroIn30Element.className = urgentCount > 0
+                    ? 'prediction-value prediction-critical'
+                    : 'prediction-value prediction-good';
+            }
+
+            if (zeroIn60Element) {
+                zeroIn60Element.textContent = warningCount;
+                zeroIn60Element.className = warningCount > 0
+                    ? 'prediction-value prediction-warning'
+                    : 'prediction-value prediction-good';
+            }
+        }
         function updateSummary() {
             const total = filteredData.length;
-            const avgStock = total > 0 ? filteredData.reduce(function(sum, p) {
-                return sum + p.stockMonths;
-            }, 0) / total : 0;
+            const monthsValues = filteredData
+                .map(function(p) { return typeof p.stockMonths === 'number' ? p.stockMonths : null; })
+                .filter(function(value) { return value !== null && !Number.isNaN(value); })
+                .sort(function(a, b) { return a - b; });
+
+            const sumMonths = monthsValues.reduce(function(sum, value) {
+                return sum + value;
+            }, 0);
+
+            const avgStock = monthsValues.length > 0 ? sumMonths / monthsValues.length : 0;
             const criticalCount = filteredData.filter(function(p) {
                 return p.stockMonths < 2;
             }).length;
@@ -2328,10 +2861,142 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 return p.family;
             })).size;
 
+            function percentile(arr, fraction) {
+                if (arr.length === 0) return null;
+                const position = (arr.length - 1) * fraction;
+                const base = Math.floor(position);
+                const rest = position - base;
+                const baseValue = arr[base];
+                const nextValue = arr[base + 1];
+                if (typeof nextValue === 'undefined') {
+                    return baseValue;
+                }
+                return baseValue + rest * (nextValue - baseValue);
+            }
+
+            const median = percentile(monthsValues, 0.5);
+            const q1 = percentile(monthsValues, 0.25);
+            const q3 = percentile(monthsValues, 0.75);
+            const variance = monthsValues.length > 0 ? monthsValues.reduce(function(acc, value) {
+                return acc + Math.pow(value - avgStock, 2);
+            }, 0) / monthsValues.length : 0;
+            const stdDev = monthsValues.length > 0 ? Math.sqrt(variance) : null;
+
             document.getElementById('totalProducts').textContent = total;
-            document.getElementById('avgStockMonths').textContent = avgStock.toFixed(1);
+            document.getElementById('avgStockMonths').textContent = monthsValues.length > 0 ? formatStatValue(avgStock) : '--';
+            document.getElementById('medianStock').textContent = median !== null ? formatStatValue(median) : '--';
+            document.getElementById('q1Stock').textContent = q1 !== null ? formatStatValue(q1) : '--';
+            document.getElementById('q3Stock').textContent = q3 !== null ? formatStatValue(q3) : '--';
+            document.getElementById('stdDevStock').textContent = stdDev !== null ? formatStatValue(stdDev) : '--';
             document.getElementById('criticalCount').textContent = criticalCount;
             document.getElementById('totalFamilies').textContent = families;
+        }
+
+        function updateParetoAnalysis() {
+            const container = document.getElementById('paretoContent');
+            abcClassificationMap = new Map();
+            if (!container) {
+                return;
+            }
+
+            if (!Array.isArray(filteredData) || filteredData.length === 0) {
+                container.innerHTML = '<p class="pareto-empty">Nenhum produto para análise.</p>';
+                abcClassificationMap = new Map();
+                return;
+            }
+
+            const sortedData = filteredData.slice().sort(function(a, b) {
+                return (b.vendas4M || 0) - (a.vendas4M || 0);
+            });
+            const totalSales = sortedData.reduce(function(sum, product) {
+                return sum + (product.vendas4M || 0);
+            }, 0);
+
+            if (totalSales === 0) {
+                sortedData.forEach(function(product) {
+                    abcClassificationMap.set(product.code, '—');
+                });
+                container.innerHTML = '<p class="pareto-empty">Sem dados de vendas para calcular a análise ABC.</p>';
+                return;
+            }
+
+            let cumulativeShare = 0;
+            const displayLimit = 10;
+            const rows = [];
+
+            sortedData.forEach(function(product, index) {
+                const sales = product.vendas4M || 0;
+                const individualShare = sales / totalSales;
+                cumulativeShare += individualShare;
+
+                let classification = 'C';
+                if (cumulativeShare <= 0.8) {
+                    classification = 'A';
+                } else if (cumulativeShare <= 0.95) {
+                    classification = 'B';
+                }
+
+                abcClassificationMap.set(product.code, classification);
+
+                if (index < displayLimit) {
+                    rows.push(`
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${product.code}</td>
+                            <td>${product.item}</td>
+                            <td>${(product.vendas4M || 0).toLocaleString()}</td>
+                            <td>${(individualShare * 100).toFixed(1)}%</td>
+                            <td>${(cumulativeShare * 100).toFixed(1)}%</td>
+                            <td><span class="abc-chip abc-${classification.toLowerCase()}">${classification}</span></td>
+                        </tr>
+                    `);
+                }
+            });
+
+            const tableHtml = `
+                <table class="pareto-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Código</th>
+                            <th>Item</th>
+                            <th>Vendas 4M
+                                <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Vendas nos últimos quatro meses">
+                                    <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                    <span class="tooltip-bubble">Volume total vendido no período de quatro meses usado como base para a curva ABC.</span>
+                                </span>
+                            </th>
+                            <th>% Individual
+                                <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Participação individual">
+                                    <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                    <span class="tooltip-bubble">Percentual da venda do item em relação ao total analisado. Indica o peso de cada produto individualmente.</span>
+                                </span>
+                            </th>
+                            <th>% Acumulado
+                                <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Participação acumulada">
+                                    <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                    <span class="tooltip-bubble">Soma progressiva das participações individuais. Define os limites de corte das classes A (até ~80%), B (até ~95%) e C.</span>
+                                </span>
+                            </th>
+                            <th>Classe
+                                <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Classe ABC do item">
+                                    <span class="info-tooltip-icon" aria-hidden="true">?</span>
+                                    <span class="tooltip-bubble">Etiqueta resultante da participação acumulada: A (mais relevante), B (intermediária) ou C (menor impacto).</span>
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows.join('')}
+                    </tbody>
+                </table>
+            `;
+
+            const footer = sortedData.length > displayLimit
+                ? `<p class="pareto-empty">Exibindo top ${displayLimit} de ${sortedData.length} produtos.</p>`
+                : '';
+
+            container.innerHTML = tableHtml + footer;
         }
 
         function updateTable() {
@@ -2342,11 +3007,33 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 const row = document.createElement('tr');
                 const totalStock = product.stock14 + product.stock9013 + product.stock9015;
                 const statusClass = getStatusClass(product.stockMonths);
-                const prediction = getPrediction(product);
-                
+                const predictionInfo = getPrediction(product);
+                const predictionClass = predictionInfo && predictionInfo.severity
+                    ? `status-${predictionInfo.severity}`
+                    : statusClass;
+                const predictionLabel = predictionInfo && typeof predictionInfo === 'object'
+                    ? predictionInfo.label
+                    : predictionInfo;
+                const predictionTooltip = predictionInfo && typeof predictionInfo === 'object'
+                    ? predictionInfo.tooltip || predictionInfo.fullText
+                    : predictionInfo;
+                const predictionDisplay = predictionLabel
+                    ? `<span class="tooltip-container tooltip-chip" tabindex="0">
+                            ${escapeHtml(predictionLabel)}
+                            <span class="tooltip-hint" aria-hidden="true">ⓘ</span>
+                            <span class="tooltip-bubble">${escapeHtml(predictionTooltip || predictionLabel)}</span>
+                        </span>`
+                    : '--';
+
                 const vendas4MDisplay = (!product.vendas4M || product.vendas4M === 0) ? 'S/ VENDA' : product.vendas4M.toLocaleString();
                 const vendas4MClass = (!product.vendas4M || product.vendas4M === 0) ? 'status-warning' : '';
-                
+
+                const abcClass = abcClassificationMap.get(product.code);
+                const normalizedAbcClass = (typeof abcClass === 'string' && abcClass) ? abcClass.toUpperCase() : '—';
+                const abcCellContent = normalizedAbcClass === '—'
+                    ? '—'
+                    : `<span class="abc-chip abc-${normalizedAbcClass.toLowerCase()}">${normalizedAbcClass}</span>`;
+
                 row.innerHTML = `
                     <td>${product.code}</td>
                     <td>${product.supplier}</td>
@@ -2359,11 +3046,22 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     <td class="${vendas4MClass}">${vendas4MDisplay}</td>
                     <td>${Math.round(product.media3M || 0).toLocaleString()}</td>
                     <td class="${statusClass}">${product.stockMonths.toFixed(1)}</td>
-                    <td class="${statusClass}">${prediction}</td>
+                    <td class="${predictionClass}">${predictionDisplay}</td>
                     <td class="${statusClass}">${getStatusText(product.stockMonths)}</td>
-                    
+                    <td>${abcCellContent}</td>
+
                 `;
-                
+
+                if (normalizedAbcClass === 'A') {
+                    row.classList.add('abc-row-a');
+                } else if (normalizedAbcClass === 'B') {
+                    row.classList.add('abc-row-b');
+                } else if (normalizedAbcClass === 'C') {
+                    row.classList.add('abc-row-c');
+                }
+
+                row.dataset.abcClass = normalizedAbcClass;
+
                 tableBody.appendChild(row);
             });
 
@@ -2384,11 +3082,62 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
         }
 
         function getPrediction(product) {
-            if (product.stockMonths === 0) return 'Sem estoque';
-            if (product.stockMonths < 1) return 'Crítico - 30 dias';
-            if (product.stockMonths < 2) return 'Crítico - 60 dias';
-            if (product.stockMonths < 6) return 'Atenção - 90+ dias';
-            return 'Estável';
+            const coverage = getCoverageInfo(product);
+            const { urgentDays, warningDays } = getPredictionSettings();
+
+            if (coverage.outOfStock) {
+                const message = 'Sem estoque — ruptura imediata';
+                return {
+                    label: 'Sem estoque',
+                    tooltip: message,
+                    severity: 'critical',
+                    fullText: message
+                };
+            }
+
+            if (!coverage.hasDemand || coverage.daysToDepletion === null) {
+                const message = 'Sem demanda recente — cobertura indefinida';
+                return {
+                    label: 'Sem demanda',
+                    tooltip: message,
+                    severity: 'warning',
+                    fullText: message
+                };
+            }
+
+            const daysToDepletion = Math.max(1, Math.round(coverage.daysToDepletion));
+            const estimatedDate = new Date(Date.now() + daysToDepletion * 86400000);
+            const formattedDate = estimatedDate.toLocaleDateString('pt-BR');
+            const monthsCoverage = coverage.daysToDepletion / 30;
+            const formattedMonths = formatStatValue(monthsCoverage);
+
+            if (daysToDepletion <= urgentDays) {
+                const tooltip = `Crítico — ${daysToDepletion} dias de cobertura (ruptura estimada em ${formattedDate})`;
+                return {
+                    label: `Crítico (${daysToDepletion}d)`,
+                    tooltip,
+                    severity: 'critical',
+                    fullText: `Crítico — ${daysToDepletion} dias (ruptura em ${formattedDate})`
+                };
+            }
+
+            if (daysToDepletion <= warningDays) {
+                const tooltip = `Atenção — ${daysToDepletion} dias de cobertura (ruptura estimada em ${formattedDate})`;
+                return {
+                    label: `Atenção (${daysToDepletion}d)`,
+                    tooltip,
+                    severity: 'warning',
+                    fullText: `Atenção — ${daysToDepletion} dias (ruptura em ${formattedDate})`
+                };
+            }
+
+            const tooltip = `Estável — ${formattedMonths} meses de cobertura (ruptura estimada em ${formattedDate})`;
+            return {
+                label: `Estável (${formattedMonths}m)`,
+                tooltip,
+                severity: 'good',
+                fullText: `Estável — ${formattedMonths} meses (ruptura em ${formattedDate})`
+            };
         }
 
         function getStatusClass(months) {
@@ -2641,6 +3390,10 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             const fileFormat = document.getElementById('fileFormat').value;
             
             const exportData = filteredData.map(function(p) {
+                const predictionInfo = getPrediction(p);
+                const predictionText = predictionInfo && typeof predictionInfo === 'object'
+                    ? predictionInfo.fullText
+                    : predictionInfo;
                 return {
                     'CÓDIGO': p.code,
                     'FORNECEDOR': p.supplier,
@@ -2652,7 +3405,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     'TOTAL ESTOQUE': p.stock14 + p.stock9013 + p.stock9015,
                     'VENDAS 4M': (!p.vendas4M || p.vendas4M === 0) ? 'S/ VENDA' : p.vendas4M,
                     'ESTOQUE EM MESES': p.stockMonths,
-                    'PREVISÃO': getPrediction(p),
+                    'PREVISÃO': predictionText,
                     'STATUS': getStatusText(p.stockMonths)
                 };
             });
@@ -2734,7 +3487,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             try {
                 // Primeiro detectar capacidades do navegador
                 detectBrowserCapabilities();
-                
+                applyPredictionLabels();
+
                 // Depois carregar dados
                 loadExternalDataScript();
                 
