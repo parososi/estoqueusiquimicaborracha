@@ -2173,13 +2173,18 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             selectedSupplier = null;
             currentEstablishment = '';
             criticalFilterActive = false;
-            
+            advancedStockFilter = '';
+
             document.getElementById('familyFilter').value = '';
             document.getElementById('supplierFilter').value = '';
             document.getElementById('establishmentFilter').value = '';
-            
+            const advancedDropdown = document.getElementById('advancedStockFilter');
+            if (advancedDropdown) {
+                advancedDropdown.value = '';
+            }
+
             updateActiveButton('all');
-            
+
             const activeItems = document.querySelectorAll('.prediction-item.active');
             activeItems.forEach(function(item) {
                 item.classList.remove('active');
@@ -2666,7 +2671,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
 
         function filterZeroIn60() {
             const item60 = document.querySelector('.prediction-item.clickable[onclick="filterZeroIn60()"]');
-            
+
             if (predictionFilter === 'zero60') {
                 predictionFilter = null;
                 item60.classList.remove('active');
@@ -2676,118 +2681,141 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 activeItems.forEach(function(item) {
                     item.classList.remove('active');
                 });
-                
+
                 predictionFilter = 'zero60';
                 criticalFilterActive = false;
                 item60.classList.add('active');
                 currentFilter = 'prediction60';
                 updateActiveButton(null);
-                
+
                 applyAllFilters();
             }
         }
 
-        function applyAllFilters() {
-            let baseData = allProductsData.slice();
-            const { urgentDays, warningDays } = getPredictionSettings();
+        function productMatchesFilters(product, options) {
+            options = options || {};
+
+            const ignoreFamily = !!options.ignoreFamily;
+            const predictionSettings = options.predictionSettings || getPredictionSettings();
+            const urgentDays = predictionSettings.urgentDays;
+            const warningDays = predictionSettings.warningDays;
+            const coverage = getCoverageInfo(product);
+            const stockAvailable = coverage.stockAvailable;
 
             if (predictionFilter === 'zero30') {
-                baseData = baseData.filter(function(p) {
-                    const coverage = getCoverageInfo(p);
-                    if (coverage.outOfStock) {
-                        return true;
-                    }
+                if (!coverage.outOfStock) {
                     if (coverage.daysToDepletion === null) {
                         return false;
                     }
-                    return coverage.daysToDepletion <= urgentDays;
-                });
+                    if (coverage.daysToDepletion > urgentDays) {
+                        return false;
+                    }
+                }
             } else if (predictionFilter === 'zero60') {
-                baseData = baseData.filter(function(p) {
-                    const coverage = getCoverageInfo(p);
-                    if (coverage.outOfStock) {
-                        return false;
-                    }
-                    if (coverage.daysToDepletion === null) {
-                        return false;
-                    }
-                    return coverage.daysToDepletion > urgentDays && coverage.daysToDepletion <= warningDays;
-                });
-            }
-
-            if (searchTerm) {
-                baseData = baseData.filter(function(product) {
-                    return product.code.toLowerCase().includes(searchTerm) ||
-                        product.item.toLowerCase().includes(searchTerm) ||
-                        product.supplier.toLowerCase().includes(searchTerm) ||
-                        product.family.toLowerCase().includes(searchTerm);
-                });
-            }
-
-            if (!predictionFilter) {
-                switch(currentFilter) {
+                if (coverage.outOfStock) {
+                    return false;
+                }
+                if (coverage.daysToDepletion === null) {
+                    return false;
+                }
+                if (coverage.daysToDepletion <= urgentDays) {
+                    return false;
+                }
+                if (coverage.daysToDepletion > warningDays) {
+                    return false;
+                }
+            } else {
+                switch (currentFilter) {
                     case 'critical':
-                        baseData = baseData.filter(function(p) {
-                            return p.stockMonths < 2;
-                        });
+                        if (!(product.stockMonths < 2)) {
+                            return false;
+                        }
                         break;
                     case 'low':
-                        baseData = baseData.filter(function(p) {
-                            return p.stockMonths >= 2 && p.stockMonths < 6;
-                        });
+                        if (!(product.stockMonths >= 2 && product.stockMonths < 6)) {
+                            return false;
+                        }
                         break;
                     case 'high':
-                        baseData = baseData.filter(function(p) {
-                            return p.stockMonths >= 6;
-                        });
+                        if (!(product.stockMonths >= 6)) {
+                            return false;
+                        }
                         break;
                 }
             }
 
-            if (selectedFamily) {
-                baseData = baseData.filter(function(product) {
-                    return product.family === selectedFamily;
-                });
+            if (searchTerm) {
+                const term = searchTerm;
+                const matchesSearch = product.code.toLowerCase().includes(term) ||
+                    product.item.toLowerCase().includes(term) ||
+                    product.supplier.toLowerCase().includes(term) ||
+                    product.family.toLowerCase().includes(term);
+
+                if (!matchesSearch) {
+                    return false;
+                }
             }
 
-            if (selectedSupplier) {
-                baseData = baseData.filter(function(product) {
-                    return product.supplier === selectedSupplier;
-                });
+            if (!ignoreFamily && selectedFamily && product.family !== selectedFamily) {
+                return false;
+            }
+
+            if (selectedSupplier && product.supplier !== selectedSupplier) {
+                return false;
             }
 
             if (currentEstablishment) {
-                baseData = baseData.filter(function(product) {
-                    const stock = getProductStock(product);
-                    if (advancedStockFilter === 'no-stock') {
-                        return stock <= 0;
+                if (advancedStockFilter === 'no-stock') {
+                    if (stockAvailable > 0) {
+                        return false;
                     }
-                    return stock > 0;
-                });
+                } else {
+                    if (stockAvailable <= 0) {
+                        return false;
+                    }
+
+                    if (advancedStockFilter === 'over50') {
+                        const monthsCoverage = coverage.daysToDepletion !== null
+                            ? (coverage.daysToDepletion / 30)
+                            : product.stockMonths;
+
+                        if (!(monthsCoverage > 50)) {
+                            return false;
+                        }
+                    }
+                }
+            } else if (advancedStockFilter) {
+                if (advancedStockFilter === 'no-stock') {
+                    if (stockAvailable > 0) {
+                        return false;
+                    }
+                } else if (advancedStockFilter === 'over50') {
+                    const monthsCoverage = coverage.daysToDepletion !== null
+                        ? (coverage.daysToDepletion / 30)
+                        : product.stockMonths;
+
+                    if (!(monthsCoverage > 50)) {
+                        return false;
+                    }
+                }
             }
 
-            if (advancedStockFilter === 'no-stock') {
-                baseData = baseData.filter(function(product) {
-                    return getProductStock(product) <= 0;
-                });
-            } else if (advancedStockFilter === 'over50') {
-                baseData = baseData.filter(function(product) {
-                    const coverage = getCoverageInfo(product);
-                    if (coverage.daysToDepletion !== null) {
-                        return (coverage.daysToDepletion / 30) > 50;
-                    }
-                    return product.stockMonths > 50;
-                });
-            }
+            return true;
+        }
 
-            filteredData = baseData;
+        function applyAllFilters() {
+            const predictionSettings = getPredictionSettings();
+
+            filteredData = allProductsData.filter(function(product) {
+                return productMatchesFilters(product, { predictionSettings });
+            });
+
             updateParetoAnalysis();
             updateTable();
             updateSummary();
             updateGauges();
             updatePredictiveAnalysis();
         }
-
         function updateActiveButton(filter) {
             const filterBtns = document.querySelectorAll('.filter-btn');
             filterBtns.forEach(function(btn) {
@@ -3212,66 +3240,22 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
         }
 
         function getFamilyFilteredProducts(family) {
-            let products = allProductsData.filter(function(p) {
-                return p.family === family;
-            });
-            
-            if (predictionFilter === 'zero30') {
-                products = products.filter(function(p) {
-                    return p.stockMonths > 0 && p.stockMonths < 1;
-                });
-            } else if (predictionFilter === 'zero60') {
-                products = products.filter(function(p) {
-                    return p.stockMonths >= 1 && p.stockMonths < 2;
-                });
-            }
-            
-            if (searchTerm) {
-                products = products.filter(function(product) {
-                    return product.code.toLowerCase().includes(searchTerm) ||
-                        product.item.toLowerCase().includes(searchTerm) ||
-                        product.supplier.toLowerCase().includes(searchTerm) ||
-                        product.family.toLowerCase().includes(searchTerm);
-                });
-            }
-            
-            if (!predictionFilter) {
-                switch(currentFilter) {
-                    case 'critical':
-                        products = products.filter(function(p) {
-                            return p.stockMonths < 2;
-                        });
-                        break;
-                    case 'low':
-                        products = products.filter(function(p) {
-                            return p.stockMonths >= 2 && p.stockMonths < 6;
-                        });
-                        break;
-                    case 'high':
-                        products = products.filter(function(p) {
-                            return p.stockMonths >= 6;
-                        });
-                        break;
-                }
-            }
-
             if (selectedFamily && selectedFamily !== family) {
                 return [];
             }
 
-            if (selectedSupplier) {
-                products = products.filter(function(product) {
-                    return product.supplier === selectedSupplier;
-                });
-            }
+            const predictionSettings = getPredictionSettings();
 
-            if (currentEstablishment) {
-                products = products.filter(function(p) {
-                    return getProductStock(p) > 0;
+            return allProductsData.filter(function(p) {
+                if (p.family !== family) {
+                    return false;
+                }
+
+                return productMatchesFilters(p, {
+                    ignoreFamily: true,
+                    predictionSettings
                 });
-            }
-            
-            return products;
+            });
         }
 
         function calculateAverageStock(products) {
