@@ -65,7 +65,8 @@ Certifique-se de que sua planilha contenha as colunas:
 - **90-13**: Estoque Itajaí
 - **90-15**: Estoque Garuva
 - **ESTOQUE EM MESES**: Quantidade em meses
-- **VENDAS 4M**: Vendas dos últimos 4 meses
+- **VENDAS 3M**: Vendas dos últimos 3 meses
+- **MÉDIA 3M**: Uma média comparada com as últimas vendas dos 3 meses anteriores
 
 ### 2. Importação de Dados
 - Clique na seção "📊 Importar Dados da Planilha"
