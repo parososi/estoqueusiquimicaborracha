@@ -44,6 +44,7 @@
             font-size: 12px;
             line-height: 1.45;
             white-space: normal;
+            overflow-wrap: anywhere;
             text-align: left;
             min-width: 180px;
             max-width: 320px;
@@ -51,7 +52,7 @@
             visibility: hidden;
             pointer-events: none;
             transition: opacity 0.2s ease, transform 0.2s ease;
-            z-index: 20;
+            z-index: 9999;
         }
 
         .has-tooltip::before {
@@ -66,7 +67,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.2s ease;
-            z-index: 19;
+            z-index: 9999;
         }
 
         .has-tooltip:hover::after,
@@ -126,8 +127,13 @@
         }
 
         .prediction-tooltip {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
             max-width: 100%;
+            line-height: 1.4;
+            white-space: normal;
         }
 
         .header-label {
@@ -490,10 +496,16 @@
         }
         
         .table-container {
-            max-height: 600px;
-            overflow-y: auto;
+            position: relative;
             border: 1px solid #ddd;
             border-radius: 5px;
+            background: #fff;
+        }
+
+        .table-scroll {
+            max-height: 600px;
+            overflow: auto;
+            border-radius: inherit;
         }
         
         table {
@@ -516,6 +528,8 @@
         td {
             padding: 8px;
             border-bottom: 1px solid #eee;
+            vertical-align: top;
+            line-height: 1.4;
         }
         
         tr:hover {
@@ -552,8 +566,8 @@
         
         .summary-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 20px;
         }
 
         .pareto-section {
@@ -1087,14 +1101,6 @@
                     <div class="stat-label"><span class="label-text">Mediana de Estoque (meses)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Mediana de estoque" data-tooltip="Valor central da distribuição de meses de estoque: metade dos itens possui cobertura acima e metade abaixo desse ponto." data-tooltip-position="top">?</span></div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value" id="q1Stock">--</div>
-                    <div class="stat-label"><span class="label-text">1º Quartil (25%)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Primeiro quartil" data-tooltip="Quartil representa o ponto onde 25% dos itens possuem estoque igual ou menor que este valor — útil para detectar produtos com cobertura mais baixa." data-tooltip-position="top">?</span></div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="q3Stock">--</div>
-                    <div class="stat-label"><span class="label-text">3º Quartil (75%)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Terceiro quartil" data-tooltip="Quartil indica o ponto onde 75% dos itens ficam abaixo: valores altos aqui mostram que a maioria dos produtos tem cobertura elevada." data-tooltip-position="top">?</span></div>
-                </div>
-                <div class="stat-item">
                     <div class="stat-value" id="stdDevStock">--</div>
                     <div class="stat-label"><span class="label-text">Desvio-Padrão (meses)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Desvio-padrão" data-tooltip="Mede a dispersão dos meses de estoque: quanto maior o valor, maior a variação entre os itens." data-tooltip-position="top">?</span></div>
                 </div>
@@ -1122,7 +1128,8 @@
                 <span id="tableCount">0 produtos exibidos</span>
             </div>
             <div class="table-container">
-                <table id="productsTable">
+                <div class="table-scroll">
+                    <table id="productsTable">
                     <thead>
                         <tr>
                             <th><span class="header-label">Código<span class="info-icon has-tooltip" tabindex="0" aria-label="Código" data-tooltip="Identificador único do item conforme cadastro interno.">?</span></span></th>
@@ -1143,7 +1150,8 @@
                     </thead>
                     <tbody id="productsTableBody">
                     </tbody>
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -2784,8 +2792,6 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             }
 
             const median = percentile(monthsValues, 0.5);
-            const q1 = percentile(monthsValues, 0.25);
-            const q3 = percentile(monthsValues, 0.75);
             const variance = monthsValues.length > 0 ? monthsValues.reduce(function(acc, value) {
                 return acc + Math.pow(value - avgStock, 2);
             }, 0) / monthsValues.length : 0;
@@ -2794,8 +2800,6 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             document.getElementById('totalProducts').textContent = total;
             document.getElementById('avgStockMonths').textContent = monthsValues.length > 0 ? formatStatValue(avgStock) : '--';
             document.getElementById('medianStock').textContent = median !== null ? formatStatValue(median) : '--';
-            document.getElementById('q1Stock').textContent = q1 !== null ? formatStatValue(q1) : '--';
-            document.getElementById('q3Stock').textContent = q3 !== null ? formatStatValue(q3) : '--';
             document.getElementById('stdDevStock').textContent = stdDev !== null ? formatStatValue(stdDev) : '--';
             document.getElementById('criticalCount').textContent = criticalCount;
             document.getElementById('totalFamilies').textContent = families;
@@ -2977,11 +2981,13 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 };
             }
 
-            const daysToDepletion = Math.max(1, Math.round(coverage.daysToDepletion));
+            const hasStockMonths = Number.isFinite(product.stockMonths);
+            const monthsCoverage = hasStockMonths ? product.stockMonths : (coverage.daysToDepletion / 30);
+            const formattedMonths = monthsCoverage !== null ? formatStatValue(monthsCoverage) : '--';
+            const daysToDepletion = Math.max(1, Math.round(hasStockMonths ? product.stockMonths * 30 : coverage.daysToDepletion));
             const estimatedDate = new Date(Date.now() + daysToDepletion * 86400000);
             const formattedDate = estimatedDate.toLocaleDateString('pt-BR');
-            const monthsCoverage = coverage.daysToDepletion / 30;
-            const monthsText = `${formatStatValue(monthsCoverage)} meses`;
+            const monthsText = monthsCoverage !== null ? `${formattedMonths} meses` : 'cobertura indefinida';
             const baseDetail = `Ruptura estimada para ${formattedDate} (cobertura aproximada de ${monthsText}).`;
 
             if (daysToDepletion <= urgentDays) {
@@ -3004,7 +3010,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 };
             }
 
-            const stableLabel = `Estável — ${formatStatValue(monthsCoverage)} meses`;
+            const stableLabel = `Estável — ${formattedMonths} meses`;
             const fullText = `${stableLabel} (ruptura em ${formattedDate})`;
             return {
                 label: stableLabel,
