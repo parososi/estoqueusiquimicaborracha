@@ -2176,28 +2176,26 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
         // === FUNÇÕES DE BUSCA E FILTROS ===
         function performGlobalSearch() {
             const searchInput = document.getElementById('globalSearch');
-            searchTerm = searchInput.value.toLowerCase().trim();
-            
+            const resultsDiv = document.getElementById('searchResults');
+            const rawTerm = searchInput.value.trim();
+            searchTerm = rawTerm.toLowerCase();
+
             if (searchTerm === '') {
-                document.getElementById('searchResults').innerHTML = '';
+                if (resultsDiv) {
+                    resultsDiv.innerHTML = '';
+                }
                 applyAllFilters();
                 removeHighlights();
                 return;
             }
 
-            resetAllFilters();
-
-            const searchResults = allProductsData.filter(function(product) {
-                return product.code.toLowerCase().includes(searchTerm) ||
-                    product.item.toLowerCase().includes(searchTerm) ||
-                    product.supplier.toLowerCase().includes(searchTerm) ||
-                    product.family.toLowerCase().includes(searchTerm);
-            });
-
-            const resultsDiv = document.getElementById('searchResults');
-            resultsDiv.innerHTML = `🔍 <strong>${searchResults.length}</strong> produtos encontrados para: "<em>${searchTerm}</em>"`;
-
             applyAllFilters();
+
+            if (resultsDiv) {
+                const sanitizedTerm = escapeHtml(rawTerm);
+                resultsDiv.innerHTML = `🔍 <strong>${filteredData.length}</strong> produtos encontrados contendo: "<em>${sanitizedTerm}</em>"`;
+            }
+
             highlightSearchResults();
         }
 
@@ -2209,6 +2207,20 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             currentEstablishment = '';
             criticalFilterActive = false;
             advancedStockFilter = '';
+
+            searchTerm = '';
+
+            const searchInput = document.getElementById('globalSearch');
+            if (searchInput) {
+                searchInput.value = '';
+            }
+
+            const resultsDiv = document.getElementById('searchResults');
+            if (resultsDiv) {
+                resultsDiv.innerHTML = '';
+            }
+
+            removeHighlights();
 
             document.getElementById('familyFilter').value = '';
             document.getElementById('supplierFilter').value = '';
@@ -2590,6 +2602,16 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             activeItems.forEach(function(item) {
                 item.classList.remove('active');
             });
+            const searchInput = document.getElementById('globalSearch');
+            if (searchInput) {
+                searchInput.value = '';
+            }
+            const resultsDiv = document.getElementById('searchResults');
+            if (resultsDiv) {
+                resultsDiv.innerHTML = '';
+            }
+            searchTerm = '';
+            removeHighlights();
             document.getElementById('familyFilter').value = '';
             document.getElementById('supplierFilter').value = '';
             document.getElementById('establishmentFilter').value = '';
