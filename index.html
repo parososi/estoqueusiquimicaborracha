@@ -525,7 +525,12 @@
             background-color: #e8f5e8 !important;
             color: #2e7d32;
         }
-        
+
+        .status-unknown {
+            background-color: #f1f3f4 !important;
+            color: #5f6368;
+        }
+
         .summary-card {
             background: #f8f9fa;
             padding: 15px;
@@ -1394,18 +1399,33 @@
         }
 
         function calculateDailyDemand(product) {
-            const monthlyAverage = product.media3M && product.media3M > 0
-                ? product.media3M
-                : (product.vendas4M && product.vendas4M > 0 ? product.vendas4M / 4 : 0);
+            const media3M = toFiniteNumber(product.media3M);
+            const vendas4M = toFiniteNumber(product.vendas4M);
+
+            let monthlyAverage = 0;
+
+            if (media3M !== null && media3M > 0) {
+                monthlyAverage = media3M;
+            } else if (vendas4M !== null && vendas4M > 0) {
+                monthlyAverage = vendas4M / 4;
+            }
 
             if (monthlyAverage > 0) {
                 return monthlyAverage / 30;
             }
 
-            if (product.stockMonths && product.stockMonths > 0) {
-                const totalStock = (product.stock14 || 0) + (product.stock9013 || 0) + (product.stock9015 || 0);
-                const inferredDaily = totalStock / (product.stockMonths * 30);
-                return isFinite(inferredDaily) && inferredDaily > 0 ? inferredDaily : 0;
+            const stockMonths = toFiniteNumber(product.stockMonths);
+
+            if (stockMonths !== null && stockMonths > 0) {
+                const totalStock = ['stock14', 'stock9013', 'stock9015'].reduce(function(sum, key) {
+                    const value = toFiniteNumber(product[key]);
+                    return sum + (value === null ? 0 : value);
+                }, 0);
+
+                if (totalStock > 0) {
+                    const inferredDaily = totalStock / (stockMonths * 30);
+                    return Number.isFinite(inferredDaily) && inferredDaily > 0 ? inferredDaily : 0;
+                }
             }
 
             return 0;
@@ -1450,6 +1470,21 @@
             }
 
             return value.toFixed(digits);
+        }
+
+        function toFiniteNumber(value) {
+            if (value === null || typeof value === 'undefined') {
+                return null;
+            }
+
+            const numeric = Number(value);
+            return Number.isFinite(numeric) ? numeric : null;
+        }
+
+        function formatIntegerValue(value) {
+            return typeof value === 'number' && Number.isFinite(value)
+                ? value.toLocaleString()
+                : '--';
         }
 
         function escapeHtml(value) {
@@ -3033,8 +3068,20 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
 
             filteredData.forEach(function(product) {
                 const row = document.createElement('tr');
-                const totalStock = product.stock14 + product.stock9013 + product.stock9015;
-                const statusClass = getStatusClass(product.stockMonths);
+                const stock14Value = toFiniteNumber(product.stock14);
+                const stock9013Value = toFiniteNumber(product.stock9013);
+                const stock9015Value = toFiniteNumber(product.stock9015);
+                const monthsValue = toFiniteNumber(product.stockMonths);
+                const vendas4MValue = toFiniteNumber(product.vendas4M);
+                const media3MValue = toFiniteNumber(product.media3M);
+                const hasStockData = stock14Value !== null || stock9013Value !== null || stock9015Value !== null;
+                const totalStockValue = hasStockData
+                    ? (stock14Value === null ? 0 : stock14Value)
+                        + (stock9013Value === null ? 0 : stock9013Value)
+                        + (stock9015Value === null ? 0 : stock9015Value)
+                    : null;
+                const statusClass = getStatusClass(monthsValue);
+                const statusText = getStatusText(monthsValue);
                 const predictionInfo = getPrediction(product);
                 const predictionClass = predictionInfo && predictionInfo.severity
                     ? `status-${predictionInfo.severity}`
@@ -3053,8 +3100,12 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                         </span>`
                     : '--';
 
-                const vendas4MDisplay = (!product.vendas4M || product.vendas4M === 0) ? 'S/ VENDA' : product.vendas4M.toLocaleString();
-                const vendas4MClass = (!product.vendas4M || product.vendas4M === 0) ? 'status-warning' : '';
+                const vendas4MDisplay = vendas4MValue === null
+                    ? '--'
+                    : (vendas4MValue === 0 ? 'S/ VENDA' : vendas4MValue.toLocaleString());
+                const vendas4MClass = vendas4MValue === null
+                    ? ''
+                    : (vendas4MValue === 0 ? 'status-warning' : '');
 
                 const abcClass = abcClassificationMap.get(product.code);
                 const normalizedAbcClass = (typeof abcClass === 'string' && abcClass) ? abcClass.toUpperCase() : '—';
@@ -3062,20 +3113,32 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     ? '—'
                     : `<span class="abc-chip abc-${normalizedAbcClass.toLowerCase()}">${normalizedAbcClass}</span>`;
 
+                const monthsDisplay = formatStatValue(monthsValue);
+                const totalStockDisplay = totalStockValue === null ? '--' : formatIntegerValue(totalStockValue);
+                const stock14Display = formatIntegerValue(stock14Value);
+                const stock9013Display = formatIntegerValue(stock9013Value);
+                const stock9015Display = formatIntegerValue(stock9015Value);
+                const media3MDisplay = media3MValue === null ? '--' : Math.round(media3MValue).toLocaleString();
+
+                const codeDisplay = escapeHtml(product.code);
+                const supplierDisplay = escapeHtml(product.supplier);
+                const familyDisplay = escapeHtml(product.family);
+                const itemDisplay = escapeHtml(product.item);
+
                 row.innerHTML = `
-                    <td>${product.code}</td>
-                    <td>${product.supplier}</td>
-                    <td>${product.family}</td>
-                    <td>${product.item}</td>
-                    <td>${product.stock14.toLocaleString()}</td>
-                    <td>${product.stock9013.toLocaleString()}</td>
-                    <td>${product.stock9015.toLocaleString()}</td>
-                    <td><strong>${totalStock.toLocaleString()}</strong></td>
+                    <td>${codeDisplay}</td>
+                    <td>${supplierDisplay}</td>
+                    <td>${familyDisplay}</td>
+                    <td>${itemDisplay}</td>
+                    <td>${stock14Display}</td>
+                    <td>${stock9013Display}</td>
+                    <td>${stock9015Display}</td>
+                    <td><strong>${totalStockDisplay}</strong></td>
                     <td class="${vendas4MClass}">${vendas4MDisplay}</td>
-                    <td>${Math.round(product.media3M || 0).toLocaleString()}</td>
-                    <td class="${statusClass}">${product.stockMonths.toFixed(1)}</td>
+                    <td>${media3MDisplay}</td>
+                    <td class="${statusClass}">${monthsDisplay}</td>
                     <td class="${predictionClass}">${predictionDisplay}</td>
-                    <td class="${statusClass}">${getStatusText(product.stockMonths)}</td>
+                    <td class="${statusClass}">${escapeHtml(statusText)}</td>
                     <td>${abcCellContent}</td>
 
                 `;
@@ -3094,18 +3157,26 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             });
 
             document.getElementById('tableCount').textContent = `${filteredData.length} produtos exibidos`;
-            
+
             if (searchTerm) {
                 highlightSearchResults();
             }
         }
 
         function getProductStock(product) {
+            const stock14 = toFiniteNumber(product.stock14);
+            const stock9013 = toFiniteNumber(product.stock9013);
+            const stock9015 = toFiniteNumber(product.stock9015);
+
+            const value14 = stock14 === null ? 0 : stock14;
+            const value9013 = stock9013 === null ? 0 : stock9013;
+            const value9015 = stock9015 === null ? 0 : stock9015;
+
             switch(currentEstablishment) {
-                case '1-4': return product.stock14;
-                case '90-13': return product.stock9013;
-                case '90-15': return product.stock9015;
-                default: return product.stock14 + product.stock9013 + product.stock9015;
+                case '1-4': return value14;
+                case '90-13': return value9013;
+                case '90-15': return value9015;
+                default: return value14 + value9013 + value9015;
             }
         }
 
@@ -3169,12 +3240,20 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
         }
 
         function getStatusClass(months) {
+            if (!(typeof months === 'number' && Number.isFinite(months))) {
+                return 'status-unknown';
+            }
+
             if (months < 2) return 'status-critical';
             if (months < 6) return 'status-warning';
             return 'status-good';
         }
 
         function getStatusText(months) {
+            if (!(typeof months === 'number' && Number.isFinite(months))) {
+                return 'Indefinido';
+            }
+
             if (months < 2) return 'Crítico';
             if (months < 6) return 'Atenção';
             return 'Bom';
