@@ -2727,6 +2727,36 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             }
         }
 
+        function getMonthsCoverageForFilter(coverage, product) {
+            if (coverage.daysToDepletion !== null) {
+                return coverage.daysToDepletion / 30;
+            }
+
+            const months = toFiniteNumber(product.stockMonths);
+            return months !== null ? months : null;
+        }
+
+        function meetsAdvancedStockCriteria(coverage, product) {
+            if (!advancedStockFilter) {
+                return true;
+            }
+
+            if (advancedStockFilter === 'no-stock') {
+                return coverage.stockAvailable <= 0;
+            }
+
+            if (advancedStockFilter === 'over50') {
+                if (coverage.stockAvailable <= 0) {
+                    return false;
+                }
+
+                const monthsCoverage = getMonthsCoverageForFilter(coverage, product);
+                return monthsCoverage !== null && monthsCoverage > 50;
+            }
+
+            return true;
+        }
+
         function productMatchesFilters(product, options) {
             options = options || {};
 
@@ -2735,7 +2765,6 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             const urgentDays = predictionSettings.urgentDays;
             const warningDays = predictionSettings.warningDays;
             const coverage = getCoverageInfo(product);
-            const stockAvailable = coverage.stockAvailable;
 
             if (predictionFilter === 'zero30') {
                 if (!coverage.outOfStock) {
@@ -2799,40 +2828,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 return false;
             }
 
-            if (currentEstablishment) {
-                if (advancedStockFilter === 'no-stock') {
-                    if (stockAvailable > 0) {
-                        return false;
-                    }
-                } else {
-                    if (stockAvailable <= 0) {
-                        return false;
-                    }
-
-                    if (advancedStockFilter === 'over50') {
-                        const monthsCoverage = coverage.daysToDepletion !== null
-                            ? (coverage.daysToDepletion / 30)
-                            : product.stockMonths;
-
-                        if (!(monthsCoverage > 50)) {
-                            return false;
-                        }
-                    }
-                }
-            } else if (advancedStockFilter) {
-                if (advancedStockFilter === 'no-stock') {
-                    if (stockAvailable > 0) {
-                        return false;
-                    }
-                } else if (advancedStockFilter === 'over50') {
-                    const monthsCoverage = coverage.daysToDepletion !== null
-                        ? (coverage.daysToDepletion / 30)
-                        : product.stockMonths;
-
-                    if (!(monthsCoverage > 50)) {
-                        return false;
-                    }
-                }
+            if (!meetsAdvancedStockCriteria(coverage, product)) {
+                return false;
             }
 
             return true;
