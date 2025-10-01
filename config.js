@@ -190,6 +190,10 @@ window.applyConfig = function(customConfig) {
 
 // Função para obter configuração específica
 window.getConfig = function(path) {
+    if (!path) {
+        return window.dashboardConfig;
+    }
+
     const keys = path.split('.');
     let current = window.dashboardConfig;
     
