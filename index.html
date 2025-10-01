@@ -30,65 +30,51 @@
             cursor: help;
         }
 
+        .has-tooltip::before,
         .has-tooltip::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            left: 50%;
-            top: calc(100% + 8px);
-            transform: translate(-50%, -4px);
-            background: rgba(31, 68, 140, 0.95);
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 6px;
-            box-shadow: 0 8px 18px rgba(16, 39, 89, 0.18);
-            font-size: 12px;
-            line-height: 1.45;
-            white-space: normal;
-            overflow-wrap: anywhere;
-            text-align: left;
-            min-width: 180px;
-            max-width: 320px;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            z-index: 9999;
+            content: none !important;
         }
 
-        .has-tooltip::before {
+        .tooltip-bubble {
+            position: fixed;
+            z-index: 99999;
+            background: rgba(31, 68, 140, 0.98);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 10px 24px rgba(16, 39, 89, 0.25);
+            font-size: 12px;
+            line-height: 1.5;
+            max-width: min(320px, calc(100vw - 32px));
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            will-change: transform, opacity;
+        }
+
+        .tooltip-bubble::after {
             content: '';
             position: absolute;
-            left: 50%;
-            top: calc(100% + 2px);
-            transform: translateX(-50%);
-            border-width: 5px;
-            border-style: solid;
-            border-color: rgba(31, 68, 140, 0.95) transparent transparent transparent;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s ease;
-            z-index: 9999;
+            width: 10px;
+            height: 10px;
+            background: inherit;
+            border-radius: 2px;
+            left: var(--tooltip-arrow-left, 50%);
+            transform: translate(-50%, 0) rotate(45deg);
         }
 
-        .has-tooltip:hover::after,
-        .has-tooltip:focus-visible::after,
-        .has-tooltip:hover::before,
-        .has-tooltip:focus-visible::before {
+        .tooltip-bubble[data-position="bottom"]::after {
+            bottom: -5px;
+        }
+
+        .tooltip-bubble[data-position="top"]::after {
+            top: -5px;
+        }
+
+        .tooltip-bubble.visible {
             opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, 0);
-        }
-
-        .has-tooltip[data-tooltip-position="top"]::after {
-            top: auto;
-            bottom: calc(100% + 8px);
-            transform: translate(-50%, 4px);
-        }
-
-        .has-tooltip[data-tooltip-position="top"]::before {
-            top: auto;
-            bottom: calc(100% + 2px);
-            border-color: transparent transparent rgba(31, 68, 140, 0.95) transparent;
+            transform: translateY(0);
         }
 
         .info-icon {
@@ -129,11 +115,12 @@
         .prediction-tooltip {
             display: inline-flex;
             align-items: center;
-            flex-wrap: wrap;
             gap: 4px;
             max-width: 100%;
             line-height: 1.4;
-            white-space: normal;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .header-label {
@@ -530,6 +517,18 @@
             border-bottom: 1px solid #eee;
             vertical-align: top;
             line-height: 1.4;
+        }
+
+        .status-cell {
+            white-space: nowrap;
+        }
+
+        .prediction-cell {
+            max-width: 220px;
+        }
+
+        .prediction-cell .prediction-tooltip {
+            width: 100%;
         }
         
         tr:hover {
@@ -1203,6 +1202,140 @@
         let lastMappingInfo = null;
         let advancedStockFilter = '';
         let abcClassificationMap = new Map();
+        let tooltipElement = null;
+        let activeTooltipTarget = null;
+        let tooltipHideTimeout = null;
+
+        function ensureTooltipElement() {
+            if (!tooltipElement) {
+                tooltipElement = document.createElement('div');
+                tooltipElement.className = 'tooltip-bubble';
+                tooltipElement.setAttribute('role', 'tooltip');
+                tooltipElement.setAttribute('aria-hidden', 'true');
+                tooltipElement.dataset.position = 'bottom';
+                document.body.appendChild(tooltipElement);
+            }
+        }
+
+        function positionTooltip(target) {
+            if (!tooltipElement || !target) {
+                return;
+            }
+
+            const rect = target.getBoundingClientRect();
+            const prefersTop = target.getAttribute('data-tooltip-position') === 'top';
+            tooltipElement.style.maxWidth = `min(320px, ${Math.max(200, window.innerWidth - 32)}px)`;
+
+            const tooltipRect = tooltipElement.getBoundingClientRect();
+            const minTop = 8;
+            const maxTop = window.innerHeight - tooltipRect.height - 8;
+
+            const computeTop = function(position) {
+                return position === 'top'
+                    ? rect.top - tooltipRect.height - 10
+                    : rect.bottom + 10;
+            };
+
+            let position = prefersTop ? 'top' : 'bottom';
+            let top = computeTop(position);
+
+            if (top < minTop) {
+                position = 'bottom';
+                top = computeTop(position);
+            }
+
+            if (top > maxTop) {
+                position = 'top';
+                top = computeTop(position);
+            }
+
+            top = Math.min(Math.max(top, minTop), maxTop);
+
+            let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+            const minLeft = 8;
+            const maxLeft = window.innerWidth - tooltipRect.width - 8;
+            left = Math.min(Math.max(left, minLeft), maxLeft);
+
+            tooltipElement.dataset.position = position;
+            tooltipElement.style.top = `${top}px`;
+            tooltipElement.style.left = `${left}px`;
+
+            const arrowLeft = (rect.left + rect.width / 2) - left;
+            tooltipElement.style.setProperty('--tooltip-arrow-left', `${Math.min(Math.max(arrowLeft, 10), tooltipRect.width - 10)}px`);
+        }
+
+        function showTooltip(target) {
+            if (!target || !target.getAttribute('data-tooltip')) {
+                return;
+            }
+
+            ensureTooltipElement();
+            tooltipElement.textContent = target.getAttribute('data-tooltip');
+            tooltipElement.setAttribute('aria-hidden', 'false');
+            tooltipElement.classList.add('visible');
+            activeTooltipTarget = target;
+            positionTooltip(target);
+        }
+
+        function hideTooltip() {
+            if (!tooltipElement) {
+                return;
+            }
+
+            tooltipElement.classList.remove('visible');
+            tooltipElement.setAttribute('aria-hidden', 'true');
+            activeTooltipTarget = null;
+        }
+
+        function handleTooltipEnter(event) {
+            clearTimeout(tooltipHideTimeout);
+            showTooltip(event.currentTarget);
+        }
+
+        function handleTooltipLeave() {
+            clearTimeout(tooltipHideTimeout);
+            tooltipHideTimeout = setTimeout(hideTooltip, 80);
+        }
+
+        function handleTooltipFocus(event) {
+            clearTimeout(tooltipHideTimeout);
+            showTooltip(event.currentTarget);
+        }
+
+        function handleTooltipBlur() {
+            clearTimeout(tooltipHideTimeout);
+            hideTooltip();
+        }
+
+        function bindTooltip(target) {
+            if (!target || target.dataset.tooltipBound === 'true') {
+                return;
+            }
+
+            target.dataset.tooltipBound = 'true';
+            target.addEventListener('mouseenter', handleTooltipEnter);
+            target.addEventListener('mouseleave', handleTooltipLeave);
+            target.addEventListener('focus', handleTooltipFocus);
+            target.addEventListener('blur', handleTooltipBlur);
+        }
+
+        function initializeTooltips(root) {
+            const scope = root || document;
+            const elements = scope.querySelectorAll('.has-tooltip');
+            elements.forEach(bindTooltip);
+        }
+
+        window.addEventListener('scroll', function() {
+            if (activeTooltipTarget) {
+                positionTooltip(activeTooltipTarget);
+            }
+        }, true);
+
+        window.addEventListener('resize', function() {
+            if (activeTooltipTarget) {
+                positionTooltip(activeTooltipTarget);
+            }
+        });
 
         // Função de log para debug
         function debugLog(message, type) {
@@ -2890,6 +3023,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 : '';
 
             container.innerHTML = tableHtml + footer;
+            initializeTooltips(container);
         }
 
         function updateTable() {
@@ -2925,9 +3059,9 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     <td><strong>${totalStock.toLocaleString()}</strong></td>
                     <td class="${vendas4MClass}">${vendas4MDisplay}</td>
                     <td>${Math.round(product.media3M || 0).toLocaleString()}</td>
-                    <td class="${statusClass}">${product.stockMonths.toFixed(1)}</td>
-                    <td class="${statusClass}">${predictionCellContent}</td>
-                    <td class="${statusClass}">${getStatusText(product.stockMonths)}</td>
+                    <td class="status-cell ${statusClass}">${product.stockMonths.toFixed(1)}</td>
+                    <td class="status-cell prediction-cell ${statusClass}">${predictionCellContent}</td>
+                    <td class="status-cell ${statusClass}">${getStatusText(product.stockMonths)}</td>
                     <td>${abcCellContent}</td>
 
                 `;
@@ -2950,6 +3084,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             if (searchTerm) {
                 highlightSearchResults();
             }
+
+            initializeTooltips(tableBody);
         }
 
         function getProductStock(product) {
@@ -3359,8 +3495,9 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
         document.addEventListener('DOMContentLoaded', function() {
             debugLog('=== INICIALIZAÇÃO DO DASHBOARD v1.2 ===');
             debugLog('DOM carregado, iniciando processo...');
-            
+
             try {
+                initializeTooltips();
                 // Primeiro detectar capacidades do navegador
                 detectBrowserCapabilities();
                 applyPredictionLabels();
