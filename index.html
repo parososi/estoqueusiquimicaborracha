@@ -1103,12 +1103,16 @@
         </div>
         
         <div class="pareto-section">
+ codex/add-statistical-features-and-improvements-jy52wc
             <h3>📊 Análise ABC por Vendas
                 <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Como funciona a análise ABC">
                     <span class="info-tooltip-icon" aria-hidden="true">?</span>
                     <span class="tooltip-bubble">Classificação dos itens conforme a participação nas vendas acumuladas: Classe A concentra ~80% do faturamento (itens estratégicos), Classe B cobre a faixa intermediária (até ~95%) e Classe C agrupa os itens de menor giro.</span>
                 </span>
             </h3>
+
+            <h3>📊 Análise ABC por Vendas</h3>
+ main
             <div id="paretoContent"></div>
         </div>
         <div class="gauges-container" id="gaugesContainer">
@@ -1123,6 +1127,7 @@
                 <table id="productsTable">
                     <thead>
                         <tr>
+ codex/add-statistical-features-and-improvements-jy52wc
                             <th>
                                 <span class="th-content">Código
                                     <span class="tooltip-container info-tooltip" tabindex="0" aria-label="O que é o código do produto?">
@@ -1235,6 +1240,22 @@
                                     </span>
                                 </span>
                             </th>
+
+                            <th>Código</th>
+                            <th>Fornecedor</th>
+                            <th>Família</th>
+                            <th>Item</th>
+                            <th>Est. 1-4</th>
+                            <th>Est. 90-13</th>
+                            <th>Est. 90-15</th>
+                            <th>Total</th>
+                            <th>Vendas 3M</th>
+                            <th>Média 3M</th>
+                            <th>Meses</th>
+                            <th>Previsão</th>
+                            <th>Status</th>
+                            <th>Classe ABC</th>
+ main
                         </tr>
                     </thead>
                     <tbody id="productsTableBody">
@@ -1399,6 +1420,7 @@
         }
 
         function calculateDailyDemand(product) {
+ codex/add-statistical-features-and-improvements-jy52wc
             const media3M = toFiniteNumber(product.media3M);
             const vendas4M = toFiniteNumber(product.vendas4M);
 
@@ -1410,10 +1432,16 @@
                 monthlyAverage = vendas4M / 4;
             }
 
+            const monthlyAverage = product.media3M && product.media3M > 0
+                ? product.media3M
+                : (product.vendas4M && product.vendas4M > 0 ? product.vendas4M / 4 : 0);
+ main
+
             if (monthlyAverage > 0) {
                 return monthlyAverage / 30;
             }
 
+ codex/add-statistical-features-and-improvements-jy52wc
             const stockMonths = toFiniteNumber(product.stockMonths);
 
             if (stockMonths !== null && stockMonths > 0) {
@@ -1426,6 +1454,12 @@
                     const inferredDaily = totalStock / (stockMonths * 30);
                     return Number.isFinite(inferredDaily) && inferredDaily > 0 ? inferredDaily : 0;
                 }
+
+            if (product.stockMonths && product.stockMonths > 0) {
+                const totalStock = (product.stock14 || 0) + (product.stock9013 || 0) + (product.stock9015 || 0);
+                const inferredDaily = totalStock / (product.stockMonths * 30);
+                return isFinite(inferredDaily) && inferredDaily > 0 ? inferredDaily : 0;
+ main
             }
 
             return 0;
@@ -1472,6 +1506,7 @@
             return value.toFixed(digits);
         }
 
+ codex/add-statistical-features-and-improvements-jy52wc
         function toFiniteNumber(value) {
             if (value === null || typeof value === 'undefined') {
                 return null;
@@ -1500,6 +1535,8 @@
                 .replace(/'/g, '&#39;');
         }
 
+
+ main
         function applyPredictionLabels() {
             const { urgentDays, warningDays } = getPredictionSettings();
             const urgentLabel = document.getElementById('urgentDaysLabel');
@@ -2749,6 +2786,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             }
         }
 
+ codex/add-statistical-features-and-improvements-jy52wc
         function getMonthsCoverageForFilter(coverage, product) {
             if (coverage.daysToDepletion !== null) {
                 return coverage.daysToDepletion / 30;
@@ -2761,6 +2799,34 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
         function meetsAdvancedStockCriteria(coverage, product) {
             if (!advancedStockFilter) {
                 return true;
+
+        function applyAllFilters() {
+            let baseData = allProductsData.slice();
+            const { urgentDays, warningDays } = getPredictionSettings();
+
+            if (predictionFilter === 'zero30') {
+                baseData = baseData.filter(function(p) {
+                    const coverage = getCoverageInfo(p);
+                    if (coverage.outOfStock) {
+                        return true;
+                    }
+                    if (coverage.daysToDepletion === null) {
+                        return false;
+                    }
+                    return coverage.daysToDepletion <= urgentDays;
+                });
+            } else if (predictionFilter === 'zero60') {
+                baseData = baseData.filter(function(p) {
+                    const coverage = getCoverageInfo(p);
+                    if (coverage.outOfStock) {
+                        return false;
+                    }
+                    if (coverage.daysToDepletion === null) {
+                        return false;
+                    }
+                    return coverage.daysToDepletion > urgentDays && coverage.daysToDepletion <= warningDays;
+                });
+ main
             }
 
             if (advancedStockFilter === 'no-stock') {
@@ -2846,6 +2912,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 return false;
             }
 
+ codex/add-statistical-features-and-improvements-jy52wc
             if (selectedSupplier && product.supplier !== selectedSupplier) {
                 return false;
             }
@@ -2864,6 +2931,33 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 return productMatchesFilters(product, { predictionSettings });
             });
 
+
+            if (currentEstablishment) {
+                baseData = baseData.filter(function(product) {
+                    const stock = getProductStock(product);
+                    if (advancedStockFilter === 'no-stock') {
+                        return stock <= 0;
+                    }
+                    return stock > 0;
+                });
+            }
+
+            if (advancedStockFilter === 'no-stock') {
+                baseData = baseData.filter(function(product) {
+                    return getProductStock(product) <= 0;
+                });
+            } else if (advancedStockFilter === 'over50') {
+                baseData = baseData.filter(function(product) {
+                    const coverage = getCoverageInfo(product);
+                    if (coverage.daysToDepletion !== null) {
+                        return (coverage.daysToDepletion / 30) > 50;
+                    }
+                    return product.stockMonths > 50;
+                });
+            }
+
+            filteredData = baseData;
+ main
             updateParetoAnalysis();
             updateTable();
             updateSummary();
@@ -2883,6 +2977,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
         // === FUNÇÕES DE ANÁLISE ===
         function updatePredictiveAnalysis() {
             applyPredictionLabels();
+ codex/add-statistical-features-and-improvements-jy52wc
 
             const { urgentDays, warningDays } = getPredictionSettings();
             let urgentCount = 0;
@@ -2891,6 +2986,16 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             filteredData.forEach(function(product) {
                 const coverage = getCoverageInfo(product);
 
+
+
+            const { urgentDays, warningDays } = getPredictionSettings();
+            let urgentCount = 0;
+            let warningCount = 0;
+
+            filteredData.forEach(function(product) {
+                const coverage = getCoverageInfo(product);
+
+ main
                 if (coverage.outOfStock) {
                     urgentCount++;
                     return;
@@ -3042,6 +3147,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                             <th>#</th>
                             <th>Código</th>
                             <th>Item</th>
+ codex/add-statistical-features-and-improvements-jy52wc
                             <th>Vendas 4M
                                 <span class="tooltip-container info-tooltip" tabindex="0" aria-label="Vendas nos últimos quatro meses">
                                     <span class="info-tooltip-icon" aria-hidden="true">?</span>
@@ -3066,6 +3172,12 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                                     <span class="tooltip-bubble">Etiqueta resultante da participação acumulada: A (mais relevante), B (intermediária) ou C (menor impacto).</span>
                                 </span>
                             </th>
+
+                            <th>Vendas 4M</th>
+                            <th>% Individual</th>
+                            <th>% Acumulado</th>
+                            <th>Classe</th>
+ main
                         </tr>
                     </thead>
                     <tbody>
@@ -3087,6 +3199,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
 
             filteredData.forEach(function(product) {
                 const row = document.createElement('tr');
+ codex/add-statistical-features-and-improvements-jy52wc
                 const stock14Value = toFiniteNumber(product.stock14);
                 const stock9013Value = toFiniteNumber(product.stock9013);
                 const stock9015Value = toFiniteNumber(product.stock9015);
@@ -3126,12 +3239,21 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     ? ''
                     : (vendas4MValue === 0 ? 'status-warning' : '');
 
+                const totalStock = product.stock14 + product.stock9013 + product.stock9015;
+                const statusClass = getStatusClass(product.stockMonths);
+                const prediction = getPrediction(product);
+
+                const vendas4MDisplay = (!product.vendas4M || product.vendas4M === 0) ? 'S/ VENDA' : product.vendas4M.toLocaleString();
+                const vendas4MClass = (!product.vendas4M || product.vendas4M === 0) ? 'status-warning' : '';
+ main
+
                 const abcClass = abcClassificationMap.get(product.code);
                 const normalizedAbcClass = (typeof abcClass === 'string' && abcClass) ? abcClass.toUpperCase() : '—';
                 const abcCellContent = normalizedAbcClass === '—'
                     ? '—'
                     : `<span class="abc-chip abc-${normalizedAbcClass.toLowerCase()}">${normalizedAbcClass}</span>`;
 
+ codex/add-statistical-features-and-improvements-jy52wc
                 const monthsDisplay = formatStatValue(monthsValue);
                 const totalStockDisplay = totalStockValue === null ? '--' : formatIntegerValue(totalStockValue);
                 const stock14Display = formatIntegerValue(stock14Value);
@@ -3144,6 +3266,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 const familyDisplay = escapeHtml(product.family);
                 const itemDisplay = escapeHtml(product.item);
 
+
+ main
                 row.innerHTML = `
                     <td>${codeDisplay}</td>
                     <td>${supplierDisplay}</td>
@@ -3154,10 +3278,17 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     <td>${stock9015Display}</td>
                     <td><strong>${totalStockDisplay}</strong></td>
                     <td class="${vendas4MClass}">${vendas4MDisplay}</td>
+ codex/add-statistical-features-and-improvements-jy52wc
                     <td>${media3MDisplay}</td>
                     <td class="${statusClass}">${monthsDisplay}</td>
                     <td class="${predictionClass}">${predictionDisplay}</td>
                     <td class="${statusClass}">${escapeHtml(statusText)}</td>
+
+                    <td>${Math.round(product.media3M || 0).toLocaleString()}</td>
+                    <td class="${statusClass}">${product.stockMonths.toFixed(1)}</td>
+                    <td class="${statusClass}">${prediction}</td>
+                    <td class="${statusClass}">${getStatusText(product.stockMonths)}</td>
+ main
                     <td>${abcCellContent}</td>
 
                 `;
@@ -3204,6 +3335,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             const { urgentDays, warningDays } = getPredictionSettings();
 
             if (coverage.outOfStock) {
+ codex/add-statistical-features-and-improvements-jy52wc
                 const message = 'Sem estoque — ruptura imediata';
                 return {
                     label: 'Sem estoque',
@@ -3221,11 +3353,19 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     severity: 'warning',
                     fullText: message
                 };
+
+                return 'Sem estoque — ruptura imediata';
+            }
+
+            if (!coverage.hasDemand || coverage.daysToDepletion === null) {
+                return 'Sem demanda recente — cobertura indefinida';
+ main
             }
 
             const daysToDepletion = Math.max(1, Math.round(coverage.daysToDepletion));
             const estimatedDate = new Date(Date.now() + daysToDepletion * 86400000);
             const formattedDate = estimatedDate.toLocaleDateString('pt-BR');
+ codex/add-statistical-features-and-improvements-jy52wc
             const monthsCoverage = coverage.daysToDepletion / 30;
             const formattedMonths = formatStatValue(monthsCoverage);
 
@@ -3256,6 +3396,19 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 severity: 'good',
                 fullText: `Estável — ${formattedMonths} meses (ruptura em ${formattedDate})`
             };
+
+
+            if (daysToDepletion <= urgentDays) {
+                return `Crítico — ${daysToDepletion} dias (ruptura em ${formattedDate})`;
+            }
+
+            if (daysToDepletion <= warningDays) {
+                return `Atenção — ${daysToDepletion} dias (ruptura em ${formattedDate})`;
+            }
+
+            const monthsCoverage = coverage.daysToDepletion / 30;
+            return `Estável — ${formatStatValue(monthsCoverage)} meses (ruptura em ${formattedDate})`;
+ main
         }
 
         function getStatusClass(months) {
