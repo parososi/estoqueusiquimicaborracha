@@ -20,6 +20,115 @@
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+
+        .has-tooltip {
+            position: relative;
+            cursor: help;
+        }
+
+        .has-tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 50%;
+            top: calc(100% + 12px);
+            transform: translate(-50%, -6px);
+            background: #1F448C;
+            color: #fff;
+            padding: 10px 12px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: normal;
+            max-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            z-index: 20;
+        }
+
+        .has-tooltip::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: calc(100% + 4px);
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: #1F448C transparent transparent transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease;
+            z-index: 19;
+        }
+
+        .has-tooltip:hover::after,
+        .has-tooltip:focus-visible::after,
+        .has-tooltip:hover::before,
+        .has-tooltip:focus-visible::before {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        .has-tooltip[data-tooltip-position="top"]::after {
+            top: auto;
+            bottom: calc(100% + 12px);
+            transform: translate(-50%, 6px);
+        }
+
+        .has-tooltip[data-tooltip-position="top"]::before {
+            top: auto;
+            bottom: calc(100% + 4px);
+            border-color: transparent transparent #1F448C transparent;
+        }
+
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #1F448C;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 6px;
+            box-shadow: 0 2px 6px rgba(31, 68, 140, 0.25);
+        }
+
+        .tooltip-underline {
+            border-bottom: 1px dashed rgba(31, 68, 140, 0.45);
+        }
+
+        .prediction-tooltip {
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .header-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        th .header-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
         
         .header {
             display: flex;
@@ -941,45 +1050,45 @@
         </div>
 
         <div class="summary-card">
-            <h3>Resumo Geral</h3>
+            <h3 class="header-label">Resumo Geral <span class="info-icon has-tooltip" tabindex="0" aria-label="Resumo Geral" data-tooltip="Indicadores principais do estoque considerando os filtros atuais, ajudando a entender a distribuição e risco de ruptura." data-tooltip-position="top">?</span></h3>
             <div class="summary-stats">
                 <div class="stat-item">
                     <div class="stat-value" id="totalProducts">0</div>
-                    <div class="stat-label">Total de Produtos</div>
+                    <div class="stat-label"><span class="label-text">Total de Produtos</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Total de produtos" data-tooltip="Quantidade total de SKUs únicos visíveis após aplicar filtros de busca e estabelecimento." data-tooltip-position="top">?</span></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="avgStockMonths">0.0</div>
-                    <div class="stat-label">Média de Estoque (meses)</div>
+                    <div class="stat-label"><span class="label-text">Média de Estoque (meses)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Média de estoque" data-tooltip="Tempo médio de cobertura em meses considerando todo o estoque disponível dividido pelo consumo médio dos últimos meses." data-tooltip-position="top">?</span></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="medianStock">--</div>
-                    <div class="stat-label">Mediana de Estoque (meses)</div>
+                    <div class="stat-label"><span class="label-text">Mediana de Estoque (meses)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Mediana de estoque" data-tooltip="Valor central da distribuição de meses de estoque: metade dos itens possui cobertura acima e metade abaixo desse ponto." data-tooltip-position="top">?</span></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="q1Stock">--</div>
-                    <div class="stat-label">1º Quartil (25%)</div>
+                    <div class="stat-label"><span class="label-text">1º Quartil (25%)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Primeiro quartil" data-tooltip="Quartil representa o ponto onde 25% dos itens possuem estoque igual ou menor que este valor — útil para detectar produtos com cobertura mais baixa." data-tooltip-position="top">?</span></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="q3Stock">--</div>
-                    <div class="stat-label">3º Quartil (75%)</div>
+                    <div class="stat-label"><span class="label-text">3º Quartil (75%)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Terceiro quartil" data-tooltip="Quartil indica o ponto onde 75% dos itens ficam abaixo: valores altos aqui mostram que a maioria dos produtos tem cobertura elevada." data-tooltip-position="top">?</span></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="stdDevStock">--</div>
-                    <div class="stat-label">Desvio-Padrão (meses)</div>
+                    <div class="stat-label"><span class="label-text">Desvio-Padrão (meses)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Desvio-padrão" data-tooltip="Mede a dispersão dos meses de estoque: quanto maior o valor, maior a variação entre os itens." data-tooltip-position="top">?</span></div>
                 </div>
                 <div class="stat-item clickable" onclick="filterCriticalStock()" title="Clique para ver produtos críticos (<2 meses)">
                     <div class="stat-value critical" id="criticalCount">0</div>
-                    <div class="stat-label">Produtos Críticos</div>
+                    <div class="stat-label"><span class="label-text">Produtos Críticos</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Produtos críticos" data-tooltip="Itens com cobertura inferior a 2 meses. Clique no card para filtrar somente esses produtos." data-tooltip-position="top" onclick="event.stopPropagation();">?</span></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="totalFamilies">0</div>
-                    <div class="stat-label">Famílias de Produtos</div>
+                    <div class="stat-label"><span class="label-text">Famílias de Produtos</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Famílias de produtos" data-tooltip="Número de famílias distintas representadas na lista atual de produtos." data-tooltip-position="top">?</span></div>
                 </div>
             </div>
         </div>
-        
+
         <div class="pareto-section">
-            <h3>📊 Análise ABC por Vendas</h3>
+            <h3 class="header-label">📊 Análise ABC por Vendas <span class="info-icon has-tooltip" tabindex="0" aria-label="Análise ABC por Vendas" data-tooltip="Classificação que separa os itens conforme sua participação no faturamento: Classe A concentra a maior parte das vendas, B representa itens intermediários e C reúne os produtos de baixa relevância." data-tooltip-position="top">?</span></h3>
             <div id="paretoContent"></div>
         </div>
         <div class="gauges-container" id="gaugesContainer">
@@ -987,27 +1096,27 @@
         
         <div class="products-table">
             <div class="table-header">
-                <h3>Detalhes dos Produtos</h3>
+                <h3 class="header-label">Detalhes dos Produtos <span class="info-icon has-tooltip" tabindex="0" aria-label="Detalhes dos Produtos" data-tooltip="Tabela com indicadores de estoque, consumo e classificação ABC de cada item após aplicar os filtros ativos." data-tooltip-position="top">?</span></h3>
                 <span id="tableCount">0 produtos exibidos</span>
             </div>
             <div class="table-container">
                 <table id="productsTable">
                     <thead>
                         <tr>
-                            <th>Código</th>
-                            <th>Fornecedor</th>
-                            <th>Família</th>
-                            <th>Item</th>
-                            <th>Est. 1-4</th>
-                            <th>Est. 90-13</th>
-                            <th>Est. 90-15</th>
-                            <th>Total</th>
-                            <th>Vendas 3M</th>
-                            <th>Média 3M</th>
-                            <th>Meses</th>
-                            <th>Previsão</th>
-                            <th>Status</th>
-                            <th>Classe ABC</th>
+                            <th><span class="header-label">Código<span class="info-icon has-tooltip" tabindex="0" aria-label="Código" data-tooltip="Identificador único do item conforme cadastro interno.">?</span></span></th>
+                            <th><span class="header-label">Fornecedor<span class="info-icon has-tooltip" tabindex="0" aria-label="Fornecedor" data-tooltip="Parceiro responsável pelo fornecimento do item.">?</span></span></th>
+                            <th><span class="header-label">Família<span class="info-icon has-tooltip" tabindex="0" aria-label="Família" data-tooltip="Categoria ou linha de produto utilizada para agrupar itens similares.">?</span></span></th>
+                            <th><span class="header-label">Item<span class="info-icon has-tooltip" tabindex="0" aria-label="Item" data-tooltip="Descrição comercial do produto.">?</span></span></th>
+                            <th><span class="header-label">Est. 1-4<span class="info-icon has-tooltip" tabindex="0" aria-label="Estoque 1-4" data-tooltip="Saldo físico disponível no estabelecimento 1-4 (Guarulhos).">?</span></span></th>
+                            <th><span class="header-label">Est. 90-13<span class="info-icon has-tooltip" tabindex="0" aria-label="Estoque 90-13" data-tooltip="Saldo físico disponível no estabelecimento 90-13 (Itajaí).">?</span></span></th>
+                            <th><span class="header-label">Est. 90-15<span class="info-icon has-tooltip" tabindex="0" aria-label="Estoque 90-15" data-tooltip="Saldo físico disponível no estabelecimento 90-15 (Garuva).">?</span></span></th>
+                            <th><span class="header-label">Total<span class="info-icon has-tooltip" tabindex="0" aria-label="Total em estoque" data-tooltip="Soma do estoque disponível em todos os estabelecimentos selecionados.">?</span></span></th>
+                            <th><span class="header-label">Vendas 3M<span class="info-icon has-tooltip" tabindex="0" aria-label="Vendas 3 meses" data-tooltip="Quantidade vendida acumulada nos últimos 3 meses para o item.">?</span></span></th>
+                            <th><span class="header-label">Média 3M<span class="info-icon has-tooltip" tabindex="0" aria-label="Média 3 meses" data-tooltip="Média mensal das vendas dos últimos 3 meses, usada para estimar o consumo.">?</span></span></th>
+                            <th><span class="header-label">Meses<span class="info-icon has-tooltip" tabindex="0" aria-label="Meses de cobertura" data-tooltip="Tempo estimado de cobertura de estoque em meses, considerando o consumo médio.">?</span></span></th>
+                            <th><span class="header-label">Previsão<span class="info-icon has-tooltip" tabindex="0" aria-label="Previsão de ruptura" data-tooltip="Resumo da previsão de ruptura calculada para o item.">?</span></span></th>
+                            <th><span class="header-label">Status<span class="info-icon has-tooltip" tabindex="0" aria-label="Status" data-tooltip="Classificação do risco atual com base nos meses de cobertura.">?</span></span></th>
+                            <th><span class="header-label">Classe ABC<span class="info-icon has-tooltip" tabindex="0" aria-label="Classe ABC" data-tooltip="Resultado da análise ABC por vendas para o produto.">?</span></span></th>
                         </tr>
                     </thead>
                     <tbody id="productsTableBody">
@@ -1228,6 +1337,19 @@
             }
 
             return value.toFixed(digits);
+        }
+
+        function escapeTooltip(text) {
+            if (text === null || typeof text === 'undefined') {
+                return '';
+            }
+
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
         }
 
         function applyPredictionLabels() {
@@ -2722,13 +2844,13 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 <table class="pareto-table">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Código</th>
-                            <th>Item</th>
-                            <th>Vendas 4M</th>
-                            <th>% Individual</th>
-                            <th>% Acumulado</th>
-                            <th>Classe</th>
+                            <th><span class="header-label">#<span class="info-icon has-tooltip" tabindex="0" aria-label="Posição no ranking" data-tooltip="Ordem do produto considerando o faturamento acumulado dos últimos 4 meses.">?</span></span></th>
+                            <th><span class="header-label">Código<span class="info-icon has-tooltip" tabindex="0" aria-label="Código do produto" data-tooltip="Identificador único do item utilizado no sistema de estoque.">?</span></span></th>
+                            <th><span class="header-label">Item<span class="info-icon has-tooltip" tabindex="0" aria-label="Descrição do item" data-tooltip="Nome comercial do produto conforme cadastro interno.">?</span></span></th>
+                            <th><span class="header-label">Vendas 4M<span class="info-icon has-tooltip" tabindex="0" aria-label="Vendas nos últimos 4 meses" data-tooltip="Quantidade vendida ou faturada somada dos últimos 4 meses utilizados para a análise ABC.">?</span></span></th>
+                            <th><span class="header-label">% Individual<span class="info-icon has-tooltip" tabindex="0" aria-label="Percentual individual" data-tooltip="Participação percentual deste item isoladamente sobre o total vendido no período analisado.">?</span></span></th>
+                            <th><span class="header-label">% Acumulado<span class="info-icon has-tooltip" tabindex="0" aria-label="Percentual acumulado" data-tooltip="Soma dos percentuais individuais até o item atual, indicando o quanto do faturamento já está concentrado.">?</span></span></th>
+                            <th><span class="header-label">Classe<span class="info-icon has-tooltip" tabindex="0" aria-label="Classe ABC" data-tooltip="Faixa resultante da curva ABC: A concentra os itens mais relevantes, B os intermediários e C os de menor impacto.">?</span></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -2752,7 +2874,10 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 const row = document.createElement('tr');
                 const totalStock = product.stock14 + product.stock9013 + product.stock9015;
                 const statusClass = getStatusClass(product.stockMonths);
-                const prediction = getPrediction(product);
+                const predictionInfo = getPrediction(product);
+                const predictionCellContent = predictionInfo
+                    ? `<span class="tooltip-underline has-tooltip prediction-tooltip" tabindex="0" aria-label="Detalhes da previsão" data-tooltip="${escapeTooltip(predictionInfo.detail || predictionInfo.fullText || '')}">${escapeTooltip(predictionInfo.label || '--')}</span>`
+                    : '--';
 
                 const vendas4MDisplay = (!product.vendas4M || product.vendas4M === 0) ? 'S/ VENDA' : product.vendas4M.toLocaleString();
                 const vendas4MClass = (!product.vendas4M || product.vendas4M === 0) ? 'status-warning' : '';
@@ -2775,7 +2900,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     <td class="${vendas4MClass}">${vendas4MDisplay}</td>
                     <td>${Math.round(product.media3M || 0).toLocaleString()}</td>
                     <td class="${statusClass}">${product.stockMonths.toFixed(1)}</td>
-                    <td class="${statusClass}">${prediction}</td>
+                    <td class="${statusClass}">${predictionCellContent}</td>
                     <td class="${statusClass}">${getStatusText(product.stockMonths)}</td>
                     <td>${abcCellContent}</td>
 
@@ -2815,27 +2940,55 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             const { urgentDays, warningDays } = getPredictionSettings();
 
             if (coverage.outOfStock) {
-                return 'Sem estoque — ruptura imediata';
+                return {
+                    label: 'Sem estoque',
+                    detail: 'Ruptura imediata — produto sem unidades disponíveis no estoque atual.',
+                    fullText: 'Sem estoque — ruptura imediata'
+                };
             }
 
             if (!coverage.hasDemand || coverage.daysToDepletion === null) {
-                return 'Sem demanda recente — cobertura indefinida';
+                return {
+                    label: 'Sem demanda recente',
+                    detail: 'Sem consumo registrado nos últimos meses, por isso não é possível estimar a data de ruptura.',
+                    fullText: 'Sem demanda recente — cobertura indefinida'
+                };
             }
 
             const daysToDepletion = Math.max(1, Math.round(coverage.daysToDepletion));
             const estimatedDate = new Date(Date.now() + daysToDepletion * 86400000);
             const formattedDate = estimatedDate.toLocaleDateString('pt-BR');
+            const monthsCoverage = coverage.daysToDepletion / 30;
+            const monthsText = `${formatStatValue(monthsCoverage)} meses`;
+            const baseDetail = `Ruptura estimada para ${formattedDate} (cobertura aproximada de ${monthsText}).`;
 
             if (daysToDepletion <= urgentDays) {
-                return `Crítico — ${daysToDepletion} dias (ruptura em ${formattedDate})`;
+                const label = `Crítico — ${daysToDepletion} dias`;
+                const fullText = `${label} (ruptura em ${formattedDate})`;
+                return {
+                    label,
+                    detail: `${baseDetail} Recomendado acionar reposição imediata.`,
+                    fullText
+                };
             }
 
             if (daysToDepletion <= warningDays) {
-                return `Atenção — ${daysToDepletion} dias (ruptura em ${formattedDate})`;
+                const label = `Atenção — ${daysToDepletion} dias`;
+                const fullText = `${label} (ruptura em ${formattedDate})`;
+                return {
+                    label,
+                    detail: `${baseDetail} Planeje reposição para evitar ruptura no curto prazo.`,
+                    fullText
+                };
             }
 
-            const monthsCoverage = coverage.daysToDepletion / 30;
-            return `Estável — ${formatStatValue(monthsCoverage)} meses (ruptura em ${formattedDate})`;
+            const stableLabel = `Estável — ${formatStatValue(monthsCoverage)} meses`;
+            const fullText = `${stableLabel} (ruptura em ${formattedDate})`;
+            return {
+                label: stableLabel,
+                detail: `${baseDetail} Estoque confortável considerando o ritmo de consumo atual.`,
+                fullText
+            };
         }
 
         function getStatusClass(months) {
@@ -3088,6 +3241,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             const fileFormat = document.getElementById('fileFormat').value;
             
             const exportData = filteredData.map(function(p) {
+                const predictionInfo = getPrediction(p);
                 return {
                     'CÓDIGO': p.code,
                     'FORNECEDOR': p.supplier,
@@ -3099,7 +3253,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     'TOTAL ESTOQUE': p.stock14 + p.stock9013 + p.stock9015,
                     'VENDAS 4M': (!p.vendas4M || p.vendas4M === 0) ? 'S/ VENDA' : p.vendas4M,
                     'ESTOQUE EM MESES': p.stockMonths,
-                    'PREVISÃO': getPrediction(p),
+                    'PREVISÃO': predictionInfo ? (predictionInfo.fullText || predictionInfo.label) : '--',
                     'STATUS': getStatusText(p.stockMonths)
                 };
             });
