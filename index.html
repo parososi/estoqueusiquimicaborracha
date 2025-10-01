@@ -36,7 +36,7 @@
         }
 
         .tooltip-bubble {
-            position: fixed;
+            position: absolute;
             z-index: 99999;
             background: rgba(31, 68, 140, 0.98);
             color: #fff;
@@ -61,15 +61,15 @@
             background: inherit;
             border-radius: 2px;
             left: var(--tooltip-arrow-left, 50%);
-            transform: translate(-50%, 0) rotate(45deg);
+            transform: translate(-50%, -50%) rotate(45deg);
         }
 
         .tooltip-bubble[data-position="bottom"]::after {
-            bottom: -5px;
+            top: 0;
         }
 
         .tooltip-bubble[data-position="top"]::after {
-            top: -5px;
+            bottom: 0;
         }
 
         .tooltip-bubble.visible {
@@ -118,9 +118,11 @@
             gap: 4px;
             max-width: 100%;
             line-height: 1.4;
-            white-space: nowrap;
+            white-space: normal;
             overflow: hidden;
             text-overflow: ellipsis;
+            word-break: break-word;
+            text-align: left;
         }
 
         .header-label {
@@ -479,14 +481,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        
+
+        #tableCount {
+            font-size: 13px;
+            color: #4c5569;
+        }
+
         .table-container {
             position: relative;
             border: 1px solid #ddd;
             border-radius: 5px;
             background: #fff;
+            padding: 8px;
         }
 
         .table-scroll {
@@ -494,13 +504,17 @@
             overflow: auto;
             border-radius: inherit;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
         }
-        
+
+        .table-scroll table {
+            min-width: 1100px;
+        }
+
         th {
             background-color: #f8f9fa;
             font-weight: bold;
@@ -517,6 +531,7 @@
             border-bottom: 1px solid #eee;
             vertical-align: top;
             line-height: 1.4;
+            word-break: break-word;
         }
 
         .status-cell {
@@ -525,6 +540,7 @@
 
         .prediction-cell {
             max-width: 220px;
+            white-space: normal;
         }
 
         .prediction-cell .prediction-tooltip {
@@ -601,7 +617,7 @@
         }
 
         .pareto-empty {
-            margin: 0;
+            margin: 12px 0 0;
             color: #666;
             text-align: center;
             font-size: 14px;
@@ -1227,13 +1243,19 @@
             tooltipElement.style.maxWidth = `min(320px, ${Math.max(200, window.innerWidth - 32)}px)`;
 
             const tooltipRect = tooltipElement.getBoundingClientRect();
-            const minTop = 8;
-            const maxTop = window.innerHeight - tooltipRect.height - 8;
+            const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+            const scrollX = window.scrollX || document.documentElement.scrollLeft || 0;
+            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+            const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+            const minTop = scrollY + 8;
+            const maxTop = scrollY + viewportHeight - tooltipRect.height - 8;
 
             const computeTop = function(position) {
+                const referenceTop = rect.top + scrollY;
+                const referenceBottom = rect.bottom + scrollY;
                 return position === 'top'
-                    ? rect.top - tooltipRect.height - 10
-                    : rect.bottom + 10;
+                    ? referenceTop - tooltipRect.height - 10
+                    : referenceBottom + 10;
             };
 
             let position = prefersTop ? 'top' : 'bottom';
@@ -1251,17 +1273,18 @@
 
             top = Math.min(Math.max(top, minTop), maxTop);
 
-            let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
-            const minLeft = 8;
-            const maxLeft = window.innerWidth - tooltipRect.width - 8;
+            const centerX = rect.left + scrollX + (rect.width / 2);
+            let left = centerX - (tooltipRect.width / 2);
+            const minLeft = scrollX + 8;
+            const maxLeft = scrollX + viewportWidth - tooltipRect.width - 8;
             left = Math.min(Math.max(left, minLeft), maxLeft);
 
             tooltipElement.dataset.position = position;
             tooltipElement.style.top = `${top}px`;
             tooltipElement.style.left = `${left}px`;
 
-            const arrowLeft = (rect.left + rect.width / 2) - left;
-            tooltipElement.style.setProperty('--tooltip-arrow-left', `${Math.min(Math.max(arrowLeft, 10), tooltipRect.width - 10)}px`);
+            const arrowLeft = centerX - left;
+            tooltipElement.style.setProperty('--tooltip-arrow-left', `${Math.min(Math.max(arrowLeft, 12), tooltipRect.width - 12)}px`);
         }
 
         function showTooltip(target) {
@@ -3127,8 +3150,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             const baseDetail = `Ruptura estimada para ${formattedDate} (cobertura aproximada de ${monthsText}).`;
 
             if (daysToDepletion <= urgentDays) {
-                const label = `Crítico — ${daysToDepletion} dias`;
-                const fullText = `${label} (ruptura em ${formattedDate})`;
+                const label = `Em ${daysToDepletion} dias`;
+                const fullText = `Ruptura estimada em ${formattedDate} (aproximadamente ${daysToDepletion} dias).`;
                 return {
                     label,
                     detail: `${baseDetail} Recomendado acionar reposição imediata.`,
@@ -3137,8 +3160,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             }
 
             if (daysToDepletion <= warningDays) {
-                const label = `Atenção — ${daysToDepletion} dias`;
-                const fullText = `${label} (ruptura em ${formattedDate})`;
+                const label = `Em ${daysToDepletion} dias`;
+                const fullText = `Ruptura estimada em ${formattedDate} (aproximadamente ${daysToDepletion} dias).`;
                 return {
                     label,
                     detail: `${baseDetail} Planeje reposição para evitar ruptura no curto prazo.`,
@@ -3146,8 +3169,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 };
             }
 
-            const stableLabel = `Estável — ${formattedMonths} meses`;
-            const fullText = `${stableLabel} (ruptura em ${formattedDate})`;
+            const stableLabel = `${formattedMonths} meses`;
+            const fullText = `Ruptura estimada em ${formattedDate} (cobertura aproximada de ${monthsText}).`;
             return {
                 label: stableLabel,
                 detail: `${baseDetail} Estoque confortável considerando o ritmo de consumo atual.`,
