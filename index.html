@@ -997,7 +997,7 @@
                 <div class="file-input">
                     <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" />
                     <button onclick="importData()">Importar Planilha</button>
-                    <button onclick="tryAutoSave()" id="autoSaveBtn" class="btn-auto-save" style="display: none;">✨ Configurar Pasta</button>
+                    <button onclick="tryAutoSave()" id="autoSaveBtn" class="btn-auto-save" style="display: none;">Configurar Pasta</button>
                     <button onclick="reconfigureAutoSave()" id="reconfigBtn" style="display: none; background-color: #6c757d;">🔧 Reconfigurar</button>
                     <button onclick="openTemplateGenerator()" style="background-color: #28a745;">📋 Template</button>
                 </div>
@@ -1833,7 +1833,7 @@
             }
             
             if (!directoryHandle) {
-                showMessage('⚠️ Configure uma pasta primeiro clicando em "✨ Configurar Pasta".', 'warning');
+                showMessage('⚠️ Configure uma pasta primeiro clicando em "Configurar Pasta".', 'warning');
                 return;
             }
             
@@ -1894,7 +1894,7 @@
                     
                     infoText += '<br>🗂️ <span style="color: #28a745; font-weight: bold;">Pasta configurada - salvamento automático ativo!</span>';
                 } else if (fileSystemSupported) {
-                    infoText += '<br>⚙️ <span style="color: #1F448C;">Clique em "✨ Configurar Pasta" para ativar salvamento automático</span>';
+                    infoText += '<br>⚙️ <span style="color: #1F448C;">Clique em "Configurar Pasta" para ativar salvamento automático</span>';
                 }
                 
                 lastUpdateDiv.innerHTML = infoText;
@@ -2047,7 +2047,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                             showMessage('⚠️ Dados importados, mas erro no salvamento automático. Use "💾 Baixar data.js".', 'warning');
                         });
                     } else if (fileSystemSupported) {
-                        showMessage('💡 Dica: Clique em "✨ Configurar Pasta" para ativar salvamento automático!', 'info');
+                        showMessage('💡 Dica: Clique em "Configurar Pasta" para ativar salvamento automático!', 'info');
                     }
                     
                     initializeDashboard();
