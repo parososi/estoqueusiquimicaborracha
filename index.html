@@ -3278,7 +3278,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
 
         // === FUNÇÕES DE GAUGES ===
         function updateGauges() {
-            const families = [...new Set(allProductsData.map(function(p) {
+            const families = [...new Set(filteredData.map(function(p) {
                 return p.family;
             }))].sort();
             const container = document.getElementById('gaugesContainer');
@@ -3336,66 +3336,9 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
         }
 
         function getFamilyFilteredProducts(family) {
-            let products = allProductsData.filter(function(p) {
-                return p.family === family;
+            return filteredData.filter(function(product) {
+                return product.family === family;
             });
-            
-            if (predictionFilter === 'zero30') {
-                products = products.filter(function(p) {
-                    return p.stockMonths > 0 && p.stockMonths < 1;
-                });
-            } else if (predictionFilter === 'zero60') {
-                products = products.filter(function(p) {
-                    return p.stockMonths >= 1 && p.stockMonths < 2;
-                });
-            }
-            
-            if (searchTerm) {
-                products = products.filter(function(product) {
-                    return product.code.toLowerCase().includes(searchTerm) ||
-                        product.item.toLowerCase().includes(searchTerm) ||
-                        product.supplier.toLowerCase().includes(searchTerm) ||
-                        product.family.toLowerCase().includes(searchTerm);
-                });
-            }
-            
-            if (!predictionFilter) {
-                switch(currentFilter) {
-                    case 'critical':
-                        products = products.filter(function(p) {
-                            return p.stockMonths < 2;
-                        });
-                        break;
-                    case 'low':
-                        products = products.filter(function(p) {
-                            return p.stockMonths >= 2 && p.stockMonths < 6;
-                        });
-                        break;
-                    case 'high':
-                        products = products.filter(function(p) {
-                            return p.stockMonths >= 6;
-                        });
-                        break;
-                }
-            }
-
-            if (selectedFamily && selectedFamily !== family) {
-                return [];
-            }
-
-            if (selectedSupplier) {
-                products = products.filter(function(product) {
-                    return product.supplier === selectedSupplier;
-                });
-            }
-
-            if (currentEstablishment) {
-                products = products.filter(function(p) {
-                    return getProductStock(p) > 0;
-                });
-            }
-            
-            return products;
         }
 
         function calculateAverageStock(products) {
