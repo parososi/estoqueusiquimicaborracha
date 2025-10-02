@@ -3105,11 +3105,30 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
 
             const displayLimit = 10;
             const rows = [];
+            const normalizeShare = function(value) {
+                if (!Number.isFinite(value)) {
+                    return 0;
+                }
+                if (value < 0) {
+                    return 0;
+                }
+                if (value > 1) {
+                    return 1;
+                }
+                return value;
+            };
 
             sortedData.forEach(function(product, index) {
                 const sales = Math.max(product.vendas4M || 0, 0);
-                const individualShare = totalSales === 0 ? 0 : sales / totalSales;
-                product.individualSalesShare = individualShare;
+                const hasStoredShare = typeof product.individualSalesShare === 'number' && Number.isFinite(product.individualSalesShare);
+                const fallbackShare = totalSales === 0 ? 0 : sales / totalSales;
+                const individualShare = hasStoredShare
+                    ? normalizeShare(product.individualSalesShare)
+                    : normalizeShare(fallbackShare);
+
+                if (!hasStoredShare) {
+                    product.individualSalesShare = individualShare;
+                }
 
                 const rawClass = (typeof product.currentAbcClass === 'string' && product.currentAbcClass)
                     ? product.currentAbcClass.toUpperCase()
