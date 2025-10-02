@@ -2822,11 +2822,14 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             let hasClassA = false;
             let hasClassB = false;
 
+            let cumulativeShare = 0;
+
             sortedData.forEach(function(product) {
                 const sales = Math.max(product.vendas4M || 0, 0);
                 const individualShare = totalSales === 0 ? 0 : sales / totalSales;
+                cumulativeShare += individualShare;
                 product.individualSalesShare = individualShare;
-                product.cumulativeSalesShare = individualShare;
+                product.cumulativeSalesShare = cumulativeShare;
 
                 let classification = 'C';
                 if (individualShare >= abcIndividualThresholds.classA) {
@@ -3108,8 +3111,10 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
 
             sortedData.forEach(function(product, index) {
                 const sales = Math.max(product.vendas4M || 0, 0);
-                const individualShare = totalSales === 0 ? 0 : sales / totalSales;
-                product.individualSalesShare = individualShare;
+                const hasPrecomputedShare = typeof product.individualSalesShare === 'number' && !Number.isNaN(product.individualSalesShare);
+                const individualShare = hasPrecomputedShare
+                    ? product.individualSalesShare
+                    : (totalSales === 0 ? 0 : sales / totalSales);
 
                 const rawClass = (typeof product.currentAbcClass === 'string' && product.currentAbcClass)
                     ? product.currentAbcClass.toUpperCase()
