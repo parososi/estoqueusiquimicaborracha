@@ -1142,8 +1142,8 @@
         </div>
 
         <div class="pareto-section">
-            <h3 class="header-label">📊 Análise ABC por Vendas <span class="info-icon has-tooltip" tabindex="0" aria-label="Análise ABC por Vendas" data-tooltip="Organizamos os produtos pelo quanto venderam nos últimos meses. Os que somam a maior parte do dinheiro ficam na Classe A, os do meio na B e o restante na C." data-tooltip-position="top">?</span></h3>
-            <p class="pareto-description">Calculamos a participação individual de cada item nas vendas dos últimos meses. Produtos que respondem por 5% ou mais das vendas entram na Classe A; aqueles entre 2% e 5% ficam na Classe B; os demais compõem a Classe C. Essa lógica é recalculada conforme você aplica filtros, como por família ou fornecedor.</p>
+            <h3 class="header-label">📊 Análise ABC por Vendas <span class="info-icon has-tooltip" tabindex="0" aria-label="Análise ABC por Vendas" data-tooltip="Organizamos os produtos conforme a fatia que cada um representa das vendas dos últimos meses. Itens com 5% ou mais das vendas ficam na Classe A, entre 1% e 5% na Classe B e os demais na Classe C." data-tooltip-position="top">?</span></h3>
+            <p class="pareto-description">Calculamos quanto cada item representa sozinho do total vendido nos últimos 3 meses entre todos os produtos com saída. Itens com % Individual igual ou acima de 5% entram na Classe A, entre 1% e 5% ficam na Classe B e abaixo de 1% compõem a Classe C. A regra é recalculada automaticamente conforme você aplica filtros, como família ou fornecedor.</p>
             <div id="paretoContent"></div>
         </div>
         <div class="gauges-container" id="gaugesContainer">
@@ -1172,7 +1172,7 @@
                             <th><span class="header-label">Meses<span class="info-icon has-tooltip" tabindex="0" aria-label="Meses de cobertura" data-tooltip="Tempo estimado de cobertura de estoque em meses, considerando o consumo médio.">?</span></span></th>
                             <th><span class="header-label">Previsão<span class="info-icon has-tooltip" tabindex="0" aria-label="Previsão de ruptura" data-tooltip="Resumo da previsão de ruptura calculada para o item.">?</span></span></th>
                             <th><span class="header-label">Status<span class="info-icon has-tooltip" tabindex="0" aria-label="Status" data-tooltip="Classificação do risco atual com base nos meses de cobertura.">?</span></span></th>
-                            <th><span class="header-label">Classe ABC<span class="info-icon has-tooltip" tabindex="0" aria-label="Classe ABC" data-tooltip="Classificação calculada pela participação individual do item nas vendas filtradas: A ≥ 5%, B entre 2% e 5%, C abaixo de 2%.">?</span></span></th>
+                            <th><span class="header-label">Classe ABC<span class="info-icon has-tooltip" tabindex="0" aria-label="Classe ABC" data-tooltip="Classificação calculada pelo % Individual das vendas filtradas: itens com 5% ou mais das vendas ficam na Classe A, entre 1% e 5% na Classe B e os demais na Classe C.">?</span></span></th>
                         </tr>
                     </thead>
                     <tbody id="productsTableBody">
@@ -1229,9 +1229,10 @@
         let mappingDebugMode = false;
         let lastMappingInfo = null;
         let advancedStockFilter = '';
+        // Faixas do % individual das vendas usadas para classificar os itens
         const abcIndividualThresholds = Object.freeze({
             classA: 0.05,
-            classB: 0.02
+            classB: 0.01
         });
         let abcClassificationMap = new Map();
         let tooltipElement = null;
@@ -2791,6 +2792,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 if (Array.isArray(dataSet)) {
                     dataSet.forEach(function(product) {
                         product.currentAbcClass = '—';
+                        product.individualSalesShare = 0;
+                        product.cumulativeSalesShare = 0;
                     });
                 }
                 return classificationMap;
@@ -2801,7 +2804,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             });
 
             const totalSales = sortedData.reduce(function(sum, product) {
-                return sum + (product.vendas4M || 0);
+                const sales = Math.max(product.vendas4M || 0, 0);
+                return sales > 0 ? sum + sales : sum;
             }, 0);
 
             if (totalSales === 0) {
@@ -2809,6 +2813,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                     classificationMap.set(product.code, '—');
                     product.currentAbcClass = '—';
                     product.individualSalesShare = 0;
+                    product.cumulativeSalesShare = 0;
                 });
                 abcClassificationMap = classificationMap;
                 return classificationMap;
@@ -2818,9 +2823,10 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             let hasClassB = false;
 
             sortedData.forEach(function(product) {
-                const sales = product.vendas4M || 0;
+                const sales = Math.max(product.vendas4M || 0, 0);
                 const individualShare = totalSales === 0 ? 0 : sales / totalSales;
                 product.individualSalesShare = individualShare;
+                product.cumulativeSalesShare = individualShare;
 
                 let classification = 'C';
                 if (individualShare >= abcIndividualThresholds.classA) {
@@ -2840,9 +2846,14 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             }
 
             if (!hasClassB && sortedData.length > 1) {
-                const candidate = sortedData.find(function(product) {
-                    return classificationMap.get(product.code) !== 'A';
+                let candidate = sortedData.find(function(product) {
+                    return classificationMap.get(product.code) !== 'A' && (product.vendas4M || 0) > 0;
                 });
+                if (!candidate) {
+                    candidate = sortedData.find(function(product) {
+                        return classificationMap.get(product.code) !== 'A';
+                    });
+                }
                 if (candidate) {
                     classificationMap.set(candidate.code, 'B');
                 }
@@ -3083,7 +3094,8 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 return (b.vendas4M || 0) - (a.vendas4M || 0);
             });
             const totalSales = sortedData.reduce(function(sum, product) {
-                return sum + (product.vendas4M || 0);
+                const sales = Math.max(product.vendas4M || 0, 0);
+                return sales > 0 ? sum + sales : sum;
             }, 0);
 
             if (totalSales === 0) {
@@ -3095,7 +3107,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             const rows = [];
 
             sortedData.forEach(function(product, index) {
-                const sales = product.vendas4M || 0;
+                const sales = Math.max(product.vendas4M || 0, 0);
                 const individualShare = totalSales === 0 ? 0 : sales / totalSales;
                 product.individualSalesShare = individualShare;
 
@@ -3129,9 +3141,9 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                             <th><span class="header-label">#<span class="info-icon has-tooltip" tabindex="0" aria-label="Posição no ranking" data-tooltip="Lugar do produto na lista, indo do que mais vende para o que menos vende." data-tooltip-position="top">?</span></span></th>
                             <th><span class="header-label">Código<span class="info-icon has-tooltip" tabindex="0" aria-label="Código do produto" data-tooltip="Número usado no sistema para identificar o produto." data-tooltip-position="top">?</span></span></th>
                             <th><span class="header-label">Item<span class="info-icon has-tooltip" tabindex="0" aria-label="Descrição do item" data-tooltip="Nome do produto como aparece no cadastro." data-tooltip-position="top">?</span></span></th>
-                            <th><span class="header-label">Vendas 3M<span class="info-icon has-tooltip" tabindex="0" aria-label="Vendas nos últimos 3 meses" data-tooltip="Total vendido nos últimos quatro meses usados neste cálculo." data-tooltip-position="top">?</span></span></th>
-                            <th><span class="header-label">% Individual<span class="info-icon has-tooltip" tabindex="0" aria-label="Percentual individual" data-tooltip="Mostra quanto o produto representa sozinho do total de vendas. Também usamos esse percentual para definir a classe ABC: A ≥ 5%, B entre 2% e 5%, C abaixo de 2%." data-tooltip-position="top">?</span></span></th>
-                            <th><span class="header-label">Classe<span class="info-icon has-tooltip" tabindex="0" aria-label="Classe ABC" data-tooltip="Classificação calculada a partir da participação individual nas vendas. Produtos com ≥ 5% ficam na Classe A; entre 2% e 5% na Classe B; os demais na Classe C." data-tooltip-position="top">?</span></span></th>
+                            <th><span class="header-label">Vendas 3M<span class="info-icon has-tooltip" tabindex="0" aria-label="Vendas nos últimos 3 meses" data-tooltip="Total vendido nos últimos 3 meses considerado nesta análise." data-tooltip-position="top">?</span></span></th>
+                            <th><span class="header-label">% Individual<span class="info-icon has-tooltip" tabindex="0" aria-label="Percentual individual" data-tooltip="Mostra quanto o produto representa sozinho do total vendido pelos itens com saída. Com base nele definimos as classes: 5% ou mais → A; entre 1% e 5% → B; abaixo de 1% → C." data-tooltip-position="top">?</span></span></th>
+                            <th><span class="header-label">Classe<span class="info-icon has-tooltip" tabindex="0" aria-label="Classe ABC" data-tooltip="Definida diretamente pelo % Individual do item: 5% ou mais das vendas ficam na Classe A, entre 1% e 5% na Classe B e o restante na Classe C." data-tooltip-position="top">?</span></span></th>
                         </tr>
                     </thead>
                     <tbody>
