@@ -1143,7 +1143,7 @@
 
         <div class="pareto-section">
             <h3 class="header-label">📊 Análise ABC por Vendas <span class="info-icon has-tooltip" tabindex="0" aria-label="Análise ABC por Vendas" data-tooltip="Organizamos os produtos pelo quanto venderam nos últimos meses. Os que somam a maior parte do dinheiro ficam na Classe A, os do meio na B e o restante na C." data-tooltip-position="top">?</span></h3>
-            <p class="pareto-description">Somamos as vendas dos últimos quatro meses de cada item, colocamos os produtos em ordem do maior para o menor e calculamos quanto cada um representa do total. Com isso, mostramos o percentual individual, o percentual acumulado e em qual faixa (A, B ou C) o item entra.</p>
+            <p class="pareto-description">Ordenamos as vendas acumuladas dos últimos meses e calculamos sua participação no total dividindo a venda de cada produto pelo valor total vendido. Assim, os principais entram na Classe A, os médios na B e os menores na C.</p>
             <div id="paretoContent"></div>
         </div>
         <div class="gauges-container" id="gaugesContainer">
@@ -3109,10 +3109,10 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                             <th><span class="header-label">#<span class="info-icon has-tooltip" tabindex="0" aria-label="Posição no ranking" data-tooltip="Lugar do produto na lista, indo do que mais vende para o que menos vende." data-tooltip-position="top">?</span></span></th>
                             <th><span class="header-label">Código<span class="info-icon has-tooltip" tabindex="0" aria-label="Código do produto" data-tooltip="Número usado no sistema para identificar o produto." data-tooltip-position="top">?</span></span></th>
                             <th><span class="header-label">Item<span class="info-icon has-tooltip" tabindex="0" aria-label="Descrição do item" data-tooltip="Nome do produto como aparece no cadastro." data-tooltip-position="top">?</span></span></th>
-                            <th><span class="header-label">Vendas 4M<span class="info-icon has-tooltip" tabindex="0" aria-label="Vendas nos últimos 4 meses" data-tooltip="Total vendido nos últimos quatro meses usados neste cálculo." data-tooltip-position="top">?</span></span></th>
-                            <th><span class="header-label">% Individual<span class="info-icon has-tooltip" tabindex="0" aria-label="Percentual individual" data-tooltip="Quanto este item sozinho representa do total vendido." data-tooltip-position="top">?</span></span></th>
-                            <th><span class="header-label">% Acumulado<span class="info-icon has-tooltip" tabindex="0" aria-label="Percentual acumulado" data-tooltip="Soma dos percentuais dos itens até aqui, mostrando quanto do total já foi coberto." data-tooltip-position="top">?</span></span></th>
-                            <th><span class="header-label">Classe<span class="info-icon has-tooltip" tabindex="0" aria-label="Classe ABC" data-tooltip="Resultado da divisão ABC: A costuma somar até 80% das vendas, B vem na sequência e C reúne o restante." data-tooltip-position="top">?</span></span></th>
+                            <th><span class="header-label">Vendas 3M<span class="info-icon has-tooltip" tabindex="0" aria-label="Vendas nos últimos 3 meses" data-tooltip="Total vendido nos últimos quatro meses usados neste cálculo." data-tooltip-position="top">?</span></span></th>
+                            <th><span class="header-label">% Individual<span class="info-icon has-tooltip" tabindex="0" aria-label="Percentual individual" data-tooltip="Mostra quanto o produto representa sozinho do total de vendas. É calculado dividindo a venda do item pelo valor total vendido." data-tooltip-position="top">?</span></span></th>
+                            <th><span class="header-label">% Acumulado<span class="info-icon has-tooltip" tabindex="0" aria-label="Percentual acumulado" data-tooltip="Mostra quanto já representam juntos este produto e os anteriores da lista. É calculado somando o percentual individual dele com os de cima até aqui." data-tooltip-position="top">?</span></span></th>
+                            <th><span class="header-label">Classe<span class="info-icon has-tooltip" tabindex="0" aria-label="Classe ABC" data-tooltip="Resultado da divisão ABC: Classe A reúne poucos produtos que somam cerca de 70–80% das vendas totais. Classe B representa os itens seguintes, com mais 15–25%. Classe C inclui os demais produtos, que juntos ficam em torno de 5–10%." data-tooltip-position="top">?</span></span></th>
                         </tr>
                     </thead>
                     <tbody>
