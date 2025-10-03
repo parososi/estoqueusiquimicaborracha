@@ -1127,8 +1127,8 @@
                     <div class="stat-label"><span class="label-text">Mediana de Estoque (meses)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Mediana de estoque" data-tooltip="Valor central da distribuição de meses de estoque: metade dos itens possui cobertura acima e metade abaixo desse ponto." data-tooltip-position="top">?</span></div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value" id="stdDevStock">--</div>
-                    <div class="stat-label"><span class="label-text">Desvio-Padrão (meses)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Desvio-padrão" data-tooltip="Mede a dispersão dos meses de estoque: quanto maior o valor, maior a variação entre os itens." data-tooltip-position="top">?</span></div>
+                    <div class="stat-value" id="totalStockValue">0</div>
+                    <div class="stat-label"><span class="label-text">Estoque Total</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Estoque total" data-tooltip="Soma das unidades disponíveis considerando todos os filtros e estabelecimentos selecionados." data-tooltip-position="top">?</span></div>
                 </div>
                 <div class="stat-item clickable" onclick="filterCriticalStock()" title="Clique para ver produtos críticos (<2 meses)">
                     <div class="stat-value critical" id="criticalCount">0</div>
@@ -2609,6 +2609,16 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
         }
 
         // === FUNÇÕES DE FILTROS ===
+        function resetOver50AdvancedFilter() {
+            if (advancedStockFilter === 'over50') {
+                advancedStockFilter = '';
+                const advancedDropdown = document.getElementById('advancedStockFilter');
+                if (advancedDropdown) {
+                    advancedDropdown.value = '';
+                }
+            }
+        }
+
         function populateFamilyFilter() {
             const families = [...new Set(allProductsData.map(function(p) {
                 return p.family;
@@ -2666,6 +2676,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
                 criticalFilterActive = true;
                 currentFilter = 'critical';
                 predictionFilter = null;
+                resetOver50AdvancedFilter();
                 const activeItems = document.querySelectorAll('.prediction-item.active');
                 activeItems.forEach(function(item) {
                     item.classList.remove('active');
@@ -2679,6 +2690,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             currentFilter = 'low';
             predictionFilter = null;
             criticalFilterActive = false;
+            resetOver50AdvancedFilter();
             const activeItems = document.querySelectorAll('.prediction-item.active');
             activeItems.forEach(function(item) {
                 item.classList.remove('active');
@@ -2691,6 +2703,7 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             currentFilter = 'high';
             predictionFilter = null;
             criticalFilterActive = false;
+            resetOver50AdvancedFilter();
             const activeItems = document.querySelectorAll('.prediction-item.active');
             activeItems.forEach(function(item) {
                 item.classList.remove('active');
@@ -3066,15 +3079,15 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             }
 
             const median = percentile(monthsValues, 0.5);
-            const variance = monthsValues.length > 0 ? monthsValues.reduce(function(acc, value) {
-                return acc + Math.pow(value - avgStock, 2);
-            }, 0) / monthsValues.length : 0;
-            const stdDev = monthsValues.length > 0 ? Math.sqrt(variance) : null;
+            const totalStock = filteredData.reduce(function(sum, product) {
+                return sum + getProductStock(product);
+            }, 0);
+            const safeTotalStock = Number.isFinite(totalStock) ? totalStock : 0;
 
             document.getElementById('totalProducts').textContent = total;
             document.getElementById('avgStockMonths').textContent = monthsValues.length > 0 ? formatStatValue(avgStock) : '--';
             document.getElementById('medianStock').textContent = median !== null ? formatStatValue(median) : '--';
-            document.getElementById('stdDevStock').textContent = stdDev !== null ? formatStatValue(stdDev) : '--';
+            document.getElementById('totalStockValue').textContent = safeTotalStock.toLocaleString('pt-BR');
             document.getElementById('criticalCount').textContent = criticalCount;
             document.getElementById('totalFamilies').textContent = families;
         }
@@ -3247,12 +3260,21 @@ console.log('data.js v1.2 carregado com', window.stockData.length, 'produtos');`
             initializeTooltips(tableBody);
         }
 
+        function normalizeStockValue(value) {
+            const numeric = Number(value);
+            return Number.isFinite(numeric) ? numeric : 0;
+        }
+
         function getProductStock(product) {
+            const stock14 = normalizeStockValue(product.stock14);
+            const stock9013 = normalizeStockValue(product.stock9013);
+            const stock9015 = normalizeStockValue(product.stock9015);
+
             switch(currentEstablishment) {
-                case '1-4': return product.stock14;
-                case '90-13': return product.stock9013;
-                case '90-15': return product.stock9015;
-                default: return product.stock14 + product.stock9013 + product.stock9015;
+                case '1-4': return stock14;
+                case '90-13': return stock9013;
+                case '90-15': return stock9015;
+                default: return stock14 + stock9013 + stock9015;
             }
         }
 
