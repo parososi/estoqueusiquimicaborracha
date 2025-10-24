@@ -3817,7 +3817,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 });
                 if (typeof vendasIndex === 'number') {
                     assignField('vendas4M', vendasIndex, '(usando VENDAS 3M)');
-                    warnings.push('Coluna VENDAS 4M não encontrada; utilizando VENDAS 3M da planilha.');
+                    warnings.push('Coluna VENDAS 3M não encontrada; utilizando VENDAS 3M da planilha.');
                 }
             }
 
@@ -3882,7 +3882,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 stock14: '1-4',
                 stock9013: '90-13',
                 stock9015: '90-15',
-                vendas4M: 'VENDAS 4M',
+                vendas4M: 'VENDAS 3M',
                 media3M: 'MÉDIA 3M',
                 stockMonths: 'ESTOQUE EM MESES/COBERTURA'
             };
