@@ -1,4 +1,4 @@
-// Dados do Dashboard de Estoque v1.3 - Gerado em 23/10/2025, 17:52:47
+// Dados do Dashboard de Estoque v1.3 - Gerado em 27/10/2025, 10:27:47
 // Substitua este arquivo na pasta compartilhada para atualizar os dados
 console.log('Carregando data.js v1.3...');
 
@@ -8,23 +8,23 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3471",
-    "stock14": 9220,
+    "stock14": 6980,
     "stock9013": 0,
     "stock9015": 0,
-    "stockMonths": 1.7,
+    "stockMonths": 1.3,
     "vendas4M": 22300,
     "media3M": 7433,
     "novembro": 13440,
     "dezembro": 7680,
-    "cobertura": 4.1,
+    "cobertura": 3.8,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 13440,
         "rawValue": "13,440"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 7680,
         "rawValue": "7,680"
       }
@@ -34,24 +34,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 13440,
             "rawValue": "13,440"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 7680,
             "rawValue": "7,680"
           }
         ],
         "totals": {
-          "stock14": 9220,
+          "stock14": 6980,
           "stock9013": 0,
           "stock9015": 0,
-          "totalStock": 9220,
+          "totalStock": 6980,
           "vendas4M": 22300,
           "media3M": 7433,
-          "cobertura": 1.7
+          "cobertura": 1.3
         }
       }
     ]
@@ -61,23 +61,23 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3431",
-    "stock14": 8720,
+    "stock14": 6860,
     "stock9013": 0,
     "stock9015": 0,
-    "stockMonths": 1.7,
+    "stockMonths": 1.3,
     "vendas4M": 20380,
     "media3M": 6793,
     "novembro": 16320,
     "dezembro": 6720,
-    "cobertura": 4.7,
+    "cobertura": 4.4,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 16320,
         "rawValue": "16,320"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 6720,
         "rawValue": "6,720"
       }
@@ -87,24 +87,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 16320,
             "rawValue": "16,320"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 6720,
             "rawValue": "6,720"
           }
         ],
         "totals": {
-          "stock14": 8720,
+          "stock14": 6860,
           "stock9013": 0,
           "stock9015": 0,
-          "totalStock": 8720,
+          "totalStock": 6860,
           "vendas4M": 20380,
           "media3M": 6793,
-          "cobertura": 1.7
+          "cobertura": 1.3
         }
       }
     ]
@@ -125,12 +125,12 @@ window.stockData = [
     "cobertura": 26.7,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 6720,
         "rawValue": "6,720"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -140,12 +140,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 6720,
             "rawValue": "6,720"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -178,12 +178,12 @@ window.stockData = [
     "cobertura": 5.2,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 5760,
         "rawValue": "5,760"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 960,
         "rawValue": "960"
       }
@@ -193,12 +193,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 5760,
             "rawValue": "5,760"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 960,
             "rawValue": "960"
           }
@@ -231,12 +231,12 @@ window.stockData = [
     "cobertura": 5.7,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 9600,
         "rawValue": "9,600"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -246,12 +246,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 9600,
             "rawValue": "9,600"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -284,12 +284,12 @@ window.stockData = [
     "cobertura": 4,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 6720,
         "rawValue": "6,720"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 3840,
         "rawValue": "3,840"
       }
@@ -299,12 +299,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 6720,
             "rawValue": "6,720"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 3840,
             "rawValue": "3,840"
           }
@@ -326,23 +326,23 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3481",
-    "stock14": 20,
+    "stock14": 500,
     "stock9013": 0,
     "stock9015": 0,
-    "stockMonths": 0,
+    "stockMonths": 0.4,
     "vendas4M": 4460,
     "media3M": 1487,
     "novembro": 4800,
     "dezembro": 1920,
-    "cobertura": 4.5,
+    "cobertura": 4.9,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 4800,
         "rawValue": "4,800"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 1920,
         "rawValue": "1,920"
       }
@@ -352,24 +352,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 4800,
             "rawValue": "4,800"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 1920,
             "rawValue": "1,920"
           }
         ],
         "totals": {
-          "stock14": 20,
+          "stock14": 500,
           "stock9013": 0,
           "stock9015": 0,
-          "totalStock": 20,
+          "totalStock": 500,
           "vendas4M": 4460,
           "media3M": 1487,
-          "cobertura": 0
+          "cobertura": 0.4
         }
       }
     ]
@@ -390,12 +390,12 @@ window.stockData = [
     "cobertura": 115.2,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 960,
         "rawValue": "960"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -405,12 +405,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 960,
             "rawValue": "960"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -443,12 +443,12 @@ window.stockData = [
     "cobertura": 921.6,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 7680,
         "rawValue": "7,680"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -458,12 +458,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 7680,
             "rawValue": "7,680"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -496,12 +496,12 @@ window.stockData = [
     "cobertura": 6.8,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -511,12 +511,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -549,12 +549,12 @@ window.stockData = [
     "cobertura": 143.6,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -564,12 +564,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -602,12 +602,12 @@ window.stockData = [
     "cobertura": 19.2,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 1920,
         "rawValue": "1,920"
       }
@@ -617,12 +617,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 1920,
             "rawValue": "1,920"
           }
@@ -644,8 +644,8 @@ window.stockData = [
     "supplier": "VINMAR",
     "family": "BORRACHA EVA",
     "item": "EVA SIPCHEM 2518",
-    "stock14": 1795,
-    "stock9013": 13750,
+    "stock14": 6695,
+    "stock9013": 8250,
     "stock9015": 0,
     "stockMonths": 1.2,
     "vendas4M": 51075,
@@ -655,12 +655,12 @@ window.stockData = [
     "cobertura": 3.5,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 44000,
         "rawValue": "44,000"
       }
@@ -670,21 +670,21 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 44000,
             "rawValue": "44,000"
           }
         ],
         "totals": {
-          "stock14": 1795,
-          "stock9013": 13750,
+          "stock14": 6695,
+          "stock9013": 8250,
           "stock9015": 0,
-          "totalStock": 15545,
+          "totalStock": 14945,
           "vendas4M": 51075,
           "media3M": 17025,
           "cobertura": 1.2
@@ -708,12 +708,12 @@ window.stockData = [
     "cobertura": 2.4,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 3000,
         "rawValue": "3,000"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -723,12 +723,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 3000,
             "rawValue": "3,000"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -761,12 +761,12 @@ window.stockData = [
     "cobertura": 14.8,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 4500,
         "rawValue": "4,500"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -776,12 +776,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 4500,
             "rawValue": "4,500"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -803,23 +803,23 @@ window.stockData = [
     "supplier": "KIUMHO",
     "family": "BORRACHA EPDM",
     "item": "EPDM KUMHO KEP 9570E",
-    "stock14": 4000,
+    "stock14": 3850,
     "stock9013": 11900,
     "stock9015": 0,
-    "stockMonths": 12.1,
+    "stockMonths": 12,
     "vendas4M": 5250,
     "media3M": 1750,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 9.1,
+    "cobertura": 9,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -829,24 +829,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 4000,
+          "stock14": 3850,
           "stock9013": 11900,
           "stock9015": 0,
-          "totalStock": 15900,
+          "totalStock": 15750,
           "vendas4M": 5250,
           "media3M": 1750,
-          "cobertura": 12.1
+          "cobertura": 12
         }
       }
     ]
@@ -867,12 +867,12 @@ window.stockData = [
     "cobertura": 810,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 6750,
         "rawValue": "6,750"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -882,12 +882,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 6750,
             "rawValue": "6,750"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -920,12 +920,12 @@ window.stockData = [
     "cobertura": 1245,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -935,12 +935,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -962,23 +962,23 @@ window.stockData = [
     "supplier": "VINMAR",
     "family": "BORRACHA EVA",
     "item": "EVA CYNPOL 0218",
-    "stock14": 6100,
+    "stock14": 5100,
     "stock9013": 1200,
     "stock9015": 36500,
-    "stockMonths": 2.3,
+    "stockMonths": 2.2,
     "vendas4M": 77800,
     "media3M": 25933,
     "novembro": 54000,
     "dezembro": 0,
-    "cobertura": 3.8,
+    "cobertura": 3.7,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 54000,
         "rawValue": "54,000"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -988,24 +988,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 54000,
             "rawValue": "54,000"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 6100,
+          "stock14": 5100,
           "stock9013": 1200,
           "stock9015": 36500,
-          "totalStock": 43800,
+          "totalStock": 42800,
           "vendas4M": 77800,
           "media3M": 25933,
-          "cobertura": 2.3
+          "cobertura": 2.2
         }
       }
     ]
@@ -1016,22 +1016,22 @@ window.stockData = [
     "family": "ACELERADOR",
     "item": "TMTD",
     "stock14": 0,
-    "stock9013": 6000,
+    "stock9013": 4000,
     "stock9015": 0,
-    "stockMonths": 4,
+    "stockMonths": 2.7,
     "vendas4M": 6000,
     "media3M": 2000,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 3,
+    "cobertura": 2,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1041,24 +1041,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
           "stock14": 0,
-          "stock9013": 6000,
+          "stock9013": 4000,
           "stock9015": 0,
-          "totalStock": 6000,
+          "totalStock": 4000,
           "vendas4M": 6000,
           "media3M": 2000,
-          "cobertura": 4
+          "cobertura": 2.7
         }
       }
     ]
@@ -1068,23 +1068,23 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "MBTS",
-    "stock14": 3225,
+    "stock14": 2975,
     "stock9013": 8075,
     "stock9015": 0,
-    "stockMonths": 361.6,
+    "stockMonths": 353.6,
     "vendas4M": 125,
     "media3M": 42,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 271.2,
+    "cobertura": 265.2,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1094,24 +1094,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 3225,
+          "stock14": 2975,
           "stock9013": 8075,
           "stock9015": 0,
-          "totalStock": 11300,
+          "totalStock": 11050,
           "vendas4M": 125,
           "media3M": 42,
-          "cobertura": 361.6
+          "cobertura": 353.6
         }
       }
     ]
@@ -1121,23 +1121,23 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "CBS",
-    "stock14": 225,
-    "stock9013": 6325,
+    "stock14": 3000,
+    "stock9013": 3325,
     "stock9015": 0,
-    "stockMonths": 11.1,
+    "stockMonths": 10.8,
     "vendas4M": 2350,
     "media3M": 783,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 8.4,
+    "cobertura": 8.1,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1147,24 +1147,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 225,
-          "stock9013": 6325,
+          "stock14": 3000,
+          "stock9013": 3325,
           "stock9015": 0,
-          "totalStock": 6550,
+          "totalStock": 6325,
           "vendas4M": 2350,
           "media3M": 783,
-          "cobertura": 11.1
+          "cobertura": 10.8
         }
       }
     ]
@@ -1174,8 +1174,8 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ADITIVO BORRACHA",
     "item": "SI69 SILANO",
-    "stock14": 0,
-    "stock9013": 1600,
+    "stock14": 1600,
+    "stock9013": 0,
     "stock9015": 0,
     "stockMonths": 17.1,
     "vendas4M": 375,
@@ -1185,12 +1185,12 @@ window.stockData = [
     "cobertura": 12.8,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1200,19 +1200,19 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 0,
-          "stock9013": 1600,
+          "stock14": 1600,
+          "stock9013": 0,
           "stock9015": 0,
           "totalStock": 1600,
           "vendas4M": 375,
@@ -1238,12 +1238,12 @@ window.stockData = [
     "cobertura": 124,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1253,12 +1253,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1291,12 +1291,12 @@ window.stockData = [
     "cobertura": 185.5,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1306,12 +1306,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1333,8 +1333,8 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ADITIVO BORRACHA",
     "item": "6PPD",
-    "stock14": 275,
-    "stock9013": 4175,
+    "stock14": 575,
+    "stock9013": 3875,
     "stock9015": 0,
     "stockMonths": 2.3,
     "vendas4M": 7800,
@@ -1344,12 +1344,12 @@ window.stockData = [
     "cobertura": 1.7,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1359,19 +1359,19 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 275,
-          "stock9013": 4175,
+          "stock14": 575,
+          "stock9013": 3875,
           "stock9015": 0,
           "totalStock": 4450,
           "vendas4M": 7800,
@@ -1397,12 +1397,12 @@ window.stockData = [
     "cobertura": 20.3,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1412,12 +1412,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1439,23 +1439,23 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ADITIVO BORRACHA",
     "item": "TMQ",
-    "stock14": 175,
-    "stock9013": 2400,
+    "stock14": 475,
+    "stock9013": 5600,
     "stock9015": 0,
-    "stockMonths": 1.6,
+    "stockMonths": 3.8,
     "vendas4M": 6425,
     "media3M": 2142,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 1.2,
+    "cobertura": 2.8,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1465,24 +1465,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 175,
-          "stock9013": 2400,
+          "stock14": 475,
+          "stock9013": 5600,
           "stock9015": 0,
-          "totalStock": 2575,
+          "totalStock": 6075,
           "vendas4M": 6425,
           "media3M": 2142,
-          "cobertura": 1.6
+          "cobertura": 3.8
         }
       }
     ]
@@ -1503,12 +1503,12 @@ window.stockData = [
     "cobertura": 6.5,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 16000,
         "rawValue": "16,000"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1518,12 +1518,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 16000,
             "rawValue": "16,000"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1556,12 +1556,12 @@ window.stockData = [
     "cobertura": 15.5,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 8000,
         "rawValue": "8,000"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1571,12 +1571,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 8000,
             "rawValue": "8,000"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1598,23 +1598,23 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "DTDM",
-    "stock14": 550,
-    "stock9013": 3000,
+    "stock14": 0,
+    "stock9013": 1200,
     "stock9015": 0,
-    "stockMonths": 568,
+    "stockMonths": 192,
     "vendas4M": 25,
     "media3M": 8,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 426,
+    "cobertura": 144,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1624,24 +1624,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 550,
-          "stock9013": 3000,
+          "stock14": 0,
+          "stock9013": 1200,
           "stock9015": 0,
-          "totalStock": 3550,
+          "totalStock": 1200,
           "vendas4M": 25,
           "media3M": 8,
-          "cobertura": 568
+          "cobertura": 192
         }
       }
     ]
@@ -1662,12 +1662,12 @@ window.stockData = [
     "cobertura": 51,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1677,12 +1677,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1715,12 +1715,12 @@ window.stockData = [
     "cobertura": 432,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1730,12 +1730,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1757,23 +1757,23 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "ZDEC",
-    "stock14": 550,
+    "stock14": 525,
     "stock9013": 1200,
     "stock9015": 0,
-    "stockMonths": 140,
+    "stockMonths": 138,
     "vendas4M": 50,
     "media3M": 17,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 105,
+    "cobertura": 103.5,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1783,24 +1783,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 550,
+          "stock14": 525,
           "stock9013": 1200,
           "stock9015": 0,
-          "totalStock": 1750,
+          "totalStock": 1725,
           "vendas4M": 50,
           "media3M": 17,
-          "cobertura": 140
+          "cobertura": 138
         }
       }
     ]
@@ -1810,23 +1810,23 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "ZDMC",
-    "stock14": 775,
+    "stock14": 750,
     "stock9013": 550,
     "stock9015": 0,
-    "stockMonths": 53,
+    "stockMonths": 52,
     "vendas4M": 100,
     "media3M": 33,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 39.8,
+    "cobertura": 39,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1836,24 +1836,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 775,
+          "stock14": 750,
           "stock9013": 550,
           "stock9015": 0,
-          "totalStock": 1325,
+          "totalStock": 1300,
           "vendas4M": 100,
           "media3M": 33,
-          "cobertura": 53
+          "cobertura": 52
         }
       }
     ]
@@ -1863,23 +1863,23 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "ZDBC",
-    "stock14": 1100,
+    "stock14": 1075,
     "stock9013": 2400,
     "stock9015": 0,
-    "stockMonths": 560,
+    "stockMonths": 556,
     "vendas4M": 25,
     "media3M": 8,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 420,
+    "cobertura": 417,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1889,24 +1889,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 1100,
+          "stock14": 1075,
           "stock9013": 2400,
           "stock9015": 0,
-          "totalStock": 3500,
+          "totalStock": 3475,
           "vendas4M": 25,
           "media3M": 8,
-          "cobertura": 560
+          "cobertura": 556
         }
       }
     ]
@@ -1927,12 +1927,12 @@ window.stockData = [
     "cobertura": 138,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1942,12 +1942,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1969,23 +1969,23 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "MBT",
-    "stock14": 1100,
+    "stock14": 1050,
     "stock9013": 1200,
     "stock9015": 0,
-    "stockMonths": 368,
+    "stockMonths": 360,
     "vendas4M": 25,
     "media3M": 8,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 276,
+    "cobertura": 270,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1995,24 +1995,24 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
         ],
         "totals": {
-          "stock14": 1100,
+          "stock14": 1050,
           "stock9013": 1200,
           "stock9015": 0,
-          "totalStock": 2300,
+          "totalStock": 2250,
           "vendas4M": 25,
           "media3M": 8,
-          "cobertura": 368
+          "cobertura": 360
         }
       }
     ]
@@ -2033,12 +2033,12 @@ window.stockData = [
     "cobertura": 7.2,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2048,12 +2048,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2086,12 +2086,12 @@ window.stockData = [
     "cobertura": 11.6,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2101,12 +2101,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2139,12 +2139,12 @@ window.stockData = [
     "cobertura": 55.2,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 1800,
         "rawValue": "1,800"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2154,12 +2154,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 1800,
             "rawValue": "1,800"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2192,12 +2192,12 @@ window.stockData = [
     "cobertura": 87,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2207,12 +2207,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2245,12 +2245,12 @@ window.stockData = [
     "cobertura": 157.5,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 5250,
         "rawValue": "5,250"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2260,12 +2260,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 5250,
             "rawValue": "5,250"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2298,12 +2298,12 @@ window.stockData = [
     "cobertura": 210,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 1200,
         "rawValue": "1,200"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2313,12 +2313,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 1200,
             "rawValue": "1,200"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2351,12 +2351,12 @@ window.stockData = [
     "cobertura": 2244,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2366,12 +2366,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2404,12 +2404,12 @@ window.stockData = [
     "cobertura": 13.5,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2419,12 +2419,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2457,12 +2457,12 @@ window.stockData = [
     "cobertura": 193.7,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2472,12 +2472,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2510,12 +2510,12 @@ window.stockData = [
     "cobertura": 69,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2525,12 +2525,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2563,12 +2563,12 @@ window.stockData = [
     "cobertura": 0,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2578,12 +2578,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2616,12 +2616,12 @@ window.stockData = [
     "cobertura": 45,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2631,12 +2631,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2669,12 +2669,12 @@ window.stockData = [
     "cobertura": 0.1,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2684,12 +2684,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2722,12 +2722,12 @@ window.stockData = [
     "cobertura": 0,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2737,12 +2737,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2775,12 +2775,12 @@ window.stockData = [
     "cobertura": 85.1,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2790,12 +2790,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2828,12 +2828,12 @@ window.stockData = [
     "cobertura": 33,
     "monthlyValues": [
       {
-        "label": "NOVEMBRO",
+        "label": "NOVEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO",
+        "label": "DEZEMBRO (25)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2843,12 +2843,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "NOVEMBRO",
+            "label": "NOVEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO",
+            "label": "DEZEMBRO (25)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2869,13 +2869,13 @@ window.stockData = [
 
 // Metadados
 window.stockMetadata = {
-    lastUpdate: "2025-10-23T20:52:47.168Z",
+    lastUpdate: "2025-10-27T13:27:47.700Z",
     totalProducts: 54,
     generatedBy: "Dashboard de Estoque v1.3 - Importador com múltiplas abas",
     version: "1.3.0",
-    sourceFile: "atualizacao.xlsx",
+    sourceFile: "Atualização Slow 22-10.xlsx",
     sheetName: "Estoque (54)",
-    source: "atualizacao.xlsx · Estoque"
+    source: "Atualização Slow 22-10.xlsx · Estoque"
 };
 
 console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');
