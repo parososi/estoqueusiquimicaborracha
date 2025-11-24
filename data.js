@@ -1,4 +1,4 @@
-// Dados do Dashboard de Estoque v1.3 - Gerado em 24/11/2025, 09:21:22
+// Dados do Dashboard de Estoque v1.3 - Gerado em 24/11/2025, 10:06:47
 // Substitua este arquivo na pasta compartilhada para atualizar os dados
 console.log('Carregando data.js v1.3...');
 
@@ -8,8 +8,8 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3471",
-    "stock14": 1840,
-    "stock9013": 1840,
+    "stock14": 3680,
+    "stock9013": 0,
     "stock9015": 0,
     "stockMonths": 0.4,
     "vendas4M": 36780,
@@ -45,8 +45,8 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 1840,
-          "stock9013": 1840,
+          "stock14": 3680,
+          "stock9013": 0,
           "stock9015": 0,
           "totalStock": 3680,
           "vendas4M": 36780,
@@ -61,8 +61,8 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3431",
-    "stock14": 2580,
-    "stock9013": 11520,
+    "stock14": 5580,
+    "stock9013": 8520,
     "stock9015": 0,
     "stockMonths": 1.8,
     "vendas4M": 30820,
@@ -98,8 +98,8 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 2580,
-          "stock9013": 11520,
+          "stock14": 5580,
+          "stock9013": 8520,
           "stock9015": 0,
           "totalStock": 14100,
           "vendas4M": 30820,
@@ -187,8 +187,8 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3441",
-    "stock14": 1520,
-    "stock9013": 2380,
+    "stock14": 2520,
+    "stock9013": 1380,
     "stock9015": 0,
     "stockMonths": 3.2,
     "vendas4M": 4940,
@@ -224,8 +224,8 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 1520,
-          "stock9013": 2380,
+          "stock14": 2520,
+          "stock9013": 1380,
           "stock9015": 0,
           "totalStock": 3900,
           "vendas4M": 4940,
@@ -1002,8 +1002,8 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "CBS",
-    "stock14": 1100,
-    "stock9013": 1500,
+    "stock14": 2600,
+    "stock9013": 0,
     "stock9015": 0,
     "stockMonths": 1.2,
     "vendas4M": 8975,
@@ -1039,8 +1039,8 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 1100,
-          "stock9013": 1500,
+          "stock14": 2600,
+          "stock9013": 0,
           "stock9015": 0,
           "totalStock": 2600,
           "vendas4M": 8975,
@@ -1532,8 +1532,8 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "TMTM",
-    "stock14": 0,
-    "stock9013": 700,
+    "stock14": 700,
+    "stock9013": 0,
     "stock9015": 0,
     "stockMonths": 4.7,
     "vendas4M": 600,
@@ -1569,8 +1569,8 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 0,
-          "stock9013": 700,
+          "stock14": 700,
+          "stock9013": 0,
           "stock9015": 0,
           "totalStock": 700,
           "vendas4M": 600,
@@ -2750,7 +2750,7 @@ window.stockData = [
 
 // Metadados
 window.stockMetadata = {
-    lastUpdate: "2025-11-24T12:21:22.564Z",
+    lastUpdate: "2025-11-24T13:06:47.203Z",
     totalProducts: 51,
     generatedBy: "Dashboard de Estoque v1.3 - Importador com múltiplas abas",
     version: "1.3.0",
