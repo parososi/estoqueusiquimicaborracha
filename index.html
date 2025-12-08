@@ -854,6 +854,30 @@
             gap: 20px;
         }
 
+        .stat-subvalue {
+            color: #1F448C;
+            font-size: 14px;
+            margin-top: 6px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .stat-footnote {
+            color: #555;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .stat-value.loading-text {
+            font-size: 16px;
+            color: #6c757d;
+        }
+
+        .cost-highlight {
+            border-left: 4px solid #1F448C;
+            padding-left: 10px;
+        }
+
         .pareto-section {
             background: #f8f9fa;
             padding: 15px;
@@ -1176,6 +1200,49 @@
             border-radius: 16px;
             padding: 20px;
             box-shadow: 0 15px 35px rgba(31, 68, 140, 0.12);
+        }
+
+        .history-overview.history-cost {
+            display: grid;
+            gap: 12px;
+        }
+
+        .history-cost-grid {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .history-cost-card {
+            border: 1px solid #e1e7f7;
+            border-radius: 12px;
+            padding: 12px 14px;
+            background: linear-gradient(145deg, #f8fbff 0%, #ffffff 100%);
+            box-shadow: 0 12px 18px rgba(31, 68, 140, 0.06);
+        }
+
+        .history-cost-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #5d6fa3;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .history-cost-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1f2a44;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .history-cost-note {
+            font-size: 13px;
+            color: #56688f;
+            margin-top: 6px;
         }
 
         .history-overview.history-coverage {
@@ -1804,6 +1871,17 @@
                     <div class="stat-value" id="totalFamilies">0</div>
                     <div class="stat-label"><span class="label-text">Famílias de Produtos</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Famílias de produtos" data-tooltip="Número de famílias distintas representadas na lista atual de produtos." data-tooltip-position="top">?</span></div>
                 </div>
+                <div class="stat-item cost-highlight" id="brlCostCard">
+                    <div class="stat-value" id="totalAccountingCostBrl">--</div>
+                    <div class="stat-label"><span class="label-text">Custo Contábil (BRL)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Custo Contábil (BRL)" data-tooltip="Somatório do custo contábil por kg dos itens precificados em reais multiplicado pelo estoque disponível em quilos." data-tooltip-position="top">?</span></div>
+                    <div class="stat-footnote" id="costBrlFootnote">Itens precificados em BRL</div>
+                </div>
+                <div class="stat-item cost-highlight" id="usdCostCard" style="display: none;">
+                    <div class="stat-value" id="totalAccountingCostUsd">--</div>
+                    <div class="stat-label"><span class="label-text">Custo Contábil (USD)</span><span class="info-icon has-tooltip" tabindex="0" aria-label="Custo Contábil (USD)" data-tooltip="Somatório do custo contábil por kg dos itens dolarizados multiplicado pelo estoque disponível em quilos." data-tooltip-position="top">?</span></div>
+                    <div class="stat-subvalue" id="totalAccountingCostUsdInBrl">--</div>
+                    <div class="stat-footnote" id="ptaxSummaryInfo">PTAX: <span id="ptaxRate">—</span> · <span id="ptaxDate">—</span> <span id="ptaxStatusNote"></span></div>
+                </div>
             </div>
         </div>
 
@@ -1907,6 +1985,14 @@
         let activeImportDescriptor = 'dados carregados';
         let lastImportedFileName = '';
         let lastImportedSheetName = '';
+        let currentlyViewedProductCode = null;
+        let ptaxState = {
+            rate: null,
+            date: null,
+            dataLabel: null,
+            loading: true,
+            error: null
+        };
 
         const defaultFamilyAccentPalette = Object.freeze([
             '#FF6F61',
@@ -2765,6 +2851,19 @@
             }).format(value);
         }
 
+        function formatWeightValue(value, maxFractionDigits = 3) {
+            if (value === null || typeof value === 'undefined' || Number.isNaN(value)) {
+                return '--';
+            }
+
+            const minimumFractionDigits = Number.isInteger(value) ? 0 : 1;
+
+            return new Intl.NumberFormat('pt-BR', {
+                minimumFractionDigits,
+                maximumFractionDigits: maxFractionDigits
+            }).format(value);
+        }
+
         function formatIntegerValue(value) {
             if (!Number.isFinite(value)) {
                 return '0';
@@ -2892,9 +2991,209 @@
                 return '--';
             }
 
-            const stockKg = rawStock / 1000;
-            const formattedValue = formatStatValue(stockKg, 3);
+            const stockKg = rawStock;
+            const formattedValue = formatIntegerValue(stockKg);
             return `${formattedValue} kg`;
+        }
+
+        function formatCurrencyValue(value, currency) {
+            if (!Number.isFinite(value)) {
+                return '--';
+            }
+
+            const normalizedCurrency = currency && currency.toUpperCase() === 'USD' ? 'USD' : 'BRL';
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: normalizedCurrency,
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(value);
+        }
+
+        function detectCurrencyFromCell(cellValue) {
+            if (cellValue === null || typeof cellValue === 'undefined') {
+                return 'BRL';
+            }
+
+            const normalized = cellValue.toString().toLowerCase();
+
+            const isBrl = normalized.includes('brl')
+                || normalized.includes('r$')
+                || normalized.includes('real')
+                || normalized.includes('reais');
+
+            if (isBrl) {
+                return 'BRL';
+            }
+
+            const usdHints = ['usd', 'u$', 'u$s', 'dolar', 'dólar'];
+            if (usdHints.some(function(hint) { return normalized.includes(hint); })) {
+                return 'USD';
+            }
+
+            if (normalized.includes('$')) {
+                return 'USD';
+            }
+
+            return 'BRL';
+        }
+
+        function parseAccountingCostCell(cellValue) {
+            const numeric = parseNumber(cellValue);
+            const currency = detectCurrencyFromCell(cellValue);
+            const hasValue = hasMeaningfulValue(cellValue) && Number.isFinite(numeric);
+
+            return {
+                value: hasValue ? numeric : null,
+                currency
+            };
+        }
+
+        function getAccountingCost(product) {
+            if (!product) {
+                return { value: null, currency: 'BRL' };
+            }
+
+            const currency = (product.accountingCostCurrency || 'BRL').toString().toUpperCase() === 'USD' ? 'USD' : 'BRL';
+            const numericValue = Number(product.accountingCost);
+
+            return {
+                value: Number.isFinite(numericValue) ? numericValue : null,
+                currency
+            };
+        }
+
+        function calculateStockInKg(product) {
+            const totalStock = getProductStock(product);
+            const normalizedStock = Number.isFinite(totalStock) ? totalStock : 0;
+            return Math.max(normalizedStock, 0);
+        }
+
+        function calculateProductCost(product, ptaxRate) {
+            const { value, currency } = getAccountingCost(product);
+            const stockKg = calculateStockInKg(product);
+
+            if (!Number.isFinite(value) || stockKg === 0) {
+                return {
+                    unitCost: null,
+                    currency,
+                    stockKg,
+                    totalValue: null,
+                    convertedValue: null
+                };
+            }
+
+            const totalValue = value * stockKg;
+            const convertedValue = currency === 'USD' && Number.isFinite(ptaxRate)
+                ? totalValue * ptaxRate
+                : (currency === 'BRL' ? totalValue : null);
+
+            return {
+                unitCost: value,
+                currency,
+                stockKg,
+                totalValue,
+                convertedValue
+            };
+        }
+
+        function calculateAccountingCostTotals(products, ptaxRate) {
+            const summary = {
+                brlTotal: 0,
+                usdTotal: 0,
+                usdConverted: null,
+                usdCount: 0,
+                brlCount: 0
+            };
+
+            (Array.isArray(products) ? products : []).forEach(function(product) {
+                const costInfo = calculateProductCost(product, ptaxRate);
+                if (!Number.isFinite(costInfo.unitCost) || costInfo.stockKg === 0) {
+                    return;
+                }
+
+                if (costInfo.currency === 'USD') {
+                    summary.usdTotal += costInfo.totalValue;
+                    summary.usdCount++;
+                    if (Number.isFinite(ptaxRate)) {
+                        summary.usdConverted = (summary.usdConverted || 0) + (costInfo.totalValue * ptaxRate);
+                    }
+                } else {
+                    summary.brlTotal += costInfo.totalValue;
+                    summary.brlCount++;
+                }
+            });
+
+            if (!Number.isFinite(summary.usdConverted)) {
+                summary.usdConverted = null;
+            }
+
+            return summary;
+        }
+
+        function formatPtaxDate(date) {
+            if (typeof date === 'string') {
+                return date || '--';
+            }
+
+            if (!(date instanceof Date) || isNaN(date.getTime())) {
+                return '--';
+            }
+
+            return date.toLocaleDateString('pt-BR');
+        }
+
+        function parsePtaxDateFromWindow(ptaxData) {
+            if (!ptaxData) {
+                return null;
+            }
+
+            if (ptaxData.dataHoraCotacao) {
+                const parsed = new Date(ptaxData.dataHoraCotacao);
+                if (!isNaN(parsed.getTime())) {
+                    return parsed;
+                }
+            }
+
+            if (ptaxData.dataBR && typeof ptaxData.dataBR === 'string') {
+                const parts = ptaxData.dataBR.split('/');
+                if (parts.length === 3) {
+                    const [day, month, year] = parts;
+                    const parsed = new Date(`${year}-${month}-${day}T00:00:00-03:00`);
+                    if (!isNaN(parsed.getTime())) {
+                        return parsed;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        function syncPtaxStateFromWindow() {
+            const ptaxData = window.__PTAX_USD_BRL__;
+            if (ptaxData && Number.isFinite(ptaxData.taxa)) {
+                ptaxState.rate = ptaxData.taxa;
+                ptaxState.date = parsePtaxDateFromWindow(ptaxData);
+                ptaxState.dataLabel = ptaxData.dataBR || (ptaxState.date ? formatPtaxDate(ptaxState.date) : null);
+                ptaxState.loading = false;
+                ptaxState.error = null;
+            }
+
+            return ptaxState;
+        }
+
+        function getPtaxLabel() {
+            const current = syncPtaxStateFromWindow();
+            if (Number.isFinite(current.rate)) {
+                const dateLabel = current.dataLabel || (current.date ? formatPtaxDate(current.date) : 'Data não informada');
+                return `PTAX ${current.rate.toFixed(4)} · ${dateLabel}`;
+            }
+
+            if (current.error) {
+                return `Erro ao consultar PTAX: ${current.error}`;
+            }
+
+            return current.loading ? 'Consultando PTAX (BACEN)...' : 'PTAX não disponível';
         }
 
         function animateValueChange(element) {
@@ -3200,8 +3499,9 @@
 
         function initializeDashboard() {
             debugLog('Inicializando dashboard');
-            
+
             try {
+                syncPtaxStateFromWindow();
                 populateFamilyFilter();
                 populateSupplierFilter();
                 showAllProducts();
@@ -3252,6 +3552,8 @@
                         fCobertura: Number.isFinite(product.fCobertura)
                             ? Number(product.fCobertura)
                             : null,
+                        accountingCost: Number.isFinite(product.accountingCost) ? Number(product.accountingCost) : null,
+                        accountingCostCurrency: product.accountingCostCurrency || 'BRL',
                         monthlyValues: monthlyValues,
                         importHistory: historyEntries
                     };
@@ -3729,10 +4031,12 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             const rawStockMonthsCell = columnMapping.stockMonths !== undefined ? values[columnMapping.stockMonths] : null;
             const rawCoberturaCell = columnMapping.cobertura !== undefined ? values[columnMapping.cobertura] : null;
             const rawForecastCoverageCell = columnMapping.fCobertura !== undefined ? values[columnMapping.fCobertura] : null;
+            const rawAccountingCostCell = columnMapping.accountingCost !== undefined ? values[columnMapping.accountingCost] : null;
 
             const parsedStockMonths = parseNumber(rawStockMonthsCell);
             const parsedCobertura = parseNumber(rawCoberturaCell);
             const parsedForecastCobertura = parseNumber(rawForecastCoverageCell);
+            const parsedAccountingCost = parseAccountingCostCell(rawAccountingCostCell);
 
             const hasStockMonths = hasMeaningfulValue(rawStockMonthsCell);
             const hasCobertura = hasMeaningfulValue(rawCoberturaCell);
@@ -3765,7 +4069,9 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 novembro: parseNumber(values[columnMapping.novembro]) || 0,
                 dezembro: parseNumber(values[columnMapping.dezembro]) || 0,
                 cobertura: validCobertura ? parsedCobertura : null,
-                fCobertura: validForecastCobertura ? parsedForecastCobertura : null
+                fCobertura: validForecastCobertura ? parsedForecastCobertura : null,
+                accountingCost: parsedAccountingCost.value,
+                accountingCostCurrency: parsedAccountingCost.currency
             };
 
             product.stockMonths = Number.isFinite(effectiveCoverage) ? effectiveCoverage : 0;
@@ -3836,6 +4142,8 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             existing.cobertura = product.cobertura;
             existing.fCobertura = product.fCobertura;
             existing.coverageSource = product.coverageSource;
+            existing.accountingCost = product.accountingCost;
+            existing.accountingCostCurrency = product.accountingCostCurrency;
 
             delete existing.sheetMonthlyValues;
             delete existing.originSheet;
@@ -4005,6 +4313,10 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 warnings.push('Coluna DEZEMBRO não encontrada na planilha.');
                 debugLog('⚠️ Coluna DEZEMBRO não identificada nos cabeçalhos recebidos.');
             }
+
+            assignField('accountingCost', findIndex(function(_, __, normalized) {
+                return normalized.includes('CUSTOCONT') || normalized.includes('ACCOUNTINGCOST');
+            }));
 
             if (mapping.stockMonths === undefined && mapping.cobertura !== undefined) {
                 mapping.stockMonths = mapping.cobertura;
@@ -4876,6 +5188,92 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 totalFamiliesElement.textContent = families;
                 animateValueChange(totalFamiliesElement);
             }
+
+            updateCostSummary();
+        }
+
+        function updateCostSummary() {
+            const currentPtax = syncPtaxStateFromWindow();
+            const ptaxRate = currentPtax.rate;
+            const ptaxDateLabel = currentPtax.dataLabel || (currentPtax.date ? formatPtaxDate(currentPtax.date) : 'Data não informada');
+
+            const costSummary = calculateAccountingCostTotals(filteredData, ptaxRate);
+            const brlElement = document.getElementById('totalAccountingCostBrl');
+            const brlFootnote = document.getElementById('costBrlFootnote');
+            const brlCard = document.getElementById('brlCostCard');
+            const usdCard = document.getElementById('usdCostCard');
+            const usdValueElement = document.getElementById('totalAccountingCostUsd');
+            const usdBrlElement = document.getElementById('totalAccountingCostUsdInBrl');
+            const ptaxSummaryInfo = document.getElementById('ptaxSummaryInfo');
+
+            const hasBrlCost = costSummary.brlCount > 0;
+
+            if (brlCard) {
+                brlCard.style.display = hasBrlCost ? 'block' : 'none';
+            }
+
+            if (brlElement) {
+                const brlValue = hasBrlCost ? costSummary.brlTotal : 0;
+                brlElement.textContent = formatCurrencyValue(brlValue, 'BRL');
+                animateValueChange(brlElement);
+
+                if (brlFootnote) {
+                    brlFootnote.textContent = hasBrlCost
+                        ? `${costSummary.brlCount} ${costSummary.brlCount === 1 ? 'item com custo em BRL' : 'itens com custo em BRL'}`
+                        : 'Nenhum item com custo em BRL';
+                }
+            }
+
+            if (!usdCard) {
+                return;
+            }
+
+            const hasUsd = costSummary.usdCount > 0;
+            usdCard.style.display = hasUsd ? 'block' : 'none';
+
+            if (!hasUsd) {
+                return;
+            }
+
+            if (usdValueElement) {
+                usdValueElement.classList.toggle('loading-text', currentPtax.loading && !Number.isFinite(ptaxRate));
+                usdValueElement.textContent = formatCurrencyValue(costSummary.usdTotal, 'USD');
+                animateValueChange(usdValueElement);
+            }
+
+            const conversionAvailable = Number.isFinite(ptaxRate) && Number.isFinite(costSummary.usdTotal);
+            if (usdBrlElement) {
+                if (conversionAvailable && (costSummary.usdConverted !== null || Number.isFinite(costSummary.usdTotal))) {
+                    const convertedValue = Number.isFinite(costSummary.usdConverted)
+                        ? costSummary.usdConverted
+                        : costSummary.usdTotal * ptaxRate;
+                    usdBrlElement.textContent = `≈ ${formatCurrencyValue(convertedValue, 'BRL')}`;
+                    usdBrlElement.classList.remove('loading-text');
+                } else {
+                    usdBrlElement.textContent = 'Aguardando PTAX para converter';
+                    usdBrlElement.classList.add('loading-text');
+                }
+            }
+
+            if (ptaxSummaryInfo) {
+                const ptaxRateElement = document.getElementById('ptaxRate');
+                const ptaxDateElement = document.getElementById('ptaxDate');
+                const ptaxStatusElement = document.getElementById('ptaxStatusNote');
+
+                if (ptaxRateElement) {
+                    ptaxRateElement.textContent = conversionAvailable
+                        ? ptaxRate.toFixed(4).replace('.', ',')
+                        : '—';
+                }
+
+                if (ptaxDateElement) {
+                    ptaxDateElement.textContent = conversionAvailable ? ptaxDateLabel : '—';
+                }
+
+                if (ptaxStatusElement) {
+                    ptaxStatusElement.textContent = conversionAvailable ? '' : getPtaxLabel();
+                }
+            }
         }
 
         function updateParetoAnalysis() {
@@ -5121,6 +5519,128 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             }
         }
 
+        function buildHistoryCostSection(product) {
+            const currentPtax = syncPtaxStateFromWindow();
+            const costInfo = calculateProductCost(product, currentPtax.rate);
+            const hasCost = Number.isFinite(costInfo.unitCost);
+            const currencyLabel = costInfo.currency === 'USD' ? 'USD' : 'BRL';
+            const unitLabel = hasCost ? formatCurrencyValue(costInfo.unitCost, currencyLabel) : 'Sem custo cadastrado';
+            const totalLabel = hasCost && Number.isFinite(costInfo.totalValue)
+                ? formatCurrencyValue(costInfo.totalValue, currencyLabel)
+                : '--';
+            const stockLabel = `${formatWeightValue(costInfo.stockKg, 3)} kg em estoque`;
+
+            const conversionVisible = costInfo.currency === 'USD';
+            let convertedLabel = 'Aguardando PTAX...';
+            let ptaxLabel = getPtaxLabel();
+
+            if (conversionVisible) {
+                if (Number.isFinite(costInfo.convertedValue)) {
+                    convertedLabel = formatCurrencyValue(costInfo.convertedValue, 'BRL');
+                    const ptaxDate = currentPtax.date ? formatPtaxDate(currentPtax.date) : 'Data não informada';
+                    ptaxLabel = currentPtax.rate ? `PTAX ${currentPtax.rate.toFixed(4)} · ${ptaxDate}` : ptaxLabel;
+                }
+            }
+
+            return {
+                html: `
+                    <section class="history-overview history-cost" data-history-cost>
+                        <h2 class="history-section-title">Custo contábil</h2>
+                        <div class="history-cost-grid">
+                            <div class="history-cost-card">
+                                <span class="history-cost-label">Custo por kg (${currencyLabel})</span>
+                                <p class="history-cost-value" id="historyCostUnit">${unitLabel}</p>
+                                <div class="history-cost-note" id="historyStockWeight">${stockLabel}</div>
+                            </div>
+                            <div class="history-cost-card">
+                                <span class="history-cost-label">Valor total no estoque (${currencyLabel})</span>
+                                <p class="history-cost-value" id="historyCostTotal">${totalLabel}</p>
+                                <div class="history-cost-note">Considerando o estoque exibido no dashboard</div>
+                            </div>
+                            <div class="history-cost-card" id="historyConversionCard" style="${conversionVisible ? '' : 'display:none;'}">
+                                <span class="history-cost-label">Equivalente em BRL</span>
+                                <p class="history-cost-value" id="historyCostConverted">${convertedLabel}</p>
+                                <div class="history-cost-note" id="historyPtaxInfo">${ptaxLabel}</div>
+                            </div>
+                        </div>
+                    </section>
+                `,
+                needsPtax: conversionVisible && hasCost && costInfo.stockKg > 0 && !Number.isFinite(costInfo.convertedValue)
+            };
+        }
+
+        function refreshHistoryCostSection(product) {
+            const unitElement = document.getElementById('historyCostUnit');
+            const totalElement = document.getElementById('historyCostTotal');
+            const convertedElement = document.getElementById('historyCostConverted');
+            const ptaxInfoElement = document.getElementById('historyPtaxInfo');
+            const conversionCard = document.getElementById('historyConversionCard');
+            const stockWeightElement = document.getElementById('historyStockWeight');
+
+            const currentPtax = syncPtaxStateFromWindow();
+            const costInfo = calculateProductCost(product, currentPtax.rate);
+            const hasCost = Number.isFinite(costInfo.unitCost);
+            const currencyLabel = costInfo.currency === 'USD' ? 'USD' : 'BRL';
+
+            if (unitElement) {
+                unitElement.textContent = hasCost
+                    ? formatCurrencyValue(costInfo.unitCost, currencyLabel)
+                    : 'Sem custo cadastrado';
+            }
+
+            if (stockWeightElement) {
+                stockWeightElement.textContent = `${formatWeightValue(costInfo.stockKg, 3)} kg em estoque`;
+            }
+
+            if (totalElement) {
+                totalElement.textContent = hasCost && Number.isFinite(costInfo.totalValue)
+                    ? formatCurrencyValue(costInfo.totalValue, currencyLabel)
+                    : '--';
+            }
+
+            if (conversionCard) {
+                conversionCard.style.display = costInfo.currency === 'USD' ? 'block' : 'none';
+            }
+
+            if (costInfo.currency !== 'USD') {
+                return;
+            }
+
+            if (convertedElement) {
+                if (Number.isFinite(costInfo.convertedValue)) {
+                    convertedElement.textContent = formatCurrencyValue(costInfo.convertedValue, 'BRL');
+                    convertedElement.classList.remove('loading-text');
+                } else {
+                    convertedElement.textContent = 'Aguardando PTAX...';
+                    convertedElement.classList.add('loading-text');
+                }
+            }
+
+            if (ptaxInfoElement) {
+                if (Number.isFinite(costInfo.convertedValue) && Number.isFinite(currentPtax.rate)) {
+                    const ptaxDate = currentPtax.date ? formatPtaxDate(currentPtax.date) : 'Data não informada';
+                    ptaxInfoElement.textContent = `PTAX ${currentPtax.rate.toFixed(4)} · ${ptaxDate}`;
+                } else {
+                    ptaxInfoElement.textContent = getPtaxLabel();
+                }
+            }
+        }
+
+        function refreshOpenHistoryModal() {
+            const modal = document.getElementById('historyModal');
+            if (!modal || modal.style.display !== 'block' || !currentlyViewedProductCode) {
+                return;
+            }
+
+            const product = allProductsData.find(function(item) {
+                return (item.code || '').toString().trim().toLowerCase() === currentlyViewedProductCode;
+            });
+
+            if (product) {
+                refreshHistoryCostSection(product);
+            }
+        }
+
         function openProductHistory(code) {
             if (!code) {
                 showMessage('❌ Código inválido para exibir detalhes.', 'error');
@@ -5152,6 +5672,8 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             const monthlyPartitions = partitionMonthlyValues(aggregatedMonthly);
             const importMonthly = monthlyPartitions.imports;
             const forecastMonthly = monthlyPartitions.forecasts;
+
+            const historyCostSection = buildHistoryCostSection(product);
 
             const historyEntries = Array.isArray(product.importHistory)
                 ? product.importHistory.map(normalizeHistoryEntry)
@@ -5331,6 +5853,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                             <span class="history-chip family-chip">Família: ${familyDisplay}</span>
                         </div>
                     </header>
+                    ${historyCostSection.html}
                     ${coverageSectionHtml}
                     <section class="history-overview">
                         <h2 class="history-section-title">Próximas importações</h2>
@@ -5353,8 +5876,10 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 </div>
             `;
 
+            currentlyViewedProductCode = normalizedCode;
             modalTitle.textContent = `Histórico do Produto · ${codeDisplay}`;
             contentContainer.innerHTML = historyHtml;
+            refreshHistoryCostSection(product);
             modal.style.display = 'block';
             modal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
@@ -5362,6 +5887,13 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             const closeButton = modal.querySelector('.close');
             if (closeButton) {
                 closeButton.focus();
+            }
+
+            if (historyCostSection.needsPtax) {
+                const synced = syncPtaxStateFromWindow();
+                if (Number.isFinite(synced.rate)) {
+                    refreshHistoryCostSection(product);
+                }
             }
         }
 
@@ -5374,6 +5906,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             modal.style.display = 'none';
             modal.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('modal-open');
+            currentlyViewedProductCode = null;
 
             const contentContainer = document.getElementById('historyModalContent');
             if (contentContainer) {
@@ -5771,6 +6304,12 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             document.head.appendChild(script);
         }
 
+        window.recalcularTudo = function() {
+            syncPtaxStateFromWindow();
+            applyAllFilters();
+            refreshOpenHistoryModal();
+        };
+
         // === INICIALIZAÇÃO ===
         document.addEventListener('DOMContentLoaded', function() {
             debugLog('=== INICIALIZAÇÃO DO DASHBOARD v1.3 ===');
@@ -5829,7 +6368,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
 
         // Log de informações do sistema ao carregar
         console.log(`
-🚀 DASHBOARD DE ESTOQUE v1.3 - PAULO ROBERTO S. S. (@PAROSOSI)
+🚀 DASHBOARD DE ESTOQUE v1.8 - PAULO ROBERTO S. S. (@PAROSOSI)
 ===================================================
 📅 Data: ${new Date().toLocaleString('pt-BR')}
 🌐 Navegador: ${navigator.userAgent}
@@ -5837,10 +6376,35 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
 🔑 Protocolo: ${window.location.protocol}
 💻 Tela: ${screen.width}x${screen.height}
 📱 Viewport: ${window.innerWidth}x${window.innerHeight}
-🔧 Debug: Use toggleDebug() para ativar logs detalhados
-📋 Mapeamento: Use toggleMappingDebug() para ver mapeamento de colunas
 ===================================================
         `);
+    </script>
+    <script type="module">
+      import { getLastPtaxUsdBrl } from "./js/ptax.js";
+
+      async function initPtax() {
+        try {
+          const ptax = await getLastPtaxUsdBrl();
+          // escolha se vai usar compra ou venda:
+          const taxa = ptax.venda; // ou ptax.compra
+
+          window.__PTAX_USD_BRL__ = { ...ptax, taxa };
+
+          // atualizar elementos da tela, se existirem
+          const elRate = document.querySelector("#ptaxRate");
+          const elDate = document.querySelector("#ptaxDate");
+          if (elRate) elRate.textContent = taxa.toFixed(4).replace(".", ",");
+          if (elDate) elDate.textContent = ptax.dataBR;
+
+          // se existir função global de recálculo, chama
+          if (typeof window.recalcularTudo === "function") {
+            window.recalcularTudo();
+          }
+        } catch (e) {
+          console.error("Erro PTAX", e);
+        }
+      }
+      initPtax();
     </script>
 </body>
 </html>
