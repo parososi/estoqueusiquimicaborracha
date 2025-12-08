@@ -1,4 +1,4 @@
-// Dados do Dashboard de Estoque v1.3 - Gerado em 08/12/2025, 09:09:29
+// Dados do Dashboard de Estoque v1.3 - Gerado em 03/12/2025, 15:54:19
 // Substitua este arquivo na pasta compartilhada para atualizar os dados
 console.log('Carregando data.js v1.3...');
 
@@ -8,16 +8,18 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3471",
-    "stock14": 1060,
-    "stock9013": 3840,
+    "stock14": 2440,
+    "stock9013": 0,
     "stock9015": 0,
-    "stockMonths": 0.6,
+    "stockMonths": 0.3,
     "vendas4M": 30720,
     "media3M": 10240,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 1.1,
-    "fCobertura": 1.9,
+    "cobertura": 0.9,
+    "fCobertura": 1.4,
+    "accountingCost": 6.5,
+    "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -56,14 +58,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 1060,
-          "stock9013": 3840,
+          "stock14": 2440,
+          "stock9013": 0,
           "stock9015": 0,
-          "totalStock": 4900,
+          "totalStock": 2440,
           "vendas4M": 30720,
           "media3M": 10240,
-          "cobertura": 0.6,
-          "fCobertura": 1.9
+          "cobertura": 0.3,
+          "fCobertura": 1.4
         },
         "coverageSource": "stockMonths"
       }
@@ -74,16 +76,18 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3431",
-    "stock14": 40,
+    "stock14": 1140,
     "stock9013": 12360,
     "stock9015": 0,
-    "stockMonths": 1.7,
+    "stockMonths": 1.9,
     "vendas4M": 28420,
     "media3M": 9473,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 2,
-    "fCobertura": 4.1,
+    "cobertura": 2.1,
+    "fCobertura": 4.4,
+    "accountingCost": 18.9,
+    "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -122,14 +126,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 40,
+          "stock14": 1140,
           "stock9013": 12360,
           "stock9015": 0,
-          "totalStock": 12400,
+          "totalStock": 13500,
           "vendas4M": 28420,
           "media3M": 9473,
-          "cobertura": 1.7,
-          "fCobertura": 4.1
+          "cobertura": 1.9,
+          "fCobertura": 4.4
         },
         "coverageSource": "stockMonths"
       }
@@ -206,16 +210,16 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3441",
-    "stock14": 0,
+    "stock14": 1660,
     "stock9013": 2340,
     "stock9015": 0,
-    "stockMonths": 1.6,
+    "stockMonths": 2.8,
     "vendas4M": 5760,
     "media3M": 1920,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 1.7,
-    "fCobertura": 2.5,
+    "cobertura": 2.6,
+    "fCobertura": 3.5,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -254,14 +258,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 0,
+          "stock14": 1660,
           "stock9013": 2340,
           "stock9015": 0,
-          "totalStock": 2340,
+          "totalStock": 4000,
           "vendas4M": 5760,
           "media3M": 1920,
-          "cobertura": 1.6,
-          "fCobertura": 2.5
+          "cobertura": 2.8,
+          "fCobertura": 3.5
         },
         "coverageSource": "stockMonths"
       }
@@ -272,16 +276,16 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 5340",
-    "stock14": 119,
+    "stock14": 499,
     "stock9013": 4800,
     "stock9015": 0,
-    "stockMonths": 2.2,
+    "stockMonths": 2.3,
     "vendas4M": 9120,
     "media3M": 3040,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 2.6,
-    "fCobertura": 5.8,
+    "cobertura": 2.7,
+    "fCobertura": 6.2,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -320,14 +324,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 119,
+          "stock14": 499,
           "stock9013": 4800,
           "stock9015": 0,
-          "totalStock": 4919,
+          "totalStock": 5299,
           "vendas4M": 9120,
           "media3M": 3040,
-          "cobertura": 2.2,
-          "fCobertura": 5.8
+          "cobertura": 2.3,
+          "fCobertura": 6.2
         },
         "coverageSource": "stockMonths"
       }
@@ -338,10 +342,10 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 5370",
-    "stock14": 140,
+    "stock14": 160,
     "stock9013": 5760,
     "stock9015": 0,
-    "stockMonths": 3.9,
+    "stockMonths": 4,
     "vendas4M": 5980,
     "media3M": 1993,
     "novembro": 0,
@@ -386,13 +390,13 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 140,
+          "stock14": 160,
           "stock9013": 5760,
           "stock9015": 0,
-          "totalStock": 5900,
+          "totalStock": 5920,
           "vendas4M": 5980,
           "media3M": 1993,
-          "cobertura": 3.9,
+          "cobertura": 4,
           "fCobertura": 4.9
         },
         "coverageSource": "stockMonths"
@@ -404,16 +408,16 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3481",
-    "stock14": 1220,
+    "stock14": 1620,
     "stock9013": 660,
     "stock9015": 0,
-    "stockMonths": 1.2,
+    "stockMonths": 1.5,
     "vendas4M": 6120,
     "media3M": 2040,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 1.9,
-    "fCobertura": 2.8,
+    "cobertura": 2.1,
+    "fCobertura": 3.2,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -452,14 +456,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 1220,
+          "stock14": 1620,
           "stock9013": 660,
           "stock9015": 0,
-          "totalStock": 1880,
+          "totalStock": 2280,
           "vendas4M": 6120,
           "media3M": 2040,
-          "cobertura": 1.2,
-          "fCobertura": 2.8
+          "cobertura": 1.5,
+          "fCobertura": 3.2
         },
         "coverageSource": "stockMonths"
       }
@@ -536,16 +540,16 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 5380",
-    "stock14": 1180,
+    "stock14": 1380,
     "stock9013": 4800,
     "stock9015": 0,
-    "stockMonths": 47.8,
+    "stockMonths": 49.4,
     "vendas4M": 500,
     "media3M": 167,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 35.9,
-    "fCobertura": 60.8,
+    "cobertura": 37.1,
+    "fCobertura": 62.8,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -584,14 +588,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 1180,
+          "stock14": 1380,
           "stock9013": 4800,
           "stock9015": 0,
-          "totalStock": 5980,
+          "totalStock": 6180,
           "vendas4M": 500,
           "media3M": 167,
-          "cobertura": 47.8,
-          "fCobertura": 60.8
+          "cobertura": 49.4,
+          "fCobertura": 62.8
         },
         "coverageSource": "stockMonths"
       }
@@ -866,16 +870,16 @@ window.stockData = [
     "supplier": "VINMAR",
     "family": "BORRACHA EVA",
     "item": "EVA SIPCHEM 2518",
-    "stock14": 2520,
+    "stock14": 2820,
     "stock9013": 8250,
     "stock9015": 0,
-    "stockMonths": 0.8,
+    "stockMonths": 0.9,
     "vendas4M": 51250,
     "media3M": 17083,
     "novembro": 0,
     "dezembro": 54000,
     "cobertura": 3.8,
-    "fCobertura": 3.7,
+    "fCobertura": 3.8,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -914,14 +918,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 2520,
+          "stock14": 2820,
           "stock9013": 8250,
           "stock9015": 0,
-          "totalStock": 10770,
+          "totalStock": 11070,
           "vendas4M": 51250,
           "media3M": 17083,
-          "cobertura": 0.8,
-          "fCobertura": 3.7
+          "cobertura": 0.9,
+          "fCobertura": 3.8
         },
         "coverageSource": "stockMonths"
       }
@@ -932,16 +936,16 @@ window.stockData = [
     "supplier": "KIUMHO",
     "family": "BORRACHA EPDM",
     "item": "EPDM KUMHO KEP 350",
-    "stock14": 5351,
-    "stock9013": 4500,
+    "stock14": 5551,
+    "stock9013": 0,
     "stock9015": 22650,
-    "stockMonths": 19.5,
+    "stockMonths": 17,
     "vendas4M": 6650,
     "media3M": 2217,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 14.7,
-    "fCobertura": 14.5,
+    "cobertura": 12.7,
+    "fCobertura": 12.8,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -980,14 +984,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 5351,
-          "stock9013": 4500,
+          "stock14": 5551,
+          "stock9013": 0,
           "stock9015": 22650,
-          "totalStock": 32501,
+          "totalStock": 28201,
           "vendas4M": 6650,
           "media3M": 2217,
-          "cobertura": 19.5,
-          "fCobertura": 14.5
+          "cobertura": 17,
+          "fCobertura": 12.8
         },
         "coverageSource": "stockMonths"
       }
@@ -998,16 +1002,16 @@ window.stockData = [
     "supplier": "KIUMHO",
     "family": "BORRACHA EPDM",
     "item": "EPDM KUMHO KEP 9570E",
-    "stock14": 2225,
+    "stock14": 2625,
     "stock9013": 10400,
     "stock9015": 0,
-    "stockMonths": 8.7,
+    "stockMonths": 9,
     "vendas4M": 5775,
     "media3M": 1925,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 6.6,
-    "fCobertura": 8.9,
+    "cobertura": 6.8,
+    "fCobertura": 9.1,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -1046,14 +1050,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 2225,
+          "stock14": 2625,
           "stock9013": 10400,
           "stock9015": 0,
-          "totalStock": 12625,
+          "totalStock": 13025,
           "vendas4M": 5775,
           "media3M": 1925,
-          "cobertura": 8.7,
-          "fCobertura": 8.9
+          "cobertura": 9,
+          "fCobertura": 9.1
         },
         "coverageSource": "stockMonths"
       }
@@ -1130,16 +1134,16 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "TMTD",
-    "stock14": 1850,
+    "stock14": 1950,
     "stock9013": 2000,
     "stock9015": 0,
-    "stockMonths": 1.9,
+    "stockMonths": 2,
     "vendas4M": 7950,
     "media3M": 2650,
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 1.5,
-    "fCobertura": 12.8,
+    "fCobertura": 13.2,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -1178,14 +1182,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 1850,
+          "stock14": 1950,
           "stock9013": 2000,
           "stock9015": 0,
-          "totalStock": 3850,
+          "totalStock": 3950,
           "vendas4M": 7950,
           "media3M": 2650,
-          "cobertura": 1.9,
-          "fCobertura": 12.8
+          "cobertura": 2,
+          "fCobertura": 13.2
         },
         "coverageSource": "stockMonths"
       }
@@ -1262,16 +1266,16 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ACELERADOR",
     "item": "CBS",
-    "stock14": 100,
+    "stock14": 2600,
     "stock9013": 0,
     "stock9015": 0,
-    "stockMonths": 0,
+    "stockMonths": 1.2,
     "vendas4M": 8350,
     "media3M": 2783,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 2.9,
-    "fCobertura": 1.1,
+    "cobertura": 3.8,
+    "fCobertura": 3.2,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -1310,14 +1314,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 100,
+          "stock14": 2600,
           "stock9013": 0,
           "stock9015": 0,
-          "totalStock": 100,
+          "totalStock": 2600,
           "vendas4M": 8350,
           "media3M": 2783,
-          "cobertura": 0,
-          "fCobertura": 1.1
+          "cobertura": 1.2,
+          "fCobertura": 3.2
         },
         "coverageSource": "stockMonths"
       }
@@ -1658,7 +1662,7 @@ window.stockData = [
     "supplier": "ALLMARI",
     "family": "ADITIVO BORRACHA",
     "item": "TMQ",
-    "stock14": 100,
+    "stock14": 200,
     "stock9013": 3200,
     "stock9015": 0,
     "stockMonths": 1.9,
@@ -1667,7 +1671,7 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 4.5,
-    "fCobertura": 10.4,
+    "fCobertura": 10.7,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -1706,14 +1710,14 @@ window.stockData = [
           }
         ],
         "totals": {
-          "stock14": 100,
+          "stock14": 200,
           "stock9013": 3200,
           "stock9015": 0,
-          "totalStock": 3300,
+          "totalStock": 3400,
           "vendas4M": 7050,
           "media3M": 2350,
           "cobertura": 1.9,
-          "fCobertura": 10.4
+          "fCobertura": 10.7
         },
         "coverageSource": "stockMonths"
       }
@@ -2385,15 +2389,15 @@ window.stockData = [
     "family": "ADITIVO BORRACHA",
     "item": "RESINA HM1300",
     "stock14": 1725,
-    "stock9013": 12600,
+    "stock9013": 13600,
     "stock9015": 0,
-    "stockMonths": 3.3,
+    "stockMonths": 3.5,
     "vendas4M": 17300,
     "media3M": 5767,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 6.4,
-    "fCobertura": 4.6,
+    "cobertura": 6.5,
+    "fCobertura": 4.8,
     "monthlyValues": [
       {
         "label": "JANEIRO (26)",
@@ -2433,13 +2437,13 @@ window.stockData = [
         ],
         "totals": {
           "stock14": 1725,
-          "stock9013": 12600,
+          "stock9013": 13600,
           "stock9015": 0,
-          "totalStock": 14325,
+          "totalStock": 15325,
           "vendas4M": 17300,
           "media3M": 5767,
-          "cobertura": 3.3,
-          "fCobertura": 4.6
+          "cobertura": 3.5,
+          "fCobertura": 4.8
         },
         "coverageSource": "stockMonths"
       }
@@ -3505,13 +3509,13 @@ window.stockData = [
 
 // Metadados
 window.stockMetadata = {
-    lastUpdate: "2025-12-08T12:09:29.502Z",
+    lastUpdate: "2025-12-03T18:54:19.466Z",
     totalProducts: 53,
     generatedBy: "Dashboard de Estoque v1.3 - Importador com múltiplas abas",
     version: "1.3.0",
-    sourceFile: "Atualização Slow 08-12.xlsx",
+    sourceFile: "Atualização Slow 02-12.xlsx",
     sheetName: "Estoque (53)",
-    source: "Atualização Slow 08-12.xlsx · Estoque"
+    source: "Atualização Slow 02-12.xlsx · Estoque"
 };
 
 console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');
