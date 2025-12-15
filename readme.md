@@ -1,101 +1,42 @@
 # 📊 Dashboard de Estoque com Análise Preditiva - Borracha
 
-Um dashboard web interativo para análise de estoque com capacidades preditivas, desenvolvido para gestão de produtos de borracha da Usiquímica do Brasil (prazo limitado). A ferramenta automatiza a análise de níveis de estoque, identifica produtos críticos e oferece previsões de ruptura de estoque.
+Dashboard web interativo para análise de estoque da Usiquímica do Brasil, agora com recursos ampliados para custos contábeis multimoeda e conversão automática via PTAX.
 
 ## 📋 Índice
-
 - [Sobre o Projeto](#sobre-o-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Como Usar](#como-usar)
+- [Principais Recursos](#principais-recursos)
+- [Fluxo de Uso](#fluxo-de-uso)
 - [Estrutura de Análise](#estrutura-de-análise)
+- [Tecnologias](#tecnologias)
 - [Limitações](#limitações)
 - [Créditos](#créditos)
+- [Agradecimentos](#agradecimentos)
 - [Licença](#licença)
 
 ## 🎯 Sobre o Projeto
+O dashboard centraliza a leitura de planilhas de estoque, automatiza mapeamentos de colunas e entrega insights preditivos em tempo real. Com a nova camada de custos, a solução também calcula valores contábeis em BRL e USD, convertendo automaticamente via PTAX (BACEN) para comparações consistentes.
 
-Este dashboard foi desenvolvido para automatizar e otimizar o controle de estoque de produtos de borracha, eliminando análises manuais demoradas e fornecendo insights preditivos em tempo real. A ferramenta processa dados de múltiplos estabelecimentos e fornece alertas automáticos sobre produtos em situação crítica.
+## ✨ Principais Recursos
+- **Consulta PTAX em Tempo Real**: busca a última taxa USD/BRL disponível no BACEN, registra data/hora da cotação e informa status de disponibilidade.
+- **Custo Contábil Multimoeda**: separa itens em BRL e USD, converte automaticamente para BRL com PTAX e destaca totais e quantidades por moeda.
+- **Análise Preditiva de Estoque**: classifica itens em crítico, baixo e slow moving; estima rupturas em 30/60 dias e sugere reposição ideal.
+- **Histórico e Importação Guiada**: mapeamento inteligente de colunas, debug visual, histórico de importação por aba/planilha e fallback para dados anteriores.
+- **Interface Interativa**: gauges animados por família, filtros rápidos/avançados, busca global, alertas visuais e suporte responsivo.
+- **Exportação e Compartilhamento**: geração de relatórios Excel/CSV com os dados filtrados; operação totalmente offline com suporte a File System API.
+- **Templates e Backup Local**: gerador de template (HTML) para planilhas com colunas obrigatórias e backup automático no `localStorage`.
 
-## ✨ Funcionalidades
-
-### 📊 Análise de Estoque
-- **Análise Multi-Estabelecimento**: Controle consolidado dos estabelecimentos 1-4, 90-13 e 90-15
-- **Análise Preditiva**: Previsão de produtos que zerarão em 30 e 60 dias
-- **Classificação Automática**: Produtos críticos (<2 meses), baixo estoque (2-6 meses) e slow moving (>6 meses)
-- **Métricas Consolidadas**: Visão geral com totais, médias e indicadores críticos
-
-### 🎮 Interface Interativa
-- **Gauges Animados**: Visualização por família de produtos com animações fluidas
-- **Filtros Dinâmicos**: Busca por código, nome, fornecedor ou família
-- **Dashboard Responsivo**: Interface adaptada para desktop e mobile
-- **Alertas Visuais**: Códigos de cores para identificação rápida de status
-
-### 📄 Importação e Exportação
-- **Importação Flexível**: Suporte para Excel (.xlsx, .xls) e CSV
-- **Mapeamento Inteligente**: Detecção automática de colunas com debug visual
-- **Exportação Completa**: Relatórios em Excel ou CSV com dados filtrados
-- **Compartilhamento**: Sistema de arquivos para distribuição de dados atualizados
-
-### 🔧 Funcionalidades Avançadas
-- **Modo Offline**: Funciona completamente sem servidor
-- **Salvamento Automático**: File System API para salvar dados automaticamente (Chrome/Edge + HTTPS)
-- **Debug Avançado**: Sistema completo de diagnóstico e mapeamento de colunas
-- **Histórico de Dados**: Backup automático no localStorage
-
-## 🛠 Tecnologias Utilizadas
-
-- **HTML5**: Estrutura semântica moderna
-- **CSS3**: Estilização avançada com animações e responsividade
-- **JavaScript ES6+**: Lógica de negócio e manipulação de dados
-- **Canvas API**: Gauges animados personalizados
-- **SheetJS (XLSX)**: Processamento de planilhas Excel
-- **File System Access API**: Salvamento automático de arquivos
-- **Local Storage**: Backup de dados do navegador
-
-## 🚀 Como Usar
-
-### 1. Preparação dos Dados
-Certifique-se de que sua planilha contenha as colunas:
-- **CÓDIGO**: Código do produto
-- **FORNECEDOR**: Nome do fornecedor
-- **FAMÍLIA**: Categoria do produto
-- **ITEM**: Descrição do produto
-- **1-4**: Estoque Guarulhos
-- **90-13**: Estoque Itajaí
-- **90-15**: Estoque Garuva
-- **ESTOQUE EM MESES**: Quantidade em meses
-- **VENDAS 3M**: Vendas dos últimos 3 meses
-- **MÉDIA 3M**: Uma média comparada com as últimas vendas dos 3 meses anteriores
-
-### 2. Importação de Dados
-- Clique na seção "📊 Importar Dados da Planilha"
-- Selecione seu arquivo Excel ou CSV
-- Aguarde o processamento automático
-- Verifique o mapeamento de colunas se necessário
-
-### 3. Análise e Filtros
-- Use a **busca global** para encontrar produtos específicos
-- **Filtros rápidos**: Todos, Crítico, Baixo, Slow Moving
-- **Filtros avançados**: Por família, fornecedor ou estabelecimento
-- **Análise preditiva**: Clique nos alertas para filtrar produtos críticos
-
-### 4. Visualização e Relatórios
-- **Gauges por família**: Clique nos gráficos para filtrar
-- **Tabela detalhada**: Dados completos com status visual
-- **Exportação**: Gere relatórios Excel/CSV dos dados filtrados
-
-### Requisitos
-- Navegador moderno (Chrome 80+, Firefox 75+, Safari 13+)
-- JavaScript habilitado
-- Para salvamento automático: Chrome/Edge + HTTPS ou localhost
+## 🚀 Fluxo de Uso
+1. **Preparar a planilha**: inclua colunas como CÓDIGO, FORNECEDOR, FAMÍLIA, ITEM, 1-4, 90-13, 90-15, ESTOQUE EM MESES, VENDAS 3M e custos contábeis (BRL ou USD) quando disponíveis.
+2. **Importar dados**: em "📊 Importar Dados da Planilha", selecione o Excel/CSV e acompanhe o mapeamento automático; ajuste manualmente se necessário.
+3. **Explorar o dashboard**: use busca global, filtros rápidos (Todos/Crítico/Baixo/Slow), filtros por família/fornecedor/estabelecimento e indicadores preditivos.
+4. **Avaliar custos**: acompanhe cartões de custo contábil em BRL e USD, com conversão PTAX e notas de status; confira o detalhamento por item na tabela.
+5. **Exportar e compartilhar**: gere Excel/CSV com os filtros aplicados ou utilize o salvamento automático (Chrome/Edge + HTTPS) para manter backups locais.
 
 ## 📐 Estrutura de Análise
-
 ### Classificação de Estoque
 ```
 Crítico: < 2 meses de estoque
-Atenção: 2-6 meses de estoque  
+Atenção: 2-6 meses de estoque
 Bom: > 6 meses de estoque
 ```
 
@@ -107,52 +48,41 @@ Ponto de reposição ideal: 3-4 meses
 ```
 
 ### Métricas Calculadas
-- **Estoque Total**: Soma de todos os estabelecimentos
-- **Média de Estoque**: Tempo médio em meses por família
-- **Produtos Críticos**: Contagem automática por categoria
-- **Previsão de Ruptura**: Algoritmo baseado em vendas 4M
+- **Estoque Total** consolidado por estabelecimento (1-4, 90-13, 90-15).
+- **Cobertura** e **previsão de ruptura** com base em VENDAS 3M e média histórica.
+- **Custo Contábil** segregado por moeda, com conversão PTAX para BRL e rótulos de disponibilidade.
+- **Histórico de Importação** por aba de planilha, preservando colunas e totais usados no cálculo.
+
+## 🛠 Tecnologias
+- **HTML5**, **CSS3** e **JavaScript ES6+**
+- **Canvas API** para gauges animados
+- **SheetJS (XLSX)** para processamento de planilhas
+- **File System Access API** para salvamento automático
+- **Local Storage** para backup local
 
 ## ⚠️ Limitações
-
-### Importante - Dados e Precisão
-Este dashboard processa dados fornecidos, mas a precisão depende de:
-
-- **Qualidade dos Dados**: Planilhas com colunas corretamente nomeadas
-- **Atualização Regular**: Dados desatualizados afetam previsões
-- **Variações Sazonais**: Algoritmo não considera sazonalidade
-- **Novos Produtos**: Produtos sem histórico podem gerar alertas falsos
-- **Mapeamento Manual**: Colunas mal nomeadas podem ser mapeadas incorretamente
-
-### Funcionalidades do Navegador
-- **File System API**: Salvamento automático apenas em Chrome/Edge + HTTPS
-- **LocalStorage**: Backup local limitado por navegador
-- **Responsive Design**: Melhor experiência em telas maiores
-
-### Uso Recomendado
-- ✅ Análise rápida e identificação de tendências
-- ✅ Alertas automáticos para gestão proativa
-- ✅ Relatórios executivos e operacionais
-- ⚠️ Sempre validar dados críticos com sistemas oficiais
+- A precisão depende da **qualidade e atualização** das planilhas enviadas.
+- Sazonalidade e itens novos podem afetar a **previsão de ruptura**.
+- **File System API** disponível somente em Chrome/Edge com HTTPS ou localhost.
+- Melhor experiência em telas maiores; em mobile alguns elementos podem ser comprimidos.
 
 ## 👨‍💻 Créditos
-
 **Desenvolvido por:** Paulo Roberto S. S. ([@Parososi](https://github.com/parososi))
 
-### Agradecimentos
+## Agradecimentos
 - **Usiquímica do Brasil**: Por fornecer requisitos e dados de teste
 - **Comunidade Open Source**: Pelas bibliotecas SheetJS, Chart.js e outras
 
 ### Bibliotecas Utilizadas
-- **SheetJS**: Processamento de planilhas Excel
-- **File System Access API**: Salvamento automático
-- **Canvas API**: Gráficos e gauges personalizados
+- **SheetJS**: processamento de planilhas Excel
+- **File System Access API**: salvamento automático
+- **Canvas API**: gráficos e gauges personalizados
 
 ## 📄 Licença
+Este projeto está sob a licença CC BY-NC-ND 4.0 (Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International). Veja o arquivo LICENSE para mais detalhes.
 
-Este projeto está sob a licença CC BY-NC-ND 4.0 (Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International). Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-### Resumo da Licença
-- ✅ **Usar**: Para fins não comerciais
-- ✅ **Compartilhar**: Com atribuição ao autor
-- ❌ **Modificar**: Não são permitidas obras derivadas
-- ❌ **Comercializar**: Não é permitido uso comercial
+Resumo da Licença
+✅ Usar: Para fins não comerciais
+✅ Compartilhar: Com atribuição ao autor
+❌ Modificar: Não são permitidas obras derivadas
+❌ Comercializar: Não é permitido uso comercial
