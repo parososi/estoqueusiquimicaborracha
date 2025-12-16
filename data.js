@@ -76,7 +76,7 @@ window.stockData = [
     "supplier": "HOSHINE",
     "family": "BORRACHA SILICONE",
     "item": "HOSHINE 3431",
-    "stock14": 100,
+    "stock14": 4900,
     "stock9013": 2560,
     "stock9015": 0,
     "stockMonths": 0.4,
