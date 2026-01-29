@@ -26,7 +26,7 @@ O dashboard centraliza a leitura de planilhas de estoque, automatiza mapeamentos
 - **Templates e Backup Local**: gerador de template (HTML) para planilhas com colunas obrigatórias e backup automático no `localStorage`.
 
 ## 🚀 Fluxo de Uso
-1. **Preparar a planilha**: inclua colunas como CÓDIGO, FORNECEDOR, FAMÍLIA, ITEM, 1-4, 90-13, 90-15, ESTOQUE EM MESES, VENDAS 3M e custos contábeis (BRL ou USD) quando disponíveis.
+1. **Preparar a planilha**: inclua colunas como CÓDIGO, FORNECEDOR, FAMÍLIA, ITEM, 1-4, 90-13, 90-15, 90-16, ESTOQUE EM MESES, VENDAS 3M e custos contábeis (BRL ou USD) quando disponíveis.
 2. **Importar dados**: em "📊 Importar Dados da Planilha", selecione o Excel/CSV e acompanhe o mapeamento automático; ajuste manualmente se necessário.
 3. **Explorar o dashboard**: use busca global, filtros rápidos (Todos/Crítico/Baixo/Slow), filtros por família/fornecedor/estabelecimento e indicadores preditivos.
 4. **Avaliar custos**: acompanhe cartões de custo contábil em BRL e USD, com conversão PTAX e notas de status; confira o detalhamento por item na tabela.
@@ -48,7 +48,7 @@ Ponto de reposição ideal: 3-4 meses
 ```
 
 ### Métricas Calculadas
-- **Estoque Total** consolidado por estabelecimento (1-4, 90-13, 90-15).
+- **Estoque Total** consolidado por estabelecimento (1-4, 90-13, 90-15, 90-16).
 - **Cobertura** e **previsão de ruptura** com base em VENDAS 3M e média histórica.
 - **Custo Contábil** segregado por moeda, com conversão PTAX para BRL e rótulos de disponibilidade.
 - **Histórico de Importação** por aba de planilha, preservando colunas e totais usados no cálculo.

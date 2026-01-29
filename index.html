@@ -1829,6 +1829,7 @@
                             <option value="1-4">1-4 (GUARULHOS)</option>
                             <option value="90-13">90-13 (ITAJAÍ)</option>
                             <option value="90-15">90-15 (GARUVA)</option>
+                            <option value="90-16">90-16 (BOM FUTURO)</option>
                         </select>
                     </div>
 
@@ -1902,6 +1903,7 @@
                             <th><span class="header-label">Est. 1-4<span class="info-icon has-tooltip" tabindex="0" aria-label="Estoque 1-4" data-tooltip="Saldo físico disponível no estabelecimento 1-4 (Guarulhos).">?</span></span></th>
                             <th><span class="header-label">Est. 90-13<span class="info-icon has-tooltip" tabindex="0" aria-label="Estoque 90-13" data-tooltip="Saldo físico disponível no estabelecimento 90-13 (Itajaí).">?</span></span></th>
                             <th><span class="header-label">Est. 90-15<span class="info-icon has-tooltip" tabindex="0" aria-label="Estoque 90-15" data-tooltip="Saldo físico disponível no estabelecimento 90-15 (Garuva).">?</span></span></th>
+                            <th><span class="header-label">Est. 90-16<span class="info-icon has-tooltip" tabindex="0" aria-label="Estoque 90-16" data-tooltip="Saldo físico disponível no estabelecimento 90-16 (Bom Futuro).">?</span></span></th>
                             <th><span class="header-label">Total<span class="info-icon has-tooltip" tabindex="0" aria-label="Total em estoque" data-tooltip="Soma do estoque disponível em todos os estabelecimentos selecionados.">?</span></span></th>
                             <th><span class="header-label">Vendas 3M<span class="info-icon has-tooltip" tabindex="0" aria-label="Vendas 4 meses" data-tooltip="Quantidade vendida acumulada nos últimos 4 meses para o item, conforme informado na planilha." data-tooltip-position="top">?</span></span></th>
                             <th><span class="header-label">Média 3M<span class="info-icon has-tooltip" tabindex="0" aria-label="Média 3 meses" data-tooltip="Média mensal das vendas dos últimos 3 meses, usada para estimar o consumo.">?</span></span></th>
@@ -2357,7 +2359,7 @@
 
         function createHistoryEntry(product, sheetName) {
             const months = cloneMonthlyValues(product.sheetMonthlyValues);
-            const totalStock = Number(product.stock14 || 0) + Number(product.stock9013 || 0) + Number(product.stock9015 || 0);
+            const totalStock = Number(product.stock14 || 0) + Number(product.stock9013 || 0) + Number(product.stock9015 || 0) + Number(product.stock9016 || 0);
             const coverageValue = getCoverageValue(product);
             const historyCoverageSource = resolveCoverageSource(product);
             const forecastCoverageValue = Number.isFinite(product.fCobertura)
@@ -2371,6 +2373,7 @@
                     stock14: Number(product.stock14) || 0,
                     stock9013: Number(product.stock9013) || 0,
                     stock9015: Number(product.stock9015) || 0,
+                    stock9016: Number(product.stock9016) || 0,
                     totalStock: Number.isFinite(totalStock) ? totalStock : 0,
                     vendas4M: Number(product.vendas4M) || 0,
                     media3M: Number(product.media3M) || 0,
@@ -2416,6 +2419,7 @@
                         stock14: 0,
                         stock9013: 0,
                         stock9015: 0,
+                        stock9016: 0,
                         totalStock: 0,
                         vendas4M: 0,
                         media3M: 0,
@@ -2429,6 +2433,7 @@
                 stock14: 0,
                 stock9013: 0,
                 stock9015: 0,
+                stock9016: 0,
                 totalStock: 0,
                 vendas4M: 0,
                 media3M: 0,
@@ -2447,6 +2452,9 @@
             normalizedTotals.stock9015 = Number.isFinite(Number(normalizedTotals.stock9015))
                 ? Number(normalizedTotals.stock9015)
                 : parseNumber(normalizedTotals.stock9015);
+            normalizedTotals.stock9016 = Number.isFinite(Number(normalizedTotals.stock9016))
+                ? Number(normalizedTotals.stock9016)
+                : parseNumber(normalizedTotals.stock9016);
             normalizedTotals.vendas4M = Number.isFinite(Number(normalizedTotals.vendas4M))
                 ? Number(normalizedTotals.vendas4M)
                 : parseNumber(normalizedTotals.vendas4M);
@@ -2461,7 +2469,7 @@
                 : parseNumber(normalizedTotals.fCobertura);
             normalizedTotals.totalStock = Number.isFinite(Number(normalizedTotals.totalStock))
                 ? Number(normalizedTotals.totalStock)
-                : (normalizedTotals.stock14 + normalizedTotals.stock9013 + normalizedTotals.stock9015);
+                : (normalizedTotals.stock14 + normalizedTotals.stock9013 + normalizedTotals.stock9015 + normalizedTotals.stock9016);
 
             return {
                 sheetName: entry.sheetName || '',
@@ -2799,7 +2807,7 @@
             }
 
             if (product.stockMonths && product.stockMonths > 0) {
-                const totalStock = (product.stock14 || 0) + (product.stock9013 || 0) + (product.stock9015 || 0);
+                const totalStock = (product.stock14 || 0) + (product.stock9013 || 0) + (product.stock9015 || 0) + (product.stock9016 || 0);
                 const inferredDaily = totalStock / (product.stockMonths * 30);
                 return isFinite(inferredDaily) && inferredDaily > 0 ? inferredDaily : 0;
             }
@@ -3541,6 +3549,7 @@
                         stock14: product.stock14 || 0,
                         stock9013: product.stock9013 || 0,
                         stock9015: product.stock9015 || 0,
+                        stock9016: product.stock9016 || 0,
                         stockMonths: product.stockMonths || 0,
                         vendas4M: product.vendas4M || 0,
                         media3M: product.media3M || 0,
@@ -4064,6 +4073,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 stock14: parseNumber(values[columnMapping.stock14] || 0),
                 stock9013: parseNumber(values[columnMapping.stock9013] || 0),
                 stock9015: parseNumber(values[columnMapping.stock9015] || 0),
+                stock9016: parseNumber(values[columnMapping.stock9016] || 0),
                 vendas4M: parseNumber(values[columnMapping.vendas4M] || 0),
                 media3M: parseNumber(values[columnMapping.media3M]) || 0,
                 novembro: parseNumber(values[columnMapping.novembro]) || 0,
@@ -4134,6 +4144,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             existing.stock14 = product.stock14;
             existing.stock9013 = product.stock9013;
             existing.stock9015 = product.stock9015;
+            existing.stock9016 = product.stock9016;
             existing.stockMonths = product.stockMonths;
             existing.vendas4M = product.vendas4M;
             existing.media3M = product.media3M;
@@ -4258,6 +4269,8 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                     assignField('stock9013', i);
                 } else if (mapping.stock9015 === undefined && (upper === '90-15' || upper === '90_15' || upper.includes('90-15'))) {
                     assignField('stock9015', i);
+                } else if (mapping.stock9016 === undefined && (upper === '90-16' || upper === '90_16' || upper.includes('90-16') || upper.includes('BOM FUTURO') || upper.includes('BOMFUTURO'))) {
+                    assignField('stock9016', i);
                 }
             }
 
@@ -4341,6 +4354,17 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 }
             }
 
+            if (mapping.stock9016 === undefined) {
+                warnings.push('CRÍTICO: Coluna 90-16 NÃO ENCONTRADA!');
+                debugLog('🚨 CRÍTICO: Coluna 90-16 NÃO ENCONTRADA na planilha!');
+            } else {
+                const mappedHeader = headers[mapping.stock9016];
+                if (mappedHeader !== '90-16' && mappedHeader !== '90_16') {
+                    warnings.push(`ATENÇÃO: stock9016 mapeado para "${mappedHeader}" em vez de "90-16"`);
+                    debugLog(`⚠️ stock9016 mapeado para "${mappedHeader}" - pode estar incorreto`);
+                }
+            }
+
             debugLog('=== MAPEAMENTO FINAL v1.3.0 ===');
             Object.entries(mapping).forEach(function([field, index]) {
                 const header = headers[index] || 'INVÁLIDO';
@@ -4355,6 +4379,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 stock14: '1-4',
                 stock9013: '90-13',
                 stock9015: '90-15',
+                stock9016: '90-16',
                 vendas4M: 'VENDAS 3M',
                 media3M: 'MÉDIA 3M',
                 stockMonths: 'ESTOQUE EM MESES/COBERTURA'
@@ -5385,7 +5410,8 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 const stock14Value = Number(product.stock14 || 0);
                 const stock9013Value = Number(product.stock9013 || 0);
                 const stock9015Value = Number(product.stock9015 || 0);
-                const totalStock = stock14Value + stock9013Value + stock9015Value;
+                const stock9016Value = Number(product.stock9016 || 0);
+                const totalStock = stock14Value + stock9013Value + stock9015Value + stock9016Value;
                 const coverageValue = getCoverageValue(product);
                 const coverageMeta = getCoverageSourceMetadata(product);
                 const normalizedCoverage = Number.isFinite(product.stockMonths)
@@ -5473,6 +5499,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                     <td>${stock14Value.toLocaleString('pt-BR')}</td>
                     <td>${stock9013Value.toLocaleString('pt-BR')}</td>
                     <td>${stock9015Value.toLocaleString('pt-BR')}</td>
+                    <td>${stock9016Value.toLocaleString('pt-BR')}</td>
                     <td><strong>${totalStock.toLocaleString('pt-BR')}</strong></td>
                     <td class="${vendas4MClass}">${vendas4MDisplay}</td>
                     <td>${media3MDisplay}</td>
@@ -5768,6 +5795,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                         { label: 'Estoque 1-4', value: totals.stock14 },
                         { label: 'Estoque 90-13', value: totals.stock9013 },
                         { label: 'Estoque 90-15', value: totals.stock9015 },
+                        { label: 'Estoque 90-16', value: totals.stock9016 },
                         { label: 'Estoque Total', value: totals.totalStock },
                         { label: 'Vendas 3M', value: totals.vendas4M },
                         { label: 'Média 3M', value: totals.media3M }
@@ -5941,12 +5969,14 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             const stock14 = normalizeStockValue(product.stock14);
             const stock9013 = normalizeStockValue(product.stock9013);
             const stock9015 = normalizeStockValue(product.stock9015);
+            const stock9016 = normalizeStockValue(product.stock9016);
 
             switch(currentEstablishment) {
                 case '1-4': return stock14;
                 case '90-13': return stock9013;
                 case '90-15': return stock9015;
-                default: return stock14 + stock9013 + stock9015;
+                case '90-16': return stock9016;
+                default: return stock14 + stock9013 + stock9015 + stock9016;
             }
         }
 
@@ -6037,7 +6067,7 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                 const criticalCount = familyProducts.filter(function(p) {
                     const hasStock = currentEstablishment ? 
                         getProductStock(p) > 0 : 
-                        (p.stock14 + p.stock9013 + p.stock9015) > 0;
+                        (p.stock14 + p.stock9013 + p.stock9015 + p.stock9016) > 0;
                     return hasStock && p.stockMonths < 2;
                 }).length;
 
@@ -6212,7 +6242,8 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
                         'ESTOQUE 1-4': p.stock14,
                         'ESTOQUE 90-13': p.stock9013,
                         'ESTOQUE 90-15': p.stock9015,
-                        'TOTAL ESTOQUE': p.stock14 + p.stock9013 + p.stock9015,
+                        'ESTOQUE 90-16': p.stock9016,
+                        'TOTAL ESTOQUE': p.stock14 + p.stock9013 + p.stock9015 + p.stock9016,
                         'VENDAS 3M': (!p.vendas4M || p.vendas4M === 0) ? 'S/ VENDA' : p.vendas4M,
                         'MÉDIA 3M': p.media3M,
                         'NOVEMBRO': p.novembro,
