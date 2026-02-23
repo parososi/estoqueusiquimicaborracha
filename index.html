@@ -3057,6 +3057,13 @@
             };
         }
 
+        function hasValidAccountingCost(product) {
+            if (!product) {
+                return false;
+            }
+            return Number.isFinite(Number(product.accountingCost));
+        }
+
         function getAccountingCost(product) {
             if (!product) {
                 return { value: null, currency: 'BRL' };
@@ -4153,8 +4160,14 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             existing.cobertura = product.cobertura;
             existing.fCobertura = product.fCobertura;
             existing.coverageSource = product.coverageSource;
-            existing.accountingCost = product.accountingCost;
-            existing.accountingCostCurrency = product.accountingCostCurrency;
+
+            if (hasValidAccountingCost(product)) {
+                existing.accountingCost = product.accountingCost;
+                existing.accountingCostCurrency = product.accountingCostCurrency;
+            } else if (!hasValidAccountingCost(existing)) {
+                existing.accountingCost = null;
+                existing.accountingCostCurrency = existing.accountingCostCurrency || product.accountingCostCurrency || 'BRL';
+            }
 
             delete existing.sheetMonthlyValues;
             delete existing.originSheet;
@@ -4328,7 +4341,9 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             }
 
             assignField('accountingCost', findIndex(function(_, __, normalized) {
-                return normalized.includes('CUSTOCONT') || normalized.includes('ACCOUNTINGCOST');
+                return normalized.includes('CUSTOCONT')
+                    || normalized.includes('CUSTOCONTABIL')
+                    || normalized.includes('ACCOUNTINGCOST');
             }));
 
             if (mapping.stockMonths === undefined && mapping.cobertura !== undefined) {
