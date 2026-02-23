@@ -5558,14 +5558,18 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             const stockLabel = `${formatWeightValue(costInfo.stockKg, 3)} kg em estoque`;
 
             const conversionVisible = costInfo.currency === 'USD';
-            let convertedLabel = 'Aguardando PTAX...';
+            const shouldWaitForPtax = hasCost && costInfo.stockKg > 0 && !Number.isFinite(costInfo.convertedValue);
+            let convertedLabel = shouldWaitForPtax ? 'Aguardando PTAX...' : '--';
             let ptaxLabel = getPtaxLabel();
 
             if (conversionVisible) {
                 if (Number.isFinite(costInfo.convertedValue)) {
                     convertedLabel = formatCurrencyValue(costInfo.convertedValue, 'BRL');
+                }
+
+                if (Number.isFinite(currentPtax.rate)) {
                     const ptaxDate = currentPtax.date ? formatPtaxDate(currentPtax.date) : 'Data não informada';
-                    ptaxLabel = currentPtax.rate ? `PTAX ${currentPtax.rate.toFixed(4)} · ${ptaxDate}` : ptaxLabel;
+                    ptaxLabel = `PTAX ${currentPtax.rate.toFixed(4)} · ${ptaxDate}`;
                 }
             }
 
@@ -5634,17 +5638,22 @@ console.log('data.js v1.3 carregado com', window.stockData.length, 'produtos');`
             }
 
             if (convertedElement) {
+                const shouldWaitForPtax = hasCost && costInfo.stockKg > 0 && !Number.isFinite(currentPtax.rate);
+
                 if (Number.isFinite(costInfo.convertedValue)) {
                     convertedElement.textContent = formatCurrencyValue(costInfo.convertedValue, 'BRL');
                     convertedElement.classList.remove('loading-text');
-                } else {
+                } else if (shouldWaitForPtax) {
                     convertedElement.textContent = 'Aguardando PTAX...';
                     convertedElement.classList.add('loading-text');
+                } else {
+                    convertedElement.textContent = '--';
+                    convertedElement.classList.remove('loading-text');
                 }
             }
 
             if (ptaxInfoElement) {
-                if (Number.isFinite(costInfo.convertedValue) && Number.isFinite(currentPtax.rate)) {
+                if (Number.isFinite(currentPtax.rate)) {
                     const ptaxDate = currentPtax.date ? formatPtaxDate(currentPtax.date) : 'Data não informada';
                     ptaxInfoElement.textContent = `PTAX ${currentPtax.rate.toFixed(4)} · ${ptaxDate}`;
                 } else {
