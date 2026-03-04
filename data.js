@@ -1,4 +1,4 @@
-// Dados do Dashboard de Estoque v1.3 - Gerado em 02/03/2026, 12:17:07
+// Dados do Dashboard de Estoque v1.3 - Gerado em 04/03/2026, 11:11:00
 // Substitua este arquivo na pasta compartilhada para atualizar os dados
 console.log('Carregando data.js v1.3...');
 
@@ -13,29 +13,24 @@ window.stockData = [
     "stock9015": 0,
     "stock9016": 0,
     "stockMonths": 0,
-    "vendas4M": 19720,
-    "media3M": 6573,
+    "vendas4M": 3860,
+    "media3M": 1287,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 1,
+    "cobertura": 14.9,
     "fCobertura": 3,
     "accountingCost": 1.74,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 6720,
-        "rawValue": "6,720"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 11000,
-        "rawValue": "11,000"
-      },
-      {
         "label": "F MARÇO",
         "value": 12500,
-        "rawValue": "12500"
+        "rawValue": "12,500"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 6720,
+        "rawValue": "6,720"
       },
       {
         "label": "F ABRIL",
@@ -43,9 +38,14 @@ window.stockData = [
         "rawValue": "12500"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
         "value": 0,
         "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
+        "value": 12480,
+        "rawValue": "12,480"
       }
     ],
     "importHistory": [
@@ -53,19 +53,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 6720,
-            "rawValue": "6,720"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 11000,
-            "rawValue": "11,000"
-          },
-          {
             "label": "F MARÇO",
             "value": 12500,
-            "rawValue": "12500"
+            "rawValue": "12,500"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 6720,
+            "rawValue": "6,720"
           },
           {
             "label": "F ABRIL",
@@ -73,9 +68,14 @@ window.stockData = [
             "rawValue": "12500"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
             "value": 0,
             "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
+            "value": 12480,
+            "rawValue": "12,480"
           }
         ],
         "totals": {
@@ -84,8 +84,8 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 0,
-          "vendas4M": 19720,
-          "media3M": 6573,
+          "vendas4M": 3860,
+          "media3M": 1287,
           "cobertura": 0,
           "fCobertura": 3
         },
@@ -103,29 +103,24 @@ window.stockData = [
     "stock9015": 0,
     "stock9016": 0,
     "stockMonths": 0,
-    "vendas4M": 19480,
-    "media3M": 6493,
+    "vendas4M": 5440,
+    "media3M": 1813,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 1,
+    "cobertura": 8,
     "fCobertura": 3,
     "accountingCost": 1.87,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 6720,
-        "rawValue": "6,720"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 12000,
-        "rawValue": "12000"
-      },
-      {
         "label": "F MARÇO",
         "value": 16000,
         "rawValue": "16000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 6720,
+        "rawValue": "6,720"
       },
       {
         "label": "F ABRIL",
@@ -133,9 +128,14 @@ window.stockData = [
         "rawValue": "16000"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
         "value": 0,
         "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
+        "value": 7680,
+        "rawValue": "7,680"
       }
     ],
     "importHistory": [
@@ -143,19 +143,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 6720,
-            "rawValue": "6,720"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 12000,
-            "rawValue": "12000"
-          },
-          {
             "label": "F MARÇO",
             "value": 16000,
             "rawValue": "16000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 6720,
+            "rawValue": "6,720"
           },
           {
             "label": "F ABRIL",
@@ -163,9 +158,14 @@ window.stockData = [
             "rawValue": "16000"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
             "value": 0,
             "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
+            "value": 7680,
+            "rawValue": "7,680"
           }
         ],
         "totals": {
@@ -174,8 +174,8 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 60,
-          "vendas4M": 19480,
-          "media3M": 6493,
+          "vendas4M": 5440,
+          "media3M": 1813,
           "cobertura": 0,
           "fCobertura": 3
         },
@@ -192,30 +192,25 @@ window.stockData = [
     "stock9013": 0,
     "stock9015": 0,
     "stock9016": 0,
-    "stockMonths": 7.9,
-    "vendas4M": 1780,
-    "media3M": 593,
+    "stockMonths": 7.2,
+    "vendas4M": 1960,
+    "media3M": 653,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 5.9,
-    "fCobertura": 5.1,
+    "cobertura": 5.4,
+    "fCobertura": 6.2,
     "accountingCost": 2.01,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 1600,
-        "rawValue": "1600"
-      },
-      {
         "label": "F MARÇO",
         "value": 1660,
         "rawValue": "1660"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -223,7 +218,12 @@ window.stockData = [
         "rawValue": "1660"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -233,19 +233,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 1600,
-            "rawValue": "1600"
-          },
-          {
             "label": "F MARÇO",
             "value": 1660,
             "rawValue": "1660"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -253,7 +248,12 @@ window.stockData = [
             "rawValue": "1660"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -264,10 +264,10 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 3520,
-          "vendas4M": 1780,
-          "media3M": 593,
-          "cobertura": 7.9,
-          "fCobertura": 5.1
+          "vendas4M": 1960,
+          "media3M": 653,
+          "cobertura": 7.2,
+          "fCobertura": 6.2
         },
         "coverageSource": "stockMonths"
       }
@@ -283,29 +283,24 @@ window.stockData = [
     "stock9015": 0,
     "stock9016": 0,
     "stockMonths": 0,
-    "vendas4M": 6560,
-    "media3M": 2187,
+    "vendas4M": 2280,
+    "media3M": 760,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 0.4,
+    "cobertura": 3.8,
     "fCobertura": 3,
     "accountingCost": 1.79,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 960,
-        "rawValue": "960"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 2000,
-        "rawValue": "2000"
-      },
-      {
         "label": "F MARÇO",
         "value": 2000,
         "rawValue": "2000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 960,
+        "rawValue": "960"
       },
       {
         "label": "F ABRIL",
@@ -313,9 +308,14 @@ window.stockData = [
         "rawValue": "2500"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
         "value": 0,
         "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
+        "value": 1920,
+        "rawValue": "1,920"
       }
     ],
     "importHistory": [
@@ -323,19 +323,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 960,
-            "rawValue": "960"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 2000,
-            "rawValue": "2000"
-          },
-          {
             "label": "F MARÇO",
             "value": 2000,
             "rawValue": "2000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 960,
+            "rawValue": "960"
           },
           {
             "label": "F ABRIL",
@@ -343,9 +338,14 @@ window.stockData = [
             "rawValue": "2500"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
             "value": 0,
             "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
+            "value": 1920,
+            "rawValue": "1,920"
           }
         ],
         "totals": {
@@ -354,8 +354,8 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 0,
-          "vendas4M": 6560,
-          "media3M": 2187,
+          "vendas4M": 2280,
+          "media3M": 760,
           "cobertura": 0,
           "fCobertura": 3
         },
@@ -372,30 +372,25 @@ window.stockData = [
     "stock9013": 0,
     "stock9015": 0,
     "stock9016": 0,
-    "stockMonths": 1.2,
-    "vendas4M": 6540,
-    "media3M": 2180,
+    "stockMonths": 3.8,
+    "vendas4M": 2080,
+    "media3M": 693,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 2.2,
-    "fCobertura": 3.9,
+    "cobertura": 7,
+    "fCobertura": 4.3,
     "accountingCost": 1.99,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 2880,
-        "rawValue": "2,880"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 2300,
-        "rawValue": "2300"
-      },
-      {
         "label": "F MARÇO",
         "value": 2300,
         "rawValue": "2300"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 2880,
+        "rawValue": "2,880"
       },
       {
         "label": "F ABRIL",
@@ -403,7 +398,12 @@ window.stockData = [
         "rawValue": "2300"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -413,19 +413,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 2880,
-            "rawValue": "2,880"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 2300,
-            "rawValue": "2300"
-          },
-          {
             "label": "F MARÇO",
             "value": 2300,
             "rawValue": "2300"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 2880,
+            "rawValue": "2,880"
           },
           {
             "label": "F ABRIL",
@@ -433,7 +428,12 @@ window.stockData = [
             "rawValue": "2300"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -444,10 +444,10 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 1959,
-          "vendas4M": 6540,
-          "media3M": 2180,
-          "cobertura": 1.2,
-          "fCobertura": 3.9
+          "vendas4M": 2080,
+          "media3M": 693,
+          "cobertura": 3.8,
+          "fCobertura": 4.3
         },
         "coverageSource": "stockMonths"
       }
@@ -463,29 +463,24 @@ window.stockData = [
     "stock9015": 0,
     "stock9016": 0,
     "stockMonths": 0,
-    "vendas4M": 6720,
-    "media3M": 2240,
+    "vendas4M": 4400,
+    "media3M": 1467,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 1.3,
+    "cobertura": 2,
     "fCobertura": 3,
     "accountingCost": 2.05,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 2880,
-        "rawValue": "2,880"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 6500,
-        "rawValue": "6500"
-      },
-      {
         "label": "F MARÇO",
         "value": 7500,
         "rawValue": "7500"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 2880,
+        "rawValue": "2,880"
       },
       {
         "label": "F ABRIL",
@@ -493,7 +488,12 @@ window.stockData = [
         "rawValue": "6500"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -503,19 +503,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 2880,
-            "rawValue": "2,880"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 6500,
-            "rawValue": "6500"
-          },
-          {
             "label": "F MARÇO",
             "value": 7500,
             "rawValue": "7500"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 2880,
+            "rawValue": "2,880"
           },
           {
             "label": "F ABRIL",
@@ -523,7 +518,12 @@ window.stockData = [
             "rawValue": "6500"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -534,8 +534,8 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 0,
-          "vendas4M": 6720,
-          "media3M": 2240,
+          "vendas4M": 4400,
+          "media3M": 1467,
           "cobertura": 0,
           "fCobertura": 3
         },
@@ -552,30 +552,25 @@ window.stockData = [
     "stock9013": 0,
     "stock9015": 0,
     "stock9016": 0,
-    "stockMonths": 0.2,
-    "vendas4M": 4520,
-    "media3M": 1507,
+    "stockMonths": 0.6,
+    "vendas4M": 1540,
+    "media3M": 513,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 1.4,
+    "cobertura": 7.9,
     "fCobertura": 3.1,
     "accountingCost": 1.82,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 1920,
-        "rawValue": "1,920"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 1900,
-        "rawValue": "1900"
-      },
-      {
         "label": "F MARÇO",
         "value": 2400,
         "rawValue": "2400"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 1920,
+        "rawValue": "1,920"
       },
       {
         "label": "F ABRIL",
@@ -583,9 +578,14 @@ window.stockData = [
         "rawValue": "2500"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
         "value": 0,
         "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
+        "value": 1920,
+        "rawValue": "1,920"
       }
     ],
     "importHistory": [
@@ -593,19 +593,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 1920,
-            "rawValue": "1,920"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 1900,
-            "rawValue": "1900"
-          },
-          {
             "label": "F MARÇO",
             "value": 2400,
             "rawValue": "2400"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 1920,
+            "rawValue": "1,920"
           },
           {
             "label": "F ABRIL",
@@ -613,9 +608,14 @@ window.stockData = [
             "rawValue": "2500"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
             "value": 0,
             "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
+            "value": 1920,
+            "rawValue": "1,920"
           }
         ],
         "totals": {
@@ -624,9 +624,9 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 220,
-          "vendas4M": 4520,
-          "media3M": 1507,
-          "cobertura": 0.2,
+          "vendas4M": 1540,
+          "media3M": 513,
+          "cobertura": 0.6,
           "fCobertura": 3.1
         },
         "coverageSource": "stockMonths"
@@ -642,30 +642,25 @@ window.stockData = [
     "stock9013": 0,
     "stock9015": 0,
     "stock9016": 0,
-    "stockMonths": 7.4,
-    "vendas4M": 280,
-    "media3M": 93,
+    "stockMonths": 5,
+    "vendas4M": 420,
+    "media3M": 140,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 5.6,
-    "fCobertura": 3.7,
+    "cobertura": 3.7,
+    "fCobertura": 4.1,
     "accountingCost": 2.07,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 700,
-        "rawValue": "700"
-      },
-      {
         "label": "F MARÇO",
         "value": 700,
         "rawValue": "700"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -673,7 +668,12 @@ window.stockData = [
         "rawValue": "700"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -683,19 +683,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 700,
-            "rawValue": "700"
-          },
-          {
             "label": "F MARÇO",
             "value": 700,
             "rawValue": "700"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -703,7 +698,12 @@ window.stockData = [
             "rawValue": "700"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -714,10 +714,10 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 520,
-          "vendas4M": 280,
-          "media3M": 93,
-          "cobertura": 7.4,
-          "fCobertura": 3.7
+          "vendas4M": 420,
+          "media3M": 140,
+          "cobertura": 5,
+          "fCobertura": 4.1
         },
         "coverageSource": "stockMonths"
       }
@@ -732,30 +732,25 @@ window.stockData = [
     "stock9013": 0,
     "stock9015": 0,
     "stock9016": 0,
-    "stockMonths": 8.6,
-    "vendas4M": 2020,
-    "media3M": 673,
+    "stockMonths": 21.8,
+    "vendas4M": 800,
+    "media3M": 267,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 6.5,
-    "fCobertura": 6.4,
+    "cobertura": 16.3,
+    "fCobertura": 8,
     "accountingCost": 2.12,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 1300,
-        "rawValue": "1300"
-      },
-      {
         "label": "F MARÇO",
         "value": 1300,
         "rawValue": "1300"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -763,7 +758,12 @@ window.stockData = [
         "rawValue": "1300"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -773,19 +773,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 1300,
-            "rawValue": "1300"
-          },
-          {
             "label": "F MARÇO",
             "value": 1300,
             "rawValue": "1300"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -793,7 +788,12 @@ window.stockData = [
             "rawValue": "1300"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -804,10 +804,10 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 4360,
-          "vendas4M": 2020,
-          "media3M": 673,
-          "cobertura": 8.6,
-          "fCobertura": 6.4
+          "vendas4M": 800,
+          "media3M": 267,
+          "cobertura": 21.8,
+          "fCobertura": 8
         },
         "coverageSource": "stockMonths"
       }
@@ -833,17 +833,12 @@ window.stockData = [
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -853,7 +848,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -863,17 +863,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -883,7 +878,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -923,17 +923,12 @@ window.stockData = [
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -943,7 +938,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -953,17 +953,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -973,7 +968,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1007,25 +1007,20 @@ window.stockData = [
     "media3M": 8,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 3.2,
+    "cobertura": 117.6,
     "fCobertura": 3,
     "accountingCost": 3.57,
     "accountingCostCurrency": "USD",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 960,
-        "rawValue": "960"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 800,
-        "rawValue": "800"
-      },
-      {
         "label": "F MARÇO",
         "value": 800,
         "rawValue": "800"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 960,
+        "rawValue": "960"
       },
       {
         "label": "F ABRIL",
@@ -1033,7 +1028,12 @@ window.stockData = [
         "rawValue": "800"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1043,19 +1043,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 960,
-            "rawValue": "960"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 800,
-            "rawValue": "800"
-          },
-          {
             "label": "F MARÇO",
             "value": 800,
             "rawValue": "800"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 960,
+            "rawValue": "960"
           },
           {
             "label": "F ABRIL",
@@ -1063,7 +1058,12 @@ window.stockData = [
             "rawValue": "800"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1097,25 +1097,20 @@ window.stockData = [
     "media3M": 8,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 0,
+    "cobertura": 115.2,
     "fCobertura": 3,
     "accountingCost": null,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 960,
-        "rawValue": "960"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 600,
-        "rawValue": "600"
-      },
-      {
         "label": "F MARÇO",
         "value": 600,
         "rawValue": "600"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 960,
+        "rawValue": "960"
       },
       {
         "label": "F ABRIL",
@@ -1123,7 +1118,12 @@ window.stockData = [
         "rawValue": "600"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1133,19 +1133,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 960,
-            "rawValue": "960"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 600,
-            "rawValue": "600"
-          },
-          {
             "label": "F MARÇO",
             "value": 600,
             "rawValue": "600"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 960,
+            "rawValue": "960"
           },
           {
             "label": "F ABRIL",
@@ -1153,7 +1148,12 @@ window.stockData = [
             "rawValue": "600"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1182,30 +1182,25 @@ window.stockData = [
     "stock9013": 0,
     "stock9015": 0,
     "stock9016": 0,
-    "stockMonths": 4.1,
-    "vendas4M": 6075,
-    "media3M": 2025,
+    "stockMonths": 8,
+    "vendas4M": 3100,
+    "media3M": 1033,
     "novembro": 0,
-    "dezembro": 54000,
-    "cobertura": 29.7,
-    "fCobertura": 5.3,
+    "dezembro": 0,
+    "cobertura": 6,
+    "fCobertura": 7.6,
     "accountingCost": 9.74,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 4000,
-        "rawValue": "4000"
-      },
-      {
         "label": "F MARÇO",
         "value": 4000,
         "rawValue": "4000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -1213,9 +1208,14 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
-        "value": 54000,
-        "rawValue": "54,000"
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
+        "value": 0,
+        "rawValue": "0"
       }
     ],
     "importHistory": [
@@ -1223,19 +1223,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 4000,
-            "rawValue": "4000"
-          },
-          {
             "label": "F MARÇO",
             "value": 4000,
             "rawValue": "4000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -1243,9 +1238,14 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
-            "value": 54000,
-            "rawValue": "54,000"
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
+            "value": 0,
+            "rawValue": "0"
           }
         ],
         "totals": {
@@ -1254,10 +1254,10 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 0,
           "totalStock": 6170,
-          "vendas4M": 6075,
-          "media3M": 2025,
-          "cobertura": 4.1,
-          "fCobertura": 5.3
+          "vendas4M": 3100,
+          "media3M": 1033,
+          "cobertura": 8,
+          "fCobertura": 7.6
         },
         "coverageSource": "stockMonths"
       }
@@ -1278,24 +1278,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 33.4,
-    "fCobertura": 9.4,
+    "fCobertura": 12,
     "accountingCost": 16.89,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 4000,
-        "rawValue": "4000"
-      },
-      {
         "label": "F MARÇO",
         "value": 5000,
         "rawValue": "5000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -1303,7 +1298,12 @@ window.stockData = [
         "rawValue": "5000"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1313,19 +1313,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 4000,
-            "rawValue": "4000"
-          },
-          {
             "label": "F MARÇO",
             "value": 5000,
             "rawValue": "5000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -1333,7 +1328,12 @@ window.stockData = [
             "rawValue": "5000"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1347,7 +1347,7 @@ window.stockData = [
           "vendas4M": 2700,
           "media3M": 900,
           "cobertura": 44.5,
-          "fCobertura": 9.4
+          "fCobertura": 12
         },
         "coverageSource": "stockMonths"
       }
@@ -1368,24 +1368,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 5.2,
-    "fCobertura": 7.4,
+    "fCobertura": 9.7,
     "accountingCost": 17.85,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 2000,
-        "rawValue": "2000"
-      },
-      {
         "label": "F MARÇO",
         "value": 2000,
         "rawValue": "2000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -1393,7 +1388,12 @@ window.stockData = [
         "rawValue": "2000"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1403,19 +1403,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 2000,
-            "rawValue": "2000"
-          },
-          {
             "label": "F MARÇO",
             "value": 2000,
             "rawValue": "2000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -1423,7 +1418,12 @@ window.stockData = [
             "rawValue": "2000"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1437,7 +1437,7 @@ window.stockData = [
           "vendas4M": 5150,
           "media3M": 1717,
           "cobertura": 6.9,
-          "fCobertura": 7.4
+          "fCobertura": 9.7
         },
         "coverageSource": "stockMonths"
       }
@@ -1452,30 +1452,25 @@ window.stockData = [
     "stock9013": 0,
     "stock9015": 0,
     "stock9016": 19000,
-    "stockMonths": 1.1,
-    "vendas4M": 72075,
-    "media3M": 24025,
+    "stockMonths": 2.2,
+    "vendas4M": 35050,
+    "media3M": 11683,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 0.8,
-    "fCobertura": 4.1,
+    "cobertura": 1.7,
+    "fCobertura": 4.5,
     "accountingCost": 8.17,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 14000,
-        "rawValue": "14000"
-      },
-      {
         "label": "F MARÇO",
         "value": 30000,
         "rawValue": "30000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -1483,7 +1478,12 @@ window.stockData = [
         "rawValue": "10000"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1493,19 +1493,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 14000,
-            "rawValue": "14000"
-          },
-          {
             "label": "F MARÇO",
             "value": 30000,
             "rawValue": "30000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -1513,7 +1508,12 @@ window.stockData = [
             "rawValue": "10000"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1524,10 +1524,10 @@ window.stockData = [
           "stock9015": 0,
           "stock9016": 19000,
           "totalStock": 19650,
-          "vendas4M": 72075,
-          "media3M": 24025,
-          "cobertura": 1.1,
-          "fCobertura": 4.1
+          "vendas4M": 35050,
+          "media3M": 11683,
+          "cobertura": 2.2,
+          "fCobertura": 4.5
         },
         "coverageSource": "stockMonths"
       }
@@ -1548,24 +1548,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 3,
-    "fCobertura": 5.1,
+    "fCobertura": 6.7,
     "accountingCost": 11.67,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 1200,
-        "rawValue": "1200"
-      },
-      {
         "label": "F MARÇO",
         "value": 1600,
         "rawValue": "1600"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -1573,7 +1568,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1583,19 +1583,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 1200,
-            "rawValue": "1200"
-          },
-          {
             "label": "F MARÇO",
             "value": 1600,
             "rawValue": "1600"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -1603,7 +1598,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1617,7 +1617,7 @@ window.stockData = [
           "vendas4M": 2000,
           "media3M": 667,
           "cobertura": 4,
-          "fCobertura": 5.1
+          "fCobertura": 6.7
         },
         "coverageSource": "stockMonths"
       }
@@ -1638,24 +1638,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 328.5,
-    "fCobertura": 112.5,
+    "fCobertura": 167.3,
     "accountingCost": 17.08,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 100,
-        "rawValue": "100"
-      },
-      {
         "label": "F MARÇO",
         "value": 100,
         "rawValue": "100"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -1663,7 +1658,12 @@ window.stockData = [
         "rawValue": "100"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1673,19 +1673,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 100,
-            "rawValue": "100"
-          },
-          {
             "label": "F MARÇO",
             "value": 100,
             "rawValue": "100"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -1693,7 +1688,12 @@ window.stockData = [
             "rawValue": "100"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1707,7 +1707,7 @@ window.stockData = [
           "vendas4M": 100,
           "media3M": 33,
           "cobertura": 438,
-          "fCobertura": 112.5
+          "fCobertura": 167.3
         },
         "coverageSource": "stockMonths"
       }
@@ -1733,19 +1733,14 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 8000,
-        "rawValue": "8,000"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 300,
-        "rawValue": "300"
-      },
-      {
         "label": "F MARÇO",
         "value": 300,
         "rawValue": "300"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 8000,
+        "rawValue": "8,000"
       },
       {
         "label": "F ABRIL",
@@ -1753,7 +1748,12 @@ window.stockData = [
         "rawValue": "300"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1763,19 +1763,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 8000,
-            "rawValue": "8,000"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 300,
-            "rawValue": "300"
-          },
-          {
             "label": "F MARÇO",
             "value": 300,
             "rawValue": "300"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 8000,
+            "rawValue": "8,000"
           },
           {
             "label": "F ABRIL",
@@ -1783,7 +1778,12 @@ window.stockData = [
             "rawValue": "300"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1823,17 +1823,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -1843,7 +1838,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1853,17 +1853,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -1873,7 +1868,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -1913,17 +1913,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -1933,7 +1928,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -1943,17 +1943,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -1963,7 +1958,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2003,17 +2003,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -2023,7 +2018,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2033,17 +2033,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -2053,7 +2048,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2093,19 +2093,14 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 8400,
-        "rawValue": "8,400"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
         "value": 0,
         "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 8400,
+        "rawValue": "8,400"
       },
       {
         "label": "F ABRIL",
@@ -2113,7 +2108,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2123,19 +2123,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 8400,
-            "rawValue": "8,400"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
             "value": 0,
             "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 8400,
+            "rawValue": "8,400"
           },
           {
             "label": "F ABRIL",
@@ -2143,7 +2138,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2183,17 +2183,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -2203,7 +2198,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2213,17 +2213,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -2233,7 +2228,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2273,19 +2273,14 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 7200,
-        "rawValue": "7,200"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 100,
-        "rawValue": "100"
-      },
-      {
         "label": "F MARÇO",
         "value": 100,
         "rawValue": "100"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 7200,
+        "rawValue": "7,200"
       },
       {
         "label": "F ABRIL",
@@ -2293,7 +2288,12 @@ window.stockData = [
         "rawValue": "100"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2303,19 +2303,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 7200,
-            "rawValue": "7,200"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 100,
-            "rawValue": "100"
-          },
-          {
             "label": "F MARÇO",
             "value": 100,
             "rawValue": "100"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 7200,
+            "rawValue": "7,200"
           },
           {
             "label": "F ABRIL",
@@ -2323,7 +2318,12 @@ window.stockData = [
             "rawValue": "100"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2349,33 +2349,28 @@ window.stockData = [
     "family": "ADITIVO EVA",
     "item": "AZO 6-8",
     "stock14": 0,
-    "stock9013": 17200,
+    "stock9013": 14200,
     "stock9015": 0,
     "stock9016": 0,
-    "stockMonths": 125.1,
+    "stockMonths": 103.3,
     "vendas4M": 550,
     "media3M": 183,
     "novembro": 0,
-    "dezembro": 16000,
-    "cobertura": 181.1,
-    "fCobertura": 11.6,
+    "dezembro": 0,
+    "cobertura": 77.5,
+    "fCobertura": 13.7,
     "accountingCost": 16.32,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 2000,
-        "rawValue": "2000"
-      },
-      {
         "label": "F MARÇO",
         "value": 2000,
         "rawValue": "2000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -2383,9 +2378,14 @@ window.stockData = [
         "rawValue": "2000"
       },
       {
-        "label": "DEZEMBRO (25)",
-        "value": 16000,
-        "rawValue": "16,000"
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
+        "value": 0,
+        "rawValue": "0"
       }
     ],
     "importHistory": [
@@ -2393,19 +2393,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 2000,
-            "rawValue": "2000"
-          },
-          {
             "label": "F MARÇO",
             "value": 2000,
             "rawValue": "2000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -2413,21 +2408,26 @@ window.stockData = [
             "rawValue": "2000"
           },
           {
-            "label": "DEZEMBRO (25)",
-            "value": 16000,
-            "rawValue": "16,000"
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
+            "value": 0,
+            "rawValue": "0"
           }
         ],
         "totals": {
           "stock14": 0,
-          "stock9013": 17200,
+          "stock9013": 14200,
           "stock9015": 0,
           "stock9016": 0,
-          "totalStock": 17200,
+          "totalStock": 14200,
           "vendas4M": 550,
           "media3M": 183,
-          "cobertura": 125.1,
-          "fCobertura": 11.6
+          "cobertura": 103.3,
+          "fCobertura": 13.7
         },
         "coverageSource": "stockMonths"
       }
@@ -2439,33 +2439,28 @@ window.stockData = [
     "family": "ADITIVO EVA",
     "item": "AZO 4-6",
     "stock14": 0,
-    "stock9013": 7150,
+    "stock9013": 9075,
     "stock9015": 0,
     "stock9016": 0,
-    "stockMonths": 26,
+    "stockMonths": 33,
     "vendas4M": 1100,
     "media3M": 367,
     "novembro": 0,
-    "dezembro": 8000,
-    "cobertura": 41.3,
-    "fCobertura": 4.4,
+    "dezembro": 0,
+    "cobertura": 24.8,
+    "fCobertura": 5.7,
     "accountingCost": 16.35,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 5000,
-        "rawValue": "5000"
-      },
-      {
         "label": "F MARÇO",
         "value": 5000,
         "rawValue": "5000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -2473,9 +2468,14 @@ window.stockData = [
         "rawValue": "5000"
       },
       {
-        "label": "DEZEMBRO (25)",
-        "value": 8000,
-        "rawValue": "8,000"
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
+        "value": 0,
+        "rawValue": "0"
       }
     ],
     "importHistory": [
@@ -2483,19 +2483,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 5000,
-            "rawValue": "5000"
-          },
-          {
             "label": "F MARÇO",
             "value": 5000,
             "rawValue": "5000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -2503,21 +2498,26 @@ window.stockData = [
             "rawValue": "5000"
           },
           {
-            "label": "DEZEMBRO (25)",
-            "value": 8000,
-            "rawValue": "8,000"
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
+            "value": 0,
+            "rawValue": "0"
           }
         ],
         "totals": {
           "stock14": 0,
-          "stock9013": 7150,
+          "stock9013": 9075,
           "stock9015": 0,
           "stock9016": 0,
-          "totalStock": 7150,
+          "totalStock": 9075,
           "vendas4M": 1100,
           "media3M": 367,
-          "cobertura": 26,
-          "fCobertura": 4.4
+          "cobertura": 33,
+          "fCobertura": 5.7
         },
         "coverageSource": "stockMonths"
       }
@@ -2543,17 +2543,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -2563,7 +2558,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2573,17 +2573,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -2593,7 +2588,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2628,22 +2628,17 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 396,
-    "fCobertura": 27.7,
+    "fCobertura": 52.5,
     "accountingCost": 22.75,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
+        "label": "F MARÇO",
         "value": 0,
         "rawValue": "0"
       },
       {
-        "label": "F FEVEREIRO",
-        "value": 200,
-        "rawValue": "200"
-      },
-      {
-        "label": "F MARÇO",
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -2653,7 +2648,12 @@ window.stockData = [
         "rawValue": "200"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2663,17 +2663,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
+            "label": "F MARÇO",
             "value": 0,
             "rawValue": "0"
           },
           {
-            "label": "F FEVEREIRO",
-            "value": 200,
-            "rawValue": "200"
-          },
-          {
-            "label": "F MARÇO",
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -2683,7 +2678,12 @@ window.stockData = [
             "rawValue": "200"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2697,7 +2697,7 @@ window.stockData = [
           "vendas4M": 25,
           "media3M": 8,
           "cobertura": 528,
-          "fCobertura": 27.7
+          "fCobertura": 52.5
         },
         "coverageSource": "stockMonths"
       }
@@ -2718,24 +2718,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 99,
-    "fCobertura": 36,
+    "fCobertura": 52.5,
     "accountingCost": 18.68,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 50,
-        "rawValue": "50"
-      },
-      {
         "label": "F MARÇO",
         "value": 50,
         "rawValue": "50"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -2743,7 +2738,12 @@ window.stockData = [
         "rawValue": "50"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2753,19 +2753,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 50,
-            "rawValue": "50"
-          },
-          {
             "label": "F MARÇO",
             "value": 50,
             "rawValue": "50"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -2773,7 +2768,12 @@ window.stockData = [
             "rawValue": "50"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2787,7 +2787,7 @@ window.stockData = [
           "vendas4M": 50,
           "media3M": 17,
           "cobertura": 132,
-          "fCobertura": 36
+          "fCobertura": 52.5
         },
         "coverageSource": "stockMonths"
       }
@@ -2813,17 +2813,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -2833,7 +2828,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2843,17 +2843,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -2863,7 +2858,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2898,24 +2898,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 202.5,
-    "fCobertura": 70.5,
+    "fCobertura": 104.2,
     "accountingCost": 20.93,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 50,
-        "rawValue": "50"
-      },
-      {
         "label": "F MARÇO",
         "value": 50,
         "rawValue": "50"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -2923,7 +2918,12 @@ window.stockData = [
         "rawValue": "50"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -2933,19 +2933,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 50,
-            "rawValue": "50"
-          },
-          {
             "label": "F MARÇO",
             "value": 50,
             "rawValue": "50"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -2953,7 +2948,12 @@ window.stockData = [
             "rawValue": "50"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -2967,7 +2967,7 @@ window.stockData = [
           "vendas4M": 50,
           "media3M": 17,
           "cobertura": 270,
-          "fCobertura": 70.5
+          "fCobertura": 104.2
         },
         "coverageSource": "stockMonths"
       }
@@ -2993,17 +2993,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -3013,7 +3008,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3023,17 +3023,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -3043,7 +3038,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3083,19 +3083,14 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 150,
-        "rawValue": "150"
-      },
-      {
         "label": "F MARÇO",
         "value": 200,
         "rawValue": "200"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -3103,7 +3098,12 @@ window.stockData = [
         "rawValue": "200"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3113,19 +3113,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 150,
-            "rawValue": "150"
-          },
-          {
             "label": "F MARÇO",
             "value": 200,
             "rawValue": "200"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -3133,7 +3128,12 @@ window.stockData = [
             "rawValue": "200"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3167,25 +3167,20 @@ window.stockData = [
     "media3M": 5200,
     "novembro": 0,
     "dezembro": 0,
-    "cobertura": 10.1,
-    "fCobertura": 10.6,
+    "cobertura": 5.8,
+    "fCobertura": 14.4,
     "accountingCost": 9.54,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 22400,
-        "rawValue": "22,400"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 4000,
-        "rawValue": "4000"
-      },
-      {
         "label": "F MARÇO",
         "value": 4000,
         "rawValue": "4000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -3193,7 +3188,12 @@ window.stockData = [
         "rawValue": "4000"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3203,19 +3203,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 22400,
-            "rawValue": "22,400"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 4000,
-            "rawValue": "4000"
-          },
-          {
             "label": "F MARÇO",
             "value": 4000,
             "rawValue": "4000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -3223,7 +3218,12 @@ window.stockData = [
             "rawValue": "4000"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3237,7 +3237,7 @@ window.stockData = [
           "vendas4M": 15600,
           "media3M": 5200,
           "cobertura": 7.8,
-          "fCobertura": 10.6
+          "fCobertura": 14.4
         },
         "coverageSource": "stockMonths"
       }
@@ -3258,24 +3258,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 1948.8,
-    "fCobertura": 19.2,
+    "fCobertura": 27.4,
     "accountingCost": 6.06,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 1000,
-        "rawValue": "1000"
-      },
-      {
         "label": "F MARÇO",
         "value": 1000,
         "rawValue": "1000"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -3283,7 +3278,12 @@ window.stockData = [
         "rawValue": "1000"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3293,19 +3293,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 1000,
-            "rawValue": "1000"
-          },
-          {
             "label": "F MARÇO",
             "value": 1000,
             "rawValue": "1000"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -3313,7 +3308,12 @@ window.stockData = [
             "rawValue": "1000"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3327,7 +3327,7 @@ window.stockData = [
           "vendas4M": 25,
           "media3M": 8,
           "cobertura": 2598.4,
-          "fCobertura": 19.2
+          "fCobertura": 27.4
         },
         "coverageSource": "stockMonths"
       }
@@ -3348,24 +3348,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 306,
-    "fCobertura": 11.5,
+    "fCobertura": 15.8,
     "accountingCost": 17.3,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 300,
-        "rawValue": "300"
-      },
-      {
         "label": "F MARÇO",
         "value": 300,
         "rawValue": "300"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -3373,7 +3368,12 @@ window.stockData = [
         "rawValue": "300"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3383,19 +3383,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 300,
-            "rawValue": "300"
-          },
-          {
             "label": "F MARÇO",
             "value": 300,
             "rawValue": "300"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -3403,7 +3398,12 @@ window.stockData = [
             "rawValue": "300"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3417,7 +3417,7 @@ window.stockData = [
           "vendas4M": 25,
           "media3M": 8,
           "cobertura": 408,
-          "fCobertura": 11.5
+          "fCobertura": 15.8
         },
         "coverageSource": "stockMonths"
       }
@@ -3438,24 +3438,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 87,
-    "fCobertura": 4.7,
+    "fCobertura": 5.2,
     "accountingCost": 16.98,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 300,
-        "rawValue": "300"
-      },
-      {
         "label": "F MARÇO",
         "value": 500,
         "rawValue": "500"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -3463,7 +3458,12 @@ window.stockData = [
         "rawValue": "500"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3473,19 +3473,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 300,
-            "rawValue": "300"
-          },
-          {
             "label": "F MARÇO",
             "value": 500,
             "rawValue": "500"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -3493,7 +3488,12 @@ window.stockData = [
             "rawValue": "500"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3507,7 +3507,7 @@ window.stockData = [
           "vendas4M": 25,
           "media3M": 8,
           "cobertura": 116,
-          "fCobertura": 4.7
+          "fCobertura": 5.2
         },
         "coverageSource": "stockMonths"
       }
@@ -3528,24 +3528,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 23,
-    "fCobertura": 5.9,
+    "fCobertura": 7.4,
     "accountingCost": 16.76,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
+        "label": "F MARÇO",
         "value": 1500,
         "rawValue": "1500.0"
       },
       {
-        "label": "F MARÇO",
-        "value": 1500,
-        "rawValue": "1500"
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -3553,7 +3548,12 @@ window.stockData = [
         "rawValue": "1500"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3563,19 +3563,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
+            "label": "F MARÇO",
             "value": 1500,
             "rawValue": "1500.0"
           },
           {
-            "label": "F MARÇO",
-            "value": 1500,
-            "rawValue": "1500"
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -3583,7 +3578,12 @@ window.stockData = [
             "rawValue": "1500"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3597,7 +3597,7 @@ window.stockData = [
           "vendas4M": 575,
           "media3M": 192,
           "cobertura": 30.6,
-          "fCobertura": 5.9
+          "fCobertura": 7.4
         },
         "coverageSource": "stockMonths"
       }
@@ -3623,17 +3623,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -3643,7 +3638,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3653,17 +3653,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -3673,7 +3668,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3713,17 +3713,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -3733,7 +3728,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3743,17 +3743,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -3763,7 +3758,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3803,17 +3803,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -3823,7 +3818,12 @@ window.stockData = [
         "rawValue": "8000"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3833,17 +3833,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -3853,7 +3848,12 @@ window.stockData = [
             "rawValue": "8000"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3888,24 +3888,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 11.5,
-    "fCobertura": 14,
+    "fCobertura": 19.5,
     "accountingCost": 16.85,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 200,
-        "rawValue": "200"
-      },
-      {
         "label": "F MARÇO",
         "value": 200,
         "rawValue": "200"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -3913,7 +3908,12 @@ window.stockData = [
         "rawValue": "200"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -3923,19 +3923,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 200,
-            "rawValue": "200"
-          },
-          {
             "label": "F MARÇO",
             "value": 200,
             "rawValue": "200"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -3943,7 +3938,12 @@ window.stockData = [
             "rawValue": "200"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -3957,7 +3957,7 @@ window.stockData = [
           "vendas4M": 575,
           "media3M": 192,
           "cobertura": 15,
-          "fCobertura": 14
+          "fCobertura": 19.5
         },
         "coverageSource": "stockMonths"
       }
@@ -3983,17 +3983,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -4003,7 +3998,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -4013,17 +4013,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -4033,7 +4028,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -4073,17 +4073,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -4093,7 +4088,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -4103,17 +4103,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -4123,7 +4118,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -4158,24 +4158,19 @@ window.stockData = [
     "novembro": 0,
     "dezembro": 0,
     "cobertura": 20.2,
-    "fCobertura": 11.8,
+    "fCobertura": 16.1,
     "accountingCost": 15.83,
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 200,
-        "rawValue": "200"
-      },
-      {
         "label": "F MARÇO",
         "value": 200,
         "rawValue": "200"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -4183,7 +4178,12 @@ window.stockData = [
         "rawValue": "200"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -4193,19 +4193,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 200,
-            "rawValue": "200"
-          },
-          {
             "label": "F MARÇO",
             "value": 200,
             "rawValue": "200"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -4213,7 +4208,12 @@ window.stockData = [
             "rawValue": "200"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -4227,7 +4227,7 @@ window.stockData = [
           "vendas4M": 260,
           "media3M": 87,
           "cobertura": 27,
-          "fCobertura": 11.8
+          "fCobertura": 16.1
         },
         "coverageSource": "stockMonths"
       }
@@ -4253,17 +4253,12 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 0,
-        "rawValue": "0"
-      },
-      {
         "label": "F MARÇO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MARÇO (26)",
         "value": 0,
         "rawValue": "0"
       },
@@ -4273,7 +4268,12 @@ window.stockData = [
         "rawValue": "0"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -4283,17 +4283,12 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 0,
-            "rawValue": "0"
-          },
-          {
             "label": "F MARÇO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MARÇO (26)",
             "value": 0,
             "rawValue": "0"
           },
@@ -4303,7 +4298,12 @@ window.stockData = [
             "rawValue": "0"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -4343,19 +4343,14 @@ window.stockData = [
     "accountingCostCurrency": "BRL",
     "monthlyValues": [
       {
-        "label": "JANEIRO (26)",
-        "value": 4200,
-        "rawValue": "4,200"
-      },
-      {
-        "label": "F FEVEREIRO",
-        "value": 5500,
-        "rawValue": "5500"
-      },
-      {
         "label": "F MARÇO",
         "value": 5500,
         "rawValue": "5500"
+      },
+      {
+        "label": "MARÇO (26)",
+        "value": 0,
+        "rawValue": "0"
       },
       {
         "label": "F ABRIL",
@@ -4363,7 +4358,12 @@ window.stockData = [
         "rawValue": "5500"
       },
       {
-        "label": "DEZEMBRO (25)",
+        "label": "F MAIO",
+        "value": 0,
+        "rawValue": "0"
+      },
+      {
+        "label": "MAIO (26)",
         "value": 0,
         "rawValue": "0"
       }
@@ -4373,19 +4373,14 @@ window.stockData = [
         "sheetName": "Estoque",
         "months": [
           {
-            "label": "JANEIRO (26)",
-            "value": 4200,
-            "rawValue": "4,200"
-          },
-          {
-            "label": "F FEVEREIRO",
-            "value": 5500,
-            "rawValue": "5500"
-          },
-          {
             "label": "F MARÇO",
             "value": 5500,
             "rawValue": "5500"
+          },
+          {
+            "label": "MARÇO (26)",
+            "value": 0,
+            "rawValue": "0"
           },
           {
             "label": "F ABRIL",
@@ -4393,7 +4388,12 @@ window.stockData = [
             "rawValue": "5500"
           },
           {
-            "label": "DEZEMBRO (25)",
+            "label": "F MAIO",
+            "value": 0,
+            "rawValue": "0"
+          },
+          {
+            "label": "MAIO (26)",
             "value": 0,
             "rawValue": "0"
           }
@@ -4417,7 +4417,7 @@ window.stockData = [
 
 // Metadados
 window.stockMetadata = {
-    lastUpdate: "2026-03-02T15:17:07.219Z",
+    lastUpdate: "2026-03-04T14:11:00.749Z",
     totalProducts: 49,
     generatedBy: "Dashboard de Estoque v1.3 - Importador com múltiplas abas",
     version: "1.3.0",
